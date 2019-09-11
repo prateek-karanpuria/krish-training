@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Testimonials</title>
+    </head>
+
+    <body>
+        <referenceContainer name="content">
+            <block class="Training\Testimonial\Block\ListView" name="training_testimonial_listview"
+                   template="Training_Testimonial::listview.phtml"
+                   ifconfig="testimonials/general/module_enable" />
+        </referenceContainer>
+    </body>
+</page>

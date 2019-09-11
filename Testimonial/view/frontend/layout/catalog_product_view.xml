@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XmlSchema-instance"
+      xsi:noNamespaceLocation="urn:magento:framework:View\Layout\etc\page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main">
+            <block class="Training\Testimonial\Block\ListView"
+                   name="catalog_product_view_testimonials_slider_widget"
+                   template="Training_Testimonial::slider/testimonialslider.phtml"
+                   before="-"
+                   ifconfig="testimonials/general/module_enable" />
+        </referenceContainer>
+
+        <referenceContainer name="product.info.details">
+            <block class="Training\Testimonial\Block\ListView"
+                   name="product.catalog_product_view_testimonials_slider_widget1"
+                   template="Training_Testimonial::slider/testimonialslider.phtml"
+                   after="-"
+                   group="detailed_info"
+                   ifconfig="testimonials/general/module_enable">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Testimonials</argument>
+                </arguments>
+            </block>
+       </referenceContainer>
+
+        <move element="product.info.extrahint"
+              destination="product.info.main"
+              before="catalog_product_view_testimonials_slider_widget" />
+    </body>
+</page>

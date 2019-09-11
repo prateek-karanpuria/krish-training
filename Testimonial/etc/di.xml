@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+* @Author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Training\Testimonial\Api\TestimonialRepositoryInterface" type="Training\Testimonial\Model\TestimonialRepository"/>
+    <preference for="Training\Testimonial\Api\Data\TestimonialInterface" type="Training\Testimonial\Model\Testimonial"/>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="testimonial_index_listing_data_source" xsi:type="string">Training\Testimonial\Model\ResourceModel\Testimonial\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Training\Testimonial\Model\ResourceModel\Testimonial\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">training_testimonials</argument>
+            <argument name="resourceModel" xsi:type="string">Training\Testimonial\Model\ResourceModel\Testimonial</argument>
+        </arguments>
+    </virtualType>
+</config>

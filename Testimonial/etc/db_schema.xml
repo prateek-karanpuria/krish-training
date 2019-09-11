@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="training_testimonials" engine="innodb" resource="default" comment="testimonials">
+        <column xsi:type="int" name="id" padding="11" unsigned="true" nullable="false" identity="true"
+                comment="Testimonial Id"/>
+        <column xsi:type="int" name="store_id" padding="11" unsigned="true" nullable="true" identity="false"
+                comment="Store Id"/>
+        <column xsi:type="int" name="user_id" padding="11" unsigned="true" nullable="true" comment="User Id"/>
+        <column xsi:type="int" name="product_id" padding="11" unsigned="true" nullable="true" identity="false"
+                comment="Product id"/>
+        <column xsi:type="varchar" name="name" length="255" nullable="false" comment="Name"/>
+        <column xsi:type="varchar" name="email" length="255" nullable="false" comment="Email"/>
+        <column xsi:type="text" name="message" nullable="false" comment="Message"/>
+        <column xsi:type="varchar" name="image" length="255" nullable="true" comment="Image Path"/>
+        <column xsi:type="smallint" name="ratings" padding="2" nullable="false" comment="Ratings"/>
+        <column xsi:type="int" name="sort_order" padding="11" nullable="false" comment="Sort Order"/>
+        <column xsi:type="boolean" name="is_approved" nullable="false" default="0" comment="Approve=1/Reject=0"/>
+        <column xsi:type="varchar" name="user_ip" length="15" nullable="true" comment="IP Address"/>
+        <column xsi:type="varchar" name="user_agent" length="255" nullable="true" comment="User Agent"/>
+        <column xsi:type="datetime" name="added_on" nullable="false" comment="Added On"/>
+        <column xsi:type="datetime" name="updated_on" nullable="false" comment="Updated On"/>
+        <column xsi:type="boolean" name="deleted" nullable="false" default="0" comment="Mark Record As Deleted"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="TRAINING_TESTIMONIAL_ENTITY_USER_ID" indexType="btree">
+            <column name="user_id"/>
+            <column name="store_id"/>
+            <column name="product_id"/>
+        </index>
+    </table>
+</schema>

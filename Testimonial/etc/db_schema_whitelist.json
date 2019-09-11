@@ -1,0 +1,56 @@
+{
+    "training_testimonial": {
+        "column": {
+            "id": true,
+            "store_id": true,
+            "user_id": true,
+            "product_id": true,
+            "name": true,
+            "email": true,
+            "message": true,
+            "image": true,
+            "ratings": true,
+            "sort_order": true,
+            "is_approved": true,
+            "is_enabled": true,
+            "user_ip": true,
+            "user_agent": true,
+            "added_on": true,
+            "updated_on": true,
+            "deleted": true
+        },
+        "index": {
+            "TRAINING_TESTIMONIAL_USER_ID_STORE_ID_PRODUCT_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "training_testimonials": {
+        "column": {
+            "id": true,
+            "store_id": true,
+            "user_id": true,
+            "product_id": true,
+            "name": true,
+            "email": true,
+            "message": true,
+            "image": true,
+            "ratings": true,
+            "sort_order": true,
+            "is_approved": true,
+            "is_enabled": true,
+            "user_ip": true,
+            "user_agent": true,
+            "added_on": true,
+            "updated_on": true,
+            "deleted": true
+        },
+        "index": {
+            "TRAINING_TESTIMONIALS_USER_ID_STORE_ID_PRODUCT_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

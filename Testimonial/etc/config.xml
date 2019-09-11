@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <testimonials>            
+            <general>
+                <module_enable>1</module_enable>
+                <sort_order>1</sort_order>
+                <display_header_footer_link>1</display_header_footer_link>
+                <allow_guest_testimonials_submission>1</allow_guest_testimonials_submission>
+            </general>
+        </testimonials>
+    </default>
+</config>

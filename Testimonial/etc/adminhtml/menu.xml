@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+* @Author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Training_Testimonial::testimonials" title="Testimonials" module="Training_Testimonial" 
+             sortOrder="15" resource="Training_Testimonial::testimonials" />
+
+        <add id="Training_Testimonial::testimonial_list"
+             title="All Testimonials"
+             module="Training_Testimonial" 
+             sortOrder="1"
+             resource="Training_Testimonial::testimonial_list"
+             parent="Training_Testimonial::testimonials"
+             action="testimonial/index/listview"
+             dependsOnConfig="testimonials/general/module_enable" />
+
+        <add id="Training_Testimonial::testimonial_configuration"
+             title="Configuration"
+             module="Training_Testimonial"
+             action="admin/system_config/edit/section/testimonials"
+             sortOrder="2"
+             resource="Training_Testimonial::testimonial_configuration"
+             parent="Training_Testimonial::testimonials" />
+    </menu>
+</config>

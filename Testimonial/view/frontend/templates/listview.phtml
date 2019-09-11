@@ -1,0 +1,80 @@
+<?php
+
+$collections = $block->getListView();
+
+$trContent = '';
+$addTestimonialLink = $block->getUrl('testimonial/index/add');
+$deleteLink = $block->getUrl('testimonial/index/delete');
+
+if ($collections) {
+    foreach ($collections as $item) {
+        $recordId = $item->getData('id');
+        $uploadedImage = $item->getData('image') ? "<img class='img-thumbnail' src='" . $block->getBaseUrl() . $item->getData('image') . "' title='Testimonial Uploaded Image' alt='Testimonial Uploaded Image' width='50px' height='50px'>" : '';
+        $userName = $item->getData('name');
+        $userEmail = $item->getData('email');
+        $message = $item->getData('message');
+        $ratings = $item->getData('ratings');
+        $addedOn = $item->getData('added_on');
+        $addedOn = strtotime($addedOn) ? date('d/m/Y h:i A', strtotime($addedOn)) : '';
+        $updatedOn = $item->getData('updated_on');
+        $updatedOn = strtotime($updatedOn) ? date('d/m/Y h:i A', strtotime($updatedOn)) : '';
+
+        $ratingsDisp = '';
+        if ($ratings) {
+            while ($ratings > 0) {
+                $ratingsDisp .= '*';
+                $ratings--;
+            }
+        }
+
+        $trContent .= <<< TR_CONTENT
+        <tr>
+            <td>{$uploadedImage}</td>
+            <td>{$userName}</td>
+            <td>{$userEmail}</td>
+            <td>{$message}</td>
+            <td>{$ratingsDisp}</td>
+            <td>{$addedOn}</td>
+            <td>{$updatedOn}</td>
+            <td>
+                <button type="button" class="action action primary"
+                        onclick="top.location.href='{$addTestimonialLink}record/{$recordId}';">Edit</button>
+                <button type="button" class="action danger"
+                        onclick="warn_delete('{$deleteLink}action/remove/record/{$recordId}', 'remove');">Remove</button>
+                <button type="button" class="action danger"
+                        onclick="warn_delete('{$deleteLink}action/delete/record/{$recordId}', 'delete');">Delete</button>
+            </td>
+        </tr>
+TR_CONTENT;
+    }
+}
+
+?>
+    <h3>List <a href='<?php echo $addTestimonialLink; ?>' class="action primary">Add</a></h3>
+    <table class="table table-bordered bordered hover">
+        <tr>
+            <thead>
+            <th>&nbsp;</th>
+            <th><?php echo $block->escapeHtml(__('Name')); ?></th>
+            <th><?php echo $block->escapeHtml(__('Email')); ?></th>
+            <th><?php echo $block->escapeHtml(__('Message')); ?></th>
+            <th><?php echo $block->escapeHtml(__('Ratings')); ?></th>
+            <th><?php echo $block->escapeHtml(__('Added On')); ?></th>
+            <th><?php echo $block->escapeHtml(__('Updated On')); ?></th>
+            <th><?php echo $block->escapeHtml(__('Actions')); ?></th>
+            </thead>
+
+            <tbody>
+            <?php echo $trContent; ?>
+            </tbody>
+        </tr>
+    </table>
+    <script>
+        function warn_delete(url,action)
+        {
+            if (confirm("Are you sure to "+action+" this record?")) {
+                top.location.href = url;
+            }
+        }
+    </script>
+<?php

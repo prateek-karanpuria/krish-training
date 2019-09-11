@@ -1,0 +1,56 @@
+<?php
+
+$collections = $block->getTestimonials();
+
+$divContent = '';
+
+if ($collections) {
+    foreach ($collections as $item) {
+        $uploadedImage = $item->getData('image') ? "<div><img class='img-thumbnail' src='" . $block->getBaseUrl() . $item->getData('image') . "' title='Uploaded Image' alt='Uploaded Image' width='50px' height='50px'></div>" : '';
+        $userName = $item->getData('name');
+        $userEmail = $item->getData('email');
+        $message = $item->getData('message');
+        $ratings = $item->getData('ratings');
+        $addedOn = $item->getData('added_on');
+        $addedOn = strtotime($addedOn) ? date('d/m/Y h:i A', strtotime($addedOn)) : '';
+        $updatedOn = $item->getData('updated_on');
+        $updatedOn = strtotime($updatedOn) ? date('d/m/Y h:i A', strtotime($updatedOn)) : '';
+
+        $ratingsDisp = '';
+        if ($ratings) {
+            while ($ratings > 0) {
+                $ratingsDisp .= '*';
+                $ratings--;
+            }
+        }
+
+        $divContent .= <<< DIV_CONTENT
+        <div class="item">
+            <div><quote>{$message}</quote></div>
+            {$uploadedImage}
+            <div>{$ratingsDisp}</div>
+            <div>- {$userName} ({$userEmail})</div>
+        </div>
+DIV_CONTENT;
+
+    }
+}
+?>
+<h4>Testimonials</h4>
+
+<div id="testimonialSlider">
+    <?php echo $divContent; ?>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#testimonialSlider": {
+            "OwlCarousel": {
+                "autoPlay": 3000,
+                "items": 1,
+                "itemsDesktop": [1199, 3],
+                "itemsDesktopSmall": [979, 3]
+            }
+        }
+    }
+</script>
