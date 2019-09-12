@@ -15,7 +15,7 @@ use Magento\Ui\Component\Listing\Columns\Column;
  */
 class Thumbnail extends Column
 {
-    const ALT_FIELD = 'title';
+    const ALT_FIELD = 'name';
 
     /**
      * @var \Magento\Store\Model\StoreManagerInterface

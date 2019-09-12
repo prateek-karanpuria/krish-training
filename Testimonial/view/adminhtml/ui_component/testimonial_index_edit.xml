@@ -42,7 +42,7 @@
     </dataSource>
 
     <fieldset name="testimonialEditForm">
-                <settings>
+        <settings>
             <label/>
         </settings>
 
@@ -59,10 +59,14 @@
             </settings>
         </field>
 
-        <field name="name" sortOrder="1" formElement="input">
+        <field name="name" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">testimonial</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-alphanum-with-spaces" xsi:type="boolean">true</item>
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
                 </item>
             </argument>
             <settings>
@@ -75,7 +79,41 @@
             </settings>
         </field>
 
-        <field name="email" sortOrder="3" formElement="input">
+        <field name="email" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">testimonial</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-email" xsi:type="boolean">true</item>
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Email</label>
+                <dataScope>email</dataScope>
+            </settings>
+        </field>
+
+        <field name="sort_order" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">testimonial</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-zero-or-greater" xsi:type="boolean">true</item>
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Sort Order</label>
+                <dataScope>sort_order</dataScope>
+            </settings>
+        </field>
+
+        <field name="message" formElement="textarea">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">testimonial</item>
@@ -85,9 +123,9 @@
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
                 </validation>
-                <dataType>email</dataType>
-                <label translate="true">Email</label>
-                <dataScope>email</dataScope>
+                <dataType>text</dataType>
+                <label translate="true">Message</label>
+                <dataScope>message</dataScope>
             </settings>
         </field>
 
@@ -115,20 +153,5 @@
             </formElements>
         </field>
 
-        <field name="message" sortOrder="2" formElement="textarea">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">testimonial</item>
-                </item>
-            </argument>
-            <settings>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">true</rule>
-                </validation>
-                <dataType>text</dataType>
-                <label translate="true">Message</label>
-                <dataScope>message</dataScope>
-            </settings>
-        </field>
     </fieldset>
 </form>

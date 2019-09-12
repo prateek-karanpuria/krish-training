@@ -8,38 +8,76 @@
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">testimonial_index_listview.testimonial_index_listing_data_source</item>
-            <item name="deps" xsi:type="string">testimonial_index_listview.testimonial_index_listing_data_source</item>
-        </item>
-        <item name="spinner" xsi:type="string">testimonialListingColumns</item>
-        <item name="buttons" xsi:type="array">
-            <item name="edit" xsi:type="array">
-                <item name="name" xsi:type="string">edit</item>
-                <item name="label" xsi:type="string" translate="true">Add New Testimonial</item>
-                <item name="class" xsi:type="string">primary</item>
-                <item name="url" xsi:type="string">testimonial/index/add</item>
-            </item>
         </item>
     </argument>
 
-    <dataSource name="nameOfDataSource">
-        <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
-            <argument name="name" xsi:type="string">testimonial_index_listing_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">id</argument>
-            <argument name="requestFieldName" xsi:type="string">id</argument>
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
-                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
-                    <item name="storageConfig" xsi:type="array">
-                        <item name="indexField" xsi:type="string">id</item>
-                    </item>
-                </item>
-            </argument>
-        </argument>
+    <settings>
+        <spinner>testimonialListingColumns</spinner>
+        <deps>
+            <dep>testimonial_index_listview.testimonial_index_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="testimonial/index/add"/>
+                <class>primary</class>
+                <label translate="true">Add New Testimonial</label>
+            </button>
+        </buttons>
+    </settings>
+
+    <dataSource name="testimonialListDataSource" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="testimonial_index_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
     </dataSource>
 
     <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <exportButton name="export_button"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected testimonials?</message>
+                        <title translate="true">Delete Testimonials</title>
+                    </confirm>
+                    <url path="testimonial/index/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+
+<!--             <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected testimonials?</message>
+                        <title translate="true">Delete Testimonials</title>
+                    </confirm>
+                    <url path="testimonial/index/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action> -->
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+
+<!--     <listingToolbar name="listing_top">
         <settings>
             <sticky>true</sticky>
         </settings>
@@ -65,7 +103,7 @@
                         <item name="url" xsi:type="url" path="testimonial/index/massDelete"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Delete Post</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure you want to delete selected items?</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure to delete selected testimonials?</item>
                         </item>
                     </item>
                 </argument>
@@ -76,10 +114,10 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">is_approved</item>
                         <item name="label" xsi:type="string" translate="true">Approve Testimonial</item>
-                        <item name="url" xsi:type="url" path="mageplaza_helloworld/post/massDelete"/>
+                        <item name="url" xsi:type="url" path="testimonial/index/massUpdateStatus"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Approve Testimonial</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure you want to approve selected action?</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure to approve selected testimonials?</item>
                         </item>
                     </item>
                 </argument>
@@ -90,16 +128,16 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">is_approved</item>
                         <item name="label" xsi:type="string" translate="true">Reject Testimonial</item>
-                        <item name="url" xsi:type="url" path="mageplaza_helloworld/post/massDelete"/>
+                        <item name="url" xsi:type="url" path="testimonial/index/massUpdateStatus"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Reject Testimonial</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure you want to reject selected items?</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure to reject selected testimonials?</item>
                         </item>
                     </item>
                 </argument>
             </action>
         </massaction>
-    </listingToolbar>
+    </listingToolbar> -->
 
     <columns name="testimonialListingColumns" class="Magento\Ui\Component\Listing\Columns">
         <selectionsColumn name="ids">
@@ -108,6 +146,7 @@
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
                     <item name="resizeDefaultWidth" xsi:type="string">55</item>
                     <item name="indexField" xsi:type="string">id</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
                 </item>
             </argument>
         </selectionsColumn>
@@ -118,6 +157,7 @@
                     <item name="filter" xsi:type="string">textRange</item>
                     <item name="sorting" xsi:type="string">asc</item>
                     <item name="label" xsi:type="string" translate="true">ID</item>
+                    <item name="sortOrder" xsi:type="number">2</item>
                 </item>
             </argument>
         </column>
@@ -131,6 +171,7 @@
                     <item name="has_preview" xsi:type="string">1</item>
                     <item name="title" xsi:type="string">1</item>
                     <item name="label" xsi:type="string" translate="true">Thumbnail</item>
+                    <item name="sortOrder" xsi:type="number">3</item>
                 </item>
             </argument>
         </column>
@@ -146,11 +187,12 @@
                         </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="sortOrder" xsi:type="number">4</item>
                 </item>
             </argument>
         </column>
 
-        <column name="email">
+        <column name="email"> 
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">email</item>
@@ -161,36 +203,7 @@
                         </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Email</item>
-                </item>
-            </argument>
-        </column>
-
-        <column name="user_ip">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="editor" xsi:type="array">
-                        <item name="editorType" xsi:type="string">text</item>
-                        <item name="validation" xsi:type="array">
-                            <item name="required-entry" xsi:type="boolean">true</item>
-                        </item>
-                    </item>
-                    <item name="label" xsi:type="string" translate="true">IP</item>
-                </item>
-            </argument>
-        </column>
-
-        <column name="user_agent">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="editor" xsi:type="array">
-                        <item name="editorType" xsi:type="string">text</item>
-                        <item name="validation" xsi:type="array">
-                            <item name="required-entry" xsi:type="boolean">true</item>
-                        </item>
-                    </item>
-                    <item name="label" xsi:type="string" translate="true">User Agent</item>
+                    <item name="sortOrder" xsi:type="number">5</item>
                 </item>
             </argument>
         </column>
@@ -206,6 +219,7 @@
                         </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Message</item>
+                    <item name="sortOrder" xsi:type="number">6</item>
                 </item>
             </argument>
         </column>
@@ -221,6 +235,51 @@
                         </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Ratings</item>
+                    <item name="sortOrder" xsi:type="number">7</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="is_approved" component="Magento_Ui/js/grid/columns/select" sortOrder="8">
+            <settings>
+                <options class="Training\Testimonial\Model\Data\Source\ApprovalStatus"/>
+                <filter>select</filter>
+                <editor>
+                    <editorType>select</editorType>
+                </editor>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+
+        <column name="user_ip">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">IP</item>
+                    <item name="sortOrder" xsi:type="number">9</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="user_agent">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">User Agent</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
                 </item>
             </argument>
         </column>
@@ -232,7 +291,8 @@
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
                     <item name="dataType" xsi:type="string">date</item>
                     <item name="dateFormat" xsi:type="string">dd-mm-YY h:m A</item>
-                    <item name="label" xsi:type="string" translate="true">Created</item>
+                    <item name="label" xsi:type="string" translate="true">Added On</item>
+                    <item name="sortOrder" xsi:type="number">11</item>
                 </item>
             </argument>
         </column>
@@ -244,16 +304,17 @@
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
                     <item name="dataType" xsi:type="string">date</item>
                     <item name="dateFormat" xsi:type="string">dd-mm-YY h:m A</item>
-                    <item name="label" xsi:type="string" translate="true">Modified</item>
+                    <item name="label" xsi:type="string" translate="true">Updated On</item>
+                    <item name="sortOrder" xsi:type="number">12</item>
                 </item>
             </argument>
         </column>
 
-        <actionsColumn name="actions" class="Training\Testimonial\Ui\Component\Listing\Column\Actions" >
+        <actionsColumn name="actions" class="Training\Testimonial\Ui\Component\Listing\Column\Actions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="indexField" xsi:type="string">id</item>
-                    <item name="sortOrder" xsi:type="number">12</item>
+                    <item name="sortOrder" xsi:type="number">13</item>
                 </item>
             </argument>
         </actionsColumn>

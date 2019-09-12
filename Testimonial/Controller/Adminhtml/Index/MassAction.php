@@ -9,11 +9,11 @@ use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Ui\Component\MassAction\Filter;
 use Training\Testimonial\Api\TestimonialRepositoryInterface;
-use Training\Testimonial\Controller\Adminhtml\Index;
+use Training\Testimonial\Controller\Adminhtml\Data;
 use Training\Testimonial\Model\ResourceModel\Testimonial\CollectionFactory;
 use Training\Testimonial\Model\Testimonial;
 
-abstract class MassAction extends \Training\Testimonial\Controller\Adminhtml\Data
+abstract class MassAction extends Data
 {
     /**
      * @var Filter

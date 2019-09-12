@@ -1,6 +1,6 @@
 <?php
 
-namespace Training\Testimonial\Controller\Adminhtml;
+namespace Training\Testimonial\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\ForwardFactory;
@@ -11,6 +11,7 @@ use Magento\Framework\View\Result\PageFactory;
 use Training\Testimonial\Api\Data\TestimonialInterface;
 use Training\Testimonial\Api\Data\TestimonialInterfaceFactory;
 use Training\Testimonial\Api\TestimonialRepositoryInterface;
+use Training\Testimonial\Controller\Adminhtml\Data;
 
 class Save extends Data
 {
@@ -61,8 +62,10 @@ class Save extends Data
         $data = $this->getRequest()->getPostValue();
 
         $resultRedirect = $this->resultRedirectFactory->create();
+
         if ($data) {
             $id = $this->getRequest()->getParam('id');
+
             if ($id) {
                 $model = $this->testimonialRepository->getById($id);
             } else {
@@ -75,10 +78,18 @@ class Save extends Data
                 $this->testimonialRepository->save($model);
                 $this->messageManager->addSuccessMessage(__('You saved this data.'));
                 $this->_getSession()->setFormData(false);
+
+                /**
+                 * Save and continue on edit
+                 */
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('testimonial/index/edit', ['id' => $model->getId(), '_current' => true]);
                 }
-                return $resultRedirect->setPath('testimonial/index/edit');
+
+                /**
+                 * Return to list view after save
+                 */
+                return $resultRedirect->setPath('testimonial/index/listview');
             } catch (\Magento\Framework\Exception\LocalizedException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\RuntimeException $e) {

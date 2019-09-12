@@ -6,11 +6,14 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Training\Testimonial\Controller\Adminhtml\Data;
 
+/**
+ * Delete class
+ * @package Training\Testimonial\Controller\Adminhtml\Index\Delete
+ */
 class Delete extends Data
 {
     /**
      * Delete the data entity
-     *
      * @return \Magento\Framework\Controller\Result\Redirect
      */
     public function execute()
