@@ -41,7 +41,7 @@ class TestimonialRepository implements TestimonialRepositoryInterface
     /**
      * @var TestimonialSearchResultsInterfaceFactory
      */
-    protected $testimonialResultsFactory;
+    protected $testimonialSearchResultsFactory;
 
     /**
      * @var TestimonialInterfaceFactory
@@ -60,11 +60,11 @@ class TestimonialRepository implements TestimonialRepositoryInterface
         TestimonialInterfaceFactory $testimonialInterfaceFactory,
         DataObjectHelper $dataObjectHelper
     ) {
-        $this->resource                     = $resource;
-        $this->testimonialCollectionFactory = $testimonialCollectionFactory;
-        $this->testimonialResultsFactory    = $testimonialSearchResultsInterfaceFactory;
-        $this->testimonialInterfaceFactory  = $testimonialInterfaceFactory;
-        $this->dataObjectHelper             = $dataObjectHelper;
+        $this->resource                        = $resource;
+        $this->testimonialCollectionFactory    = $testimonialCollectionFactory;
+        $this->testimonialSearchResultsFactory = $testimonialSearchResultsInterfaceFactory;
+        $this->testimonialInterfaceFactory     = $testimonialInterfaceFactory;
+        $this->dataObjectHelper                = $dataObjectHelper;
     }
 
     /**
@@ -75,7 +75,9 @@ class TestimonialRepository implements TestimonialRepositoryInterface
     public function save(TestimonialInterface $testimonial)
     {
         try {
-            /** @var TestimonialInterface|\Magento\Framework\Model\AbstractModel $testimonial */
+            /**
+             * @var TestimonialInterface|\Magento\Framework\Model\AbstractModel $testimonial
+             */
             $this->resource->save($testimonial);
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__(
@@ -96,12 +98,17 @@ class TestimonialRepository implements TestimonialRepositoryInterface
     public function getById($testimonialId)
     {
         if (!isset($this->instances[$testimonialId])) {
-            /** @var \Training\Testimonial\Api\Data\TestimonialInterface|\Magento\Framework\Model\AbstractModel $data */
+            /**
+             * @var \Training\Testimonial\Api\Data\TestimonialInterface|\Magento\Framework\Model\AbstractModel $data
+             */
             $data = $this->testimonialInterfaceFactory->create();
+
             $this->resource->load($data, $testimonialId);
+
             if (!$data->getId()) {
                 throw new NoSuchEntityException(__('Requested data doesn\'t exist'));
             }
+
             $this->instances[$testimonialId] = $data;
         }
         return $this->instances[$testimonialId];
@@ -113,20 +120,29 @@ class TestimonialRepository implements TestimonialRepositoryInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
-        /** @var \Training\Testimonial\Api\Data\DataSearchResultsInterface $searchResults */
-        $searchResults = $this->testimonialResultsFactory->create();
+        /**
+         *  @var \Training\Testimonial\Api\Data\TestimonialSearchResultsInterface $testimonialSearchResultsFactory
+         */
+        $searchResults = $this->testimonialSearchResultsFactory->create();
         $searchResults->setSearchCriteria($searchCriteria);
 
-        /** @var \Training\Testimonial\Model\ResourceModel\Data\Collection $collection */
+        /**
+         *  @var \Training\Testimonial\Model\ResourceModel\Testimonial\Collection $collection
+         */
         $collection = $this->testimonialCollectionFactory->create();
 
-        //Add filters from root filter group to the collection
-        /** @var FilterGroup $group */
+        /**
+         *  Add filters from root filter group to the collection
+         *  @var FilterGroup $group
+         */
         foreach ($searchCriteria->getFilterGroups() as $group) {
             $this->addFilterGroupToCollection($group, $collection);
         }
         $sortOrders = $searchCriteria->getSortOrders();
-        /** @var SortOrder $sortOrder */
+
+        /**
+         * @var SortOrder $sortOrder
+         */
         if ($sortOrders) {
             foreach ($searchCriteria->getSortOrders() as $sortOrder) {
                 $field = $sortOrder->getField();
@@ -160,7 +176,9 @@ class TestimonialRepository implements TestimonialRepositoryInterface
      */
     public function delete(TestimonialInterface $testimonial)
     {
-        /** @var \Training\Testimonial\Api\Data\TestimonialInterface|\Magento\Framework\Model\AbstractModel $testimonial */
+        /**
+         * @var \Training\Testimonial\Api\Data\TestimonialInterface|\Magento\Framework\Model\AbstractModel $testimonial
+         */
         $id = $testimonial->getId();
         try {
             unset($this->instances[$id]);

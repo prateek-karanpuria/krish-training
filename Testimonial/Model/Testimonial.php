@@ -56,7 +56,7 @@ class Testimonial extends AbstractModel implements IdentityInterface, Testimonia
      */
     protected function _construct()
     {
-        $this->_init('Model\ResourceModel\Testimonial');
+        $this->_init('Training\Testimonial\Model\ResourceModel\Testimonial');
     }
 
     public function getId()

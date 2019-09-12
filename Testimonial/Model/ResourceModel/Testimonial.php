@@ -12,7 +12,7 @@ use Magento\Framework\Model\ResourceModel\Db\Context;
 class Testimonial extends AbstractDb
 {
     /**
-     * Testimonial constructor.
+     * Testimonial constructor
      * @param Context $context
      */
     public function __construct(
