@@ -8,15 +8,15 @@ use Training\Testimonial\Model\Testimonial;
  * MassEnable class
  * @package Training\Testimonial\Controller\Adminhtml\Index\MassEnable
  */
-class MassApprove extends MassAction
+class MassApprove extends \Training\Testimonial\Controller\Adminhtml\Index\MassAction
 {
     /**
      * @param Testimonial $testimonial
      * @return $this
      */
-    protected function massAction(Testimonial $testimonial)
+    protected function massAction(\Training\Testimonial\Model\Testimonial $testimonial)
     {
-        $data->setIsApproved(1);
+        $testimonial->setIsApproved(1);
         $this->testimonialRepository->save($testimonial);
         return $this;
     }

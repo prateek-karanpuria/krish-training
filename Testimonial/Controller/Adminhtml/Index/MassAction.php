@@ -9,11 +9,9 @@ use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Ui\Component\MassAction\Filter;
 use Training\Testimonial\Api\TestimonialRepositoryInterface;
-use Training\Testimonial\Controller\Adminhtml\Data;
 use Training\Testimonial\Model\ResourceModel\Testimonial\CollectionFactory;
-use Training\Testimonial\Model\Testimonial;
 
-abstract class MassAction extends Data
+abstract class MassAction extends \Training\Testimonial\Controller\Adminhtml\Data
 {
     /**
      * @var Filter
@@ -82,7 +80,7 @@ abstract class MassAction extends Data
      * @param Testimonial $testimonial
      * @return mixed
      */
-    abstract protected function massAction(Testimonial $testimonial);
+    abstract protected function massAction(\Training\Testimonial\Model\Testimonial $testimonial);
 
     /**
      * @return \Magento\Framework\Controller\Result\Redirect

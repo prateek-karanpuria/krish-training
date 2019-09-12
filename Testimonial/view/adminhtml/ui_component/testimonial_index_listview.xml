@@ -62,82 +62,32 @@
                 </settings>
             </action>
 
-<!--             <action name="delete">
+            <action name="approve">
                 <settings>
                     <confirm>
-                        <message translate="true">Are you sure you want to delete selected testimonials?</message>
-                        <title translate="true">Delete Testimonials</title>
+                        <message translate="true">Are you sure you want to approve selected testimonials?</message>
+                        <title translate="true">Approve Testimonials</title>
                     </confirm>
-                    <url path="testimonial/index/massDelete"/>
-                    <type>delete</type>
-                    <label translate="true">Delete</label>
+                    <url path="testimonial/index/massApprove"/>
+                    <type>approve</type>
+                    <label translate="true">Approve</label>
                 </settings>
-            </action> -->
-        </massaction>
-        <paging name="listing_paging"/>
-    </listingToolbar>
-
-<!--     <listingToolbar name="listing_top">
-        <settings>
-            <sticky>true</sticky>
-        </settings>
-        <bookmark name="bookmarks"/>
-        <columnsControls name="columns_controls"/>
-        <paging name="listing_paging"/>
-        <exportButton name="export_button"/>
-        <filterSearch name="fulltext" />
-        <filters name="listing_filters" />
-
-        <massaction name="listing_massaction">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
-                </item>
-            </argument>
-
-            <action name="delete">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">delete</item>
-                        <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="testimonial/index/massDelete"/>
-                        <item name="confirm" xsi:type="array">
-                            <item name="title" xsi:type="string" translate="true">Delete Post</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure to delete selected testimonials?</item>
-                        </item>
-                    </item>
-                </argument>
-            </action>
-
-            <action name="approve">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">is_approved</item>
-                        <item name="label" xsi:type="string" translate="true">Approve Testimonial</item>
-                        <item name="url" xsi:type="url" path="testimonial/index/massUpdateStatus"/>
-                        <item name="confirm" xsi:type="array">
-                            <item name="title" xsi:type="string" translate="true">Approve Testimonial</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure to approve selected testimonials?</item>
-                        </item>
-                    </item>
-                </argument>
             </action>
 
             <action name="reject">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">is_approved</item>
-                        <item name="label" xsi:type="string" translate="true">Reject Testimonial</item>
-                        <item name="url" xsi:type="url" path="testimonial/index/massUpdateStatus"/>
-                        <item name="confirm" xsi:type="array">
-                            <item name="title" xsi:type="string" translate="true">Reject Testimonial</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure to reject selected testimonials?</item>
-                        </item>
-                    </item>
-                </argument>
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to reject selected testimonials?</message>
+                        <title translate="true">Reject Testimonials</title>
+                    </confirm>
+                    <url path="testimonial/index/massReject"/>
+                    <type>reject</type>
+                    <label translate="true">Reject</label>
+                </settings>
             </action>
         </massaction>
-    </listingToolbar> -->
+        <paging name="listing_paging"/>
+    </listingToolbar>
 
     <columns name="testimonialListingColumns" class="Magento\Ui\Component\Listing\Columns">
         <selectionsColumn name="ids">
@@ -224,7 +174,7 @@
             </argument>
         </column>
 
-        <column name="ratings">
+         <column name="ratings">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
@@ -244,9 +194,6 @@
             <settings>
                 <options class="Training\Testimonial\Model\Data\Source\ApprovalStatus"/>
                 <filter>select</filter>
-                <editor>
-                    <editorType>select</editorType>
-                </editor>
                 <dataType>select</dataType>
                 <label translate="true">Status</label>
             </settings>

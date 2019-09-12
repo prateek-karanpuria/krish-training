@@ -8,7 +8,7 @@ use Training\Testimonial\Model\Testimonial;
  * MassDelete class
  * @package Training\Testimonial\Controller\Adminhtml\Index\MassDelete
  */
-class MassDelete extends MassAction
+class MassDelete extends \Training\Testimonial\Controller\Adminhtml\Index\MassAction
 {
     /**
      * @param Testimonial $testimonial
