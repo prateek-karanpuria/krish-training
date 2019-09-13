@@ -59,8 +59,9 @@ class Save extends Data
      */
     public function execute()
     {
-        $data = $this->getRequest()->getPostValue();
-
+        $data  = $this->getRequest()->getPostValue();
+        $files = $this->getRequest()->getFiles();
+        print_r($files);exit;
         $resultRedirect = $this->resultRedirectFactory->create();
 
         if ($data) {

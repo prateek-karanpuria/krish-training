@@ -22,7 +22,7 @@ class Testimonial extends AbstractDb
     }
 
     /**
-     * For overiding parent constructor of AbstractResource
+     * For overidding parent constructor of AbstractResource
      */
     protected function _construct()
     {

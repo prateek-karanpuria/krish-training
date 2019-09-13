@@ -47,7 +47,7 @@
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
         <exportButton name="export_button"/>
-        <filterSearch name="fulltext"/>
+        <filterSearch name="name"/>
         <filters name="listing_filters"/>
         <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
             <action name="delete">
@@ -89,7 +89,14 @@
         <paging name="listing_paging"/>
     </listingToolbar>
 
-    <columns name="testimonialListingColumns" class="Magento\Ui\Component\Listing\Columns">
+        <columns name="testimonialListingColumns" class="Magento\Ui\Component\Listing\Columns">
+        <settings>
+            <editorConfig>
+                <param name="indexField" xsi:type="string">id</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+            </editorConfig>
+        </settings>
+
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -172,6 +179,19 @@
                     <item name="sortOrder" xsi:type="number">6</item>
                 </item>
             </argument>
+        </column>
+
+        <column name="name" sortOrder="2">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+            </settings>
         </column>
 
          <column name="ratings">
@@ -266,4 +286,5 @@
             </argument>
         </actionsColumn>
     </columns>
+
 </listing>

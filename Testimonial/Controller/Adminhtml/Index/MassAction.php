@@ -9,9 +9,11 @@ use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Ui\Component\MassAction\Filter;
 use Training\Testimonial\Api\TestimonialRepositoryInterface;
+use Training\Testimonial\Controller\Adminhtml\Data;
 use Training\Testimonial\Model\ResourceModel\Testimonial\CollectionFactory;
+use Training\Testimonial\Model\Testimonial as DataModel;
 
-abstract class MassAction extends \Training\Testimonial\Controller\Adminhtml\Data
+abstract class MassAction extends Data
 {
     /**
      * @var Filter
@@ -24,9 +26,9 @@ abstract class MassAction extends \Training\Testimonial\Controller\Adminhtml\Dat
     protected $collectionFactory;
 
     /**
-     * @var TestimonialRepositoryInterface
+     * @var DataRepositoryInterface
      */
-    protected $testimonialRepository;
+    protected $dataRepository;
 
     /**
      * @var ForwardFactory
@@ -48,7 +50,7 @@ abstract class MassAction extends \Training\Testimonial\Controller\Adminhtml\Dat
      *
      * @param Filter $filter
      * @param Registry $registry
-     * @param TestimonialRepositoryInterface $testimonialRepository
+     * @param DataRepositoryInterface $dataRepository
      * @param PageFactory $resultPageFactory
      * @param Context $context
      * @param CollectionFactory $collectionFactory
@@ -59,7 +61,7 @@ abstract class MassAction extends \Training\Testimonial\Controller\Adminhtml\Dat
     public function __construct(
         Filter $filter,
         Registry $registry,
-        TestimonialRepositoryInterface $testimonialRepository,
+        TestimonialRepositoryInterface $dataRepository,
         PageFactory $resultPageFactory,
         Context $context,
         CollectionFactory $collectionFactory,
@@ -67,31 +69,35 @@ abstract class MassAction extends \Training\Testimonial\Controller\Adminhtml\Dat
         $successMessage,
         $errorMessage
     ) {
-        $this->filter                = $filter;
-        $this->testimonialRepository = $testimonialRepository;
-        $this->collectionFactory     = $collectionFactory;
-        $this->resultForwardFactory  = $resultForwardFactory;
-        $this->successMessage        = $successMessage;
-        $this->errorMessage          = $errorMessage;
-        parent::__construct($registry, $testimonialRepository, $resultPageFactory, $resultForwardFactory, $context);
+        $this->filter               = $filter;
+        $this->dataRepository       = $dataRepository;
+        $this->collectionFactory    = $collectionFactory;
+        $this->resultForwardFactory = $resultForwardFactory;
+        $this->successMessage       = $successMessage;
+        $this->errorMessage         = $errorMessage;
+        parent::__construct($registry, $dataRepository, $resultPageFactory, $resultForwardFactory, $context);
     }
 
     /**
-     * @param Testimonial $testimonial
+     * @param DataModel $data
      * @return mixed
      */
-    abstract protected function massAction(\Training\Testimonial\Model\Testimonial $testimonial);
+    abstract protected function massAction(DataModel $testimonial);
 
     /**
      * @return \Magento\Framework\Controller\Result\Redirect
      */
     public function execute()
     {
+        echo 'vvvv';exit;
         try {
-            $collection     = $this->filter->getCollection($this->collectionFactory->create());
+            $collection = $this->filter->getCollection($this->collectionFactory->create());
+            echo '<pre>';
+            var_dump($collection->getData());
+            exit;
             $collectionSize = $collection->getSize();
-            foreach ($collection as $data) {
-                $this->massAction($data);
+            foreach ($collection as $testimonial) {
+                $this->massAction($testimonial);
             }
             $this->messageManager->addSuccessMessage(__($this->successMessage, $collectionSize));
         } catch (LocalizedException $e) {

@@ -14,7 +14,7 @@ class MassApprove extends \Training\Testimonial\Controller\Adminhtml\Index\MassA
      * @param Testimonial $testimonial
      * @return $this
      */
-    protected function massAction(\Training\Testimonial\Model\Testimonial $testimonial)
+    protected function massAction(Testimonial $testimonial)
     {
         $testimonial->setIsApproved(1);
         $this->testimonialRepository->save($testimonial);

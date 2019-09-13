@@ -28,11 +28,6 @@ class Testimonial extends AbstractModel implements IdentityInterface, Testimonia
     protected $_eventPrefix = 'training_testimonial_testimonial';
 
     /**
-     * @var TestimonialFactory
-     */
-    protected $_testimonialFactory;
-
-    /**
      * This method is required by implementing IdentityInterface
      * which is meant for caching the model data.
      * @return array|string[]

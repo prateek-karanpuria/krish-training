@@ -11,12 +11,12 @@ use Training\Testimonial\Model\Testimonial;
 class MassDelete extends \Training\Testimonial\Controller\Adminhtml\Index\MassAction
 {
     /**
-     * @param Testimonial $testimonial
+     * @param Data $data
      * @return $this
      */
-    protected function massAction(Testimonial $testimonial)
+    protected function massAction(Testimonial $data)
     {
-        $this->testimonialRepository->delete($testimonial);
+        $this->testimonialRepository->delete($data);
         return $this;
     }
 }
