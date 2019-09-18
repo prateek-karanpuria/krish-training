@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes>
+    <route url="/V1/sample" method="GET">
+        <service class="SussexDev\Sample\Api\SampleRepositoryInterface" method="getList" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>    
+</routes>

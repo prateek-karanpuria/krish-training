@@ -1,0 +1,11 @@
+{
+    "name": "ktpl/helloworld",
+    "description": "This is a custom hello world module.",
+    "authors": [
+        {
+            "name": "Prateek Karanpuria",
+            "email": "prateek.karanpuria@krishtechnolabs.com"
+        }
+    ],
+    "require": {}
+}

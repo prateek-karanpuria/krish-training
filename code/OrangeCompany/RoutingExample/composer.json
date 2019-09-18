@@ -1,0 +1,13 @@
+{
+    "name": "orangecompany/routingexample",
+    "description": "Routing example POC",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Prateek Karanpuria",
+            "email": "prateek.karanpuria@krishtechnolabs.com"
+        }
+    ],
+    "require": {}
+}
