@@ -22,7 +22,6 @@
         </arguments>
     </virtualType>
  -->
- 
     <virtualType name="Training\Testimonial\Model\ResourceModel\Testimonial\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">training_testimonials</argument>
