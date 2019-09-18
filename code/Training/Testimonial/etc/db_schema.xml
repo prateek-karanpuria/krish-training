@@ -34,5 +34,8 @@
             <column name="store_id"/>
             <column name="product_id"/>
         </index>
+        <index referenceId="TRAINING_TESTIMONIAL_ENTITY_MESSAGE" indexType="fulltext">
+            <column name="message"/>
+        </index>
     </table>
 </schema>

@@ -47,7 +47,7 @@
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
         <exportButton name="export_button"/>
-        <filterSearch name="message"/>
+        <filterSearch name="fulltext"/>
         <filters name="listing_filters">
             <settings>
                 <templates>

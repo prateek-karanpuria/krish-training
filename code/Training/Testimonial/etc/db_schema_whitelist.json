@@ -47,7 +47,8 @@
             "deleted": true
         },
         "index": {
-            "TRAINING_TESTIMONIALS_USER_ID_STORE_ID_PRODUCT_ID": true
+            "TRAINING_TESTIMONIALS_USER_ID_STORE_ID_PRODUCT_ID": true,
+            "TRAINING_TESTIMONIALS_MESSAGE": true
         },
         "constraint": {
             "PRIMARY": true
