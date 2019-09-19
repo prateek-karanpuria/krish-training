@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use SussexDev\Sample\Model\DataFactory;
 use Magento\Framework\Console\Cli;
 
-use Psr\Log\LoggerInterface;
+#use Psr\Log\LoggerInterface;
 
 class AddRow extends Command
 {
