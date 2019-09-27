@@ -24,10 +24,10 @@ class Router implements RouterInterface
         $path = trim($request->getPathInfo(), '/');
         $paths = explode('-', $path);
 
+        $request->setModuleName('testimonial')->setControllerName('index')->setActionName($paths[2]);
+
         if (strpos($path, 'customer') !== false && strpos($path, 'login')) {
             $request->setModuleName('customer')->setControllerName('account')->setActionName('login');
-        } else {
-            $request->setModuleName('testimonial')->setControllerName('index')->setActionName($paths[2]);
         }
 
         return $this->actionFactory->create('Magento\Framework\App\Action\Forward', ['request' => $request]);
