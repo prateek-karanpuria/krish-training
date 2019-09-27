@@ -70,4 +70,13 @@
             <argument name="errorMessage" xsi:type="string" translate="true">An error occurred while enabling data.</argument>
         </arguments>
     </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="printName" xsi:type="object">Training\Testimonial\Console\Command\PrintName</item>
+            </argument>
+        </arguments>
+    </type>
+
 </config>
