@@ -9,6 +9,8 @@ use Magento\Framework\App\RouterInterface;
 
 class Router implements RouterInterface
 {
+    protected $actionFactory;
+
     public function __construct(
         ActionFactory $actionFactory
     )
@@ -20,13 +22,12 @@ class Router implements RouterInterface
     public function match(RequestInterface $request)
     {
         $path = trim($request->getPathInfo(), '/');
-        $paths = explode('/', $path);
+        $paths = explode('-', $path);
 
-        if (strpos($path, 'testimonial') !== false) {
-            $request->setModuleName($paths[0])->setControllerName($paths[1])->setActionName($paths[2]);
+        if (strpos($path, 'customer') !== false && strpos($path, 'login')) {
+            $request->setModuleName('customer')->setControllerName('account')->setActionName('login');
         } else {
-            // There is no match
-            return;
+            $request->setModuleName('testimonial')->setControllerName('index')->setActionName($paths[2]);
         }
 
         return $this->actionFactory->create('Magento\Framework\App\Action\Forward', ['request' => $request]);
