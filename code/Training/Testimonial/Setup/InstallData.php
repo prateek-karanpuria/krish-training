@@ -34,6 +34,7 @@ class InstallData implements InstallDataInterface
             [
                 'group' => 'General',
                 'type' => 'text',
+                'backend' => \Training\Testimonial\Model\Config\Validation::class,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'required' => true,
                 'searchable' => false,
@@ -52,7 +53,7 @@ class InstallData implements InstallDataInterface
                 'group' => 'General',
                 'type' => 'text',
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
-                'required' => false,
+                'required' => true,
                 'searchable' => false,
                 'used_in_product_listing' => true,
                 'visible' => true,
