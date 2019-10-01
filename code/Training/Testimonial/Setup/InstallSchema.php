@@ -11,7 +11,6 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
     {
         $installer = $setup;
         $installer->startSetup();
-
         $installer->endSetup();
     }
 }
