@@ -1,0 +1,27 @@
+<?php
+
+// declare(strict_types=1);
+
+?>
+<script type="text/x-magento-init">
+    {
+
+        "*": {
+            "Training_Testimonial/js/custom-require": {}
+        },
+
+        "div#testing1": {
+            "Training_Testimonial/js/a": {
+                "base_url": "<?php echo $block->escapeJs($block->getBaseUrl()); ?>"
+            }
+        },
+
+        "#testing2": {
+            "Training_Testimonial/js/custom-requireDi": {
+                "base_url": "<?php echo $block->escapeJs($block->getBaseUrl()); ?>"
+            }
+        }
+    }
+</script>
+<div id="testing1">In</div>
+<pre id="testing2"></pre>

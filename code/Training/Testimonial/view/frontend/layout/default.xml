@@ -6,6 +6,9 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="Training_Testimonial/js/custom.js" defer="true"></script>
+    </head>
     <body>
         <referenceBlock name="header.links">
             <block ifconfig="testimonials/general/display_header_footer_link" class="Magento\Framework\View\Element\Html\Link\Current" name="testimonials-header-link">
