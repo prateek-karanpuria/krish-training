@@ -2,7 +2,10 @@
 
 // declare(strict_types=1);
 
+// Note test_a is mapped in view/frontend/requirejs-config.js
+
 ?>
+<h1 data-mage-init='{"custom_js/title": {}}'></h1>
 <script type="text/x-magento-init">
     {
 
@@ -11,7 +14,7 @@
         },
 
         "div#testing1": {
-            "Training_Testimonial/js/a": {
+            "test_a": { 
                 "base_url": "<?php echo $block->escapeJs($block->getBaseUrl()); ?>"
             }
         },
