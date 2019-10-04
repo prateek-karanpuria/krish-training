@@ -6,6 +6,39 @@
 
 ?>
 <h1 data-mage-init='{"custom_js/title": {}}'></h1>
+
+<!-- <div id="collapsibleDiv" data-mage-init='{
+     "collapsible": {
+        "active": true,
+        "saveState": true,
+        "animate": {
+            "duration": 600,
+            "easing": "linear"
+        },
+        "ajaxContent": true
+      }
+    }'>
+    <div data-role="title">Title <button data-role="trigger">Show Content</button></div>
+
+    <div data-role="content" id="collapsibleSampleContent"></div>
+
+    <a href="<?php echo $block->getViewFileUrl("Training_Testimonial/example-content.html"); ?>" data-ajax="true"></a>
+</div> -->
+
+<br >
+<div id="collapsibleDiv3" data-mage-init='{
+     "Training_Testimonial/js/dynamic-collapsible": {
+        "ajaxContent": true
+      }
+    }'>
+    <div data-role="title">Show Content</div>
+
+    <div data-role="content" id="collapsibleSampleContent3"></div>
+
+    <a href="<?php echo $block->getViewFileUrl("Training_Testimonial/example-content.html"); ?>" data-ajax="true"></a>
+</div>
+
+
 <script type="text/x-magento-init">
     {
 
@@ -26,5 +59,6 @@
         }
     }
 </script>
-<div id="testing1">In</div>
 <pre id="testing2"></pre>
+<div id="testing1">In</div>
+
