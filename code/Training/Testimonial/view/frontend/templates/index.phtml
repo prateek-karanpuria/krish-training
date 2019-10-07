@@ -5,7 +5,7 @@
 // Note test_a is mapped in view/frontend/requirejs-config.js
 
 ?>
-<h1 data-mage-init='{"custom_js/title": {}}'></h1>
+<!-- <h1 data-mage-init='{"custom_js/title": {}}'></h1> -->
 
 <script type="text/x-magento-init">
     {
@@ -14,8 +14,7 @@
                 "components": {
                     "startSimple": {
                         "component": "Training_Testimonial/js/plain-view-model",
-                        "base_url": "<?php echo $block->escapeJs($block->getBaseUrl());?>",
-                        "data": "test data"
+                        "base_url": "<?php echo $block->escapeJs($block->getBaseUrl());?>"
                     }
                 }
             }
@@ -26,7 +25,9 @@
 <div data-bind="scope: 'startSimple'">
     <div data-bind="text: title"></div>    
     <div data-bind="text: JSON.stringify(config.base_url, null, 2);"></div>    
-    <div data-bind="text: data"></div>    
+    <div data-bind="click: function() { alert('I am clicked'); }">Click for alert</div>
+    <div data-bind="text: data">Click for alert</div>
+    <div data-bind="text: output">Computed observable</div>
 </div>
 
 <!-- <div id="collapsibleDiv" data-mage-init='{
@@ -47,7 +48,7 @@
     <a href="<?php echo $block->getViewFileUrl("Training_Testimonial/example-content.html"); ?>" data-ajax="true"></a>
 </div> -->
 
-<br >
+<!-- <br >
 <div id="collapsibleDiv3" data-mage-init='{
      "Training_Testimonial/js/dynamic-collapsible": {
         "ajaxContent": true
@@ -83,4 +84,4 @@
 </script>
 <pre id="testing2"></pre>
 <div id="testing1">In</div>
-
+ -->
