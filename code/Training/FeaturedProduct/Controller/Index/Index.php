@@ -2,8 +2,8 @@
 
 namespace Training\FeaturedProduct\Controller\Index;
 
-use Magento\Framework\App\Action;
 use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
 /**

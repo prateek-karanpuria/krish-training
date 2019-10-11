@@ -20,7 +20,8 @@
             </block>
         </referenceBlock>
 
-        <move element="testimonials-header-link" destination="header.links" after="authorization-link" />
+        <!-- <move element="testimonials-header-link" destination="header.links" after="authorization-link" /> -->
+        <move element="testimonials-header-link" destination="header.links" before="featuredproducts" />
 
         <referenceBlock name="footer_links">
             <block ifconfig="testimonials/general/display_header_footer_link" class="Magento\Framework\View\Element\Html\Link\Current" name="testimonials-footer-link">

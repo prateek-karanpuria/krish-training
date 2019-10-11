@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="featuredproducts">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Featured Products</argument>
+                    <argument name="path" xsi:type="string">featuredproducts</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <move element="featuredproducts" destination="header.links" after="-" />
+    </body>
+</page>

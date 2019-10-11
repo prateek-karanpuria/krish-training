@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/page_configuration.xsd"
+        columns="2columns-right">
+        <referenceContainer name="content">
+            <block name="training_featuredproduct"
+                   class="Training\FeaturedProduct\Block\Index"
+                   template="Training_FeaturedProduct::index.phtml" />
+        </referenceContainer>
+</layout>
