@@ -1,18 +1,35 @@
 <?php
 
+/**
+ * Display product collection in Featured Product module
+ */
+
 namespace Training\FeaturedProduct\Block;
 
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\View\Element\Template;
+use Magento\Catalog\Block\Product\ListProduct;
+use Magento\Catalog\Model\ResourceModel\Collection\AbstractCollection;
 
-class Index extends Template
+/**
+ * class Index
+ * @package Training\FeaturedProduct\Block\Index
+ */
+class Index extends ListProduct
 {
-
-    public function __construct(
-        Template\Context $context,
-        array $data = []
-    )
+    /**
+     * [getLoadedProductCollection description]
+     * @return [type] [description]
+     */
+    public function getLoadedProductCollection()
     {
-        parent::__construct($context, $data);
+        return $this->_productCollection;
+    }
+
+    /**
+     * [setProductCollection description]
+     * @param AbstractCollection $collection [description]
+     */
+    public function setProductCollection(AbstractCollection $collection)
+    {
+        $this->_productCollection = $collection;
     }
 }

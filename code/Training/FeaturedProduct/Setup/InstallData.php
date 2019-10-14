@@ -12,10 +12,22 @@ use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 
+/**
+ * class InstallData
+ * @package Training\FeaturedProduct\Setup\InstallData
+ */
 class InstallData implements InstallDataInterface
 {
+    /**
+     * [$eavSetupFactory description]
+     * @var Magento\Eav\Setup\EavSetupFactory
+     */
     protected $eavSetupFactory;
 
+    /**
+     * [__construct description]
+     * @param EavSetupFactory $eavSetupFactory [description]
+     */
     public function __construct(
         EavSetupFactory $eavSetupFactory
     )
@@ -54,7 +66,13 @@ class InstallData implements InstallDataInterface
                 'input' => 'boolean',
                 'is_used_in_grid' => true,
                 'is_visible_in_grid' => true,
+                'is_filterable' => true,
                 'is_filterable_in_grid' => true,
+                'is_comparable' => true,
+                'is_visible_on_front' => true,
+                'is_visible_in_advanced_search' => true,
+                'used_for_sort_by' => true,
+                'is_filterable_in_search' => true,
                 'unique' => false,
                 'default' => 1
             ]

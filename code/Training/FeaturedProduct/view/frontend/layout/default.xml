@@ -7,11 +7,25 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <!--
         <referenceBlock name="header.links">
             <block class="Magento\Framework\View\Element\Html\Link\Current" name="featuredproducts">
                 <arguments>
                     <argument name="label" xsi:type="string" translate="true">Featured Products</argument>
                     <argument name="path" xsi:type="string">featuredproducts</argument>
+                </arguments>
+            </block>
+        </referenceBlock> -->
+
+        <!-- Another Approach -->
+        <referenceBlock name="header.links">
+            <block class="Training\FeaturedProduct\Block\FeaturedLink" name="featuredproducts">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Featured Products</argument>
+                    <argument name="path" xsi:type="string">featuredproducts</argument>
+                    <argument name="attributes" xsi:type="array">
+                        <item name="target" xsi:type="string">_blank</item>
+                    </argument>
                 </arguments>
             </block>
         </referenceBlock>
