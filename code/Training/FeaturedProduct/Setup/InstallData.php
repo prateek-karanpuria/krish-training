@@ -45,7 +45,6 @@ class InstallData implements InstallDataInterface
         ModuleContextInterface $context
     )
     {
-
         $dataSetup->startSetup();
 
         $eavSetup = $this->eavSetupFactory->create(['setup' => $dataSetup]);

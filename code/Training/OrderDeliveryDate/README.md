@@ -7,6 +7,7 @@ data.
 
 ii) Display this "Delivery Date" in order shipment mails and on order view page in admin panel
 
+Ref: https://oyenetwork.com/articles/magento2-devliery-date-module-creation-from-scratch/
 
 ## Prerequisites
 
