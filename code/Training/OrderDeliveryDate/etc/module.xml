@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @Author Prateek Karanpuria <prateek.Karanpuria@krishtechnolabs.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:framework:magento:Module/etc/module.xsd" >
+    <module name="Training_OrderDeliveryDate" setup_version="1.0.0" />
+</config>

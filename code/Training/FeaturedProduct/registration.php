@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Module registration file
+ * Featured Product module registration file.
  */
 
 use Magento\Framework\Component\ComponentRegistrar;

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Testimonial module registration file
+ * Order Delivery Date module registration file.
  */
 
 use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'Training_Testimonial',
+    'Training_OrderDeliveryDate',
     __DIR__
 );

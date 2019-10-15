@@ -1,4 +1,4 @@
-# Training Featured Product Magento 2 module
+## Training Featured Product Magento 2 module
 
 The module was created as an exercise for accomplishing following points:
 
@@ -11,12 +11,13 @@ iii) Display Feature Product link in top bar
 iv) Feature product link will display products which are set to "Yes" in feature products attribute.
 
 
-### Prerequisites
+## Prerequisites
 
 * Magento 2.3
 * PHP 7.2
 
-### Installing
+
+## Installing
 
 To install the module simply put all the files inside 
 
@@ -32,6 +33,7 @@ bin/magento module:enable Training_FeaturedProduct
 bin/magento setup:upgrade
 
 ```
+
 ## Author
   Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
 
