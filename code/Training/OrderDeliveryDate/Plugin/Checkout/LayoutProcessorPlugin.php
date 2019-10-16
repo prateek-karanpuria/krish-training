@@ -4,13 +4,13 @@
  * Class to override Magento\Checkout\Block\Checkout\LayoutProcessor using after plugin
  */
 
-namespace Training\OrderDeliveryDate\Model\Checkout;
+namespace Training\OrderDeliveryDate\Plugin\Checkout;
 
 use  Magento\Checkout\Block\Checkout\LayoutProcessor;
 
 /**
  * class LayoutProcessorPlugin
- * @package Training\OrderDeliveryDate\Model\Checkout\LayoutProcessorPlugin
+ * @package Training\OrderDeliveryDate\Plugin\Checkout\LayoutProcessorPlugin
  */
 class LayoutProcessorPlugin
 {
@@ -29,13 +29,13 @@ class LayoutProcessorPlugin
             ['shippingAddress']['children']['shipping-address-fieldset']['children']['delivery_date'] = [
                 'component' => 'Magento_Ui/js/form/element/abstract',
                 'config' => [
-                    'customScope' => 'shippingAddress',
+                    'customScope' => 'shippingAddress.delivery_date',
                     'template' => 'ui/form/field',
                     'elementTmpl' => 'ui/form/element/date', // vendor/magento/module-ui/view/base/web/templates/form/element/date.html
                     'options' => [],
                     'id' => 'delivery-date'
                 ],
-                'dataScope' => 'shippingAddress.delivery_date',
+                'dataScope' => 'shippingAddress.delivery_date.delivery_date',
                 'label' => 'Delivery Date',
                 'provider' => 'checkoutProvider',
                 'visible' => true,
