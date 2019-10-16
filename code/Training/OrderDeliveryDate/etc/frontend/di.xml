@@ -9,8 +9,8 @@
         <plugin name="add-delivery-date-field"
                 type="Training\OrderDeliveryDate\Model\Checkout\LayoutProcessorPlugin" sortOrder="10"/>
     </type>
-
+<!-- 
     <type name="Magento\Checkout\Model\ShippingInformationManagement">
-        <plugin name="save-in-quote" type="Oye\Deliverydate\Model\Checkout\ShippingInformationManagementPlugin" sortOrder="10"/>
-    </type>
+        <plugin name="save-in-quote" type="Training\OrderDeliverydate\Model\Checkout\ShippingInformationManagementPlugin" sortOrder="10"/>
+    </type> -->
 </config>

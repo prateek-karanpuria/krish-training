@@ -32,11 +32,11 @@ class FeaturedLink extends Link
      */
     protected function _toHtml()
     {
-
         if ($this->getTemplate()) {
             return parent::_toHtml();
         } else {
-            return '<li><a '. $this->getLinkAttributes().'>' .$this->escapeHtml($this->getLabel()).'<a></li>';
+            //return '<li><a '. $this->getLinkAttributes().'>' .$this->escapeHtml($this->getLabel()).'<a></li>';
+            return '<li><a href="'.$this->getBaseUrl().'featuredproducts/?featured_product=1">' .$this->escapeHtml($this->getLabel()).'<a></li>';
         }
     }
 }

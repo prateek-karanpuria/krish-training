@@ -59,30 +59,55 @@ class Index extends Action
      */
     public function execute()
     {
-        $result = $this->pageFactory->create();
-        $param = $this->request->getParams();
+        $pageFactory = $this->pageFactory->create();
+        $params = $this->request->getParams();
 
         $this->collectionFactory->addFieldToSelect('*');
 
-        if (array_key_exists('featured_product', $param) || empty($param)) {
-            $this->collectionFactory->addFieldToFilter('featured_product', ['eq' => 1]);
+        /**
+         * Filter params array to skip conditions
+         */
+        $skipFieldFilter = array(
+            'p',
+            'product_list_mode',
+            'product_list_limit',
+            'product_list_order',
+        );
+        
+        $params = array_filter($params, function($key) use ($skipFieldFilter) {
+            if (!in_array($key, $skipFieldFilter)) {
+               return $key;
+            }
+        }, ARRAY_FILTER_USE_KEY);
 
-        } else {
-            foreach ($param as $key => $value) {
-                if ($key == 'cat') {
-                   $catalog_ids = explode(',', $value);
-                   $this->collectionFactory->addCategoriesFilter(array('in' => $catalog_ids));
+        $this->collectionFactory->addFieldToFilter('featured_product', ['eq' => 1]);
+
+        /**
+         * Set collection filter to be applied before rendering the collection in block
+         */
+        if ($params) {
+            foreach ($params as $key => $value) {
+                if (strpos($value, '-') !== false) {
+                    $values = explode('-', $value);
+
+                    // Greater than - gt 
+                    if ($values[0]) $this->collectionFactory->addFieldToFilter($key, ['gt' => $values[0]]);
+                    
+                    // Less than - lt
+                    if ($values[1]) $this->collectionFactory->addFieldToFilter($key, ['lt' => $values[1]]);
 
                 } else if ($key == 'product_list_dir') {
                     $this->collectionFactory->setOrder($value);
+  
+                } else if ($key == 'cat') {
+                   $catalog_ids = explode(',', $value);
+                   $this->collectionFactory->addCategoriesFilter(array('eq' => $catalog_ids));
 
-                } else if ($key == 'p' || $key == 'product_list_limit' || $key == 'product_list_order') {
-                    $this->collectionFactory->addFieldToSelect('*');
-
-                } else {
-                    $this->collectionFactory->addFieldToSelect('*');
+                } else if (!in_array($key, $skipFieldFilter)) {
                     $this->collectionFactory->addFieldToFilter($key, ['eq' => $value]);
+
                 }
+
             }
         }
 
@@ -90,9 +115,14 @@ class Index extends Action
          * [$list description]
          * @var Training\FeaturedProduct\Block\Index
          */
-        $list = $result->getLayout()->getBlock('category.products.list');
-        $list->setProductCollection($this->collectionFactory);
+        $list = $pageFactory->getLayout()->getBlock('category.products.list');
+        $collection = $list->setProductCollection($this->collectionFactory);
+        
+        /**
+         * Set page title
+         */
+        $pageFactory->getConfig()->getTitle()->set("Featured Products");
 
-        return $result;
+        return $pageFactory;
     }
 }

@@ -21,6 +21,8 @@ class Index extends ListProduct
      */
     public function getLoadedProductCollection()
     {
+        $this->addAttribute("featured_product");
+
         return $this->_productCollection;
     }
 
@@ -31,5 +33,7 @@ class Index extends ListProduct
     public function setProductCollection(AbstractCollection $collection)
     {
         $this->_productCollection = $collection;
+
+        return $this;
     }
 }
