@@ -29,13 +29,13 @@ class LayoutProcessorPlugin
             ['shippingAddress']['children']['shipping-address-fieldset']['children']['delivery_date'] = [
                 'component' => 'Magento_Ui/js/form/element/abstract',
                 'config' => [
-                    'customScope' => 'shippingAddress.delivery_date',
+                    'customScope' => 'delivery_date',
                     'template' => 'ui/form/field',
                     'elementTmpl' => 'ui/form/element/date', // vendor/magento/module-ui/view/base/web/templates/form/element/date.html
                     'options' => [],
                     'id' => 'delivery-date'
                 ],
-                'dataScope' => 'shippingAddress.delivery_date.delivery_date',
+                'dataScope' => 'delivery_date.delivery_date',
                 'label' => 'Delivery Date',
                 'provider' => 'checkoutProvider',
                 'visible' => true,

@@ -5,7 +5,7 @@
  * of \Magento\Checkout\Model\ShippingInformationManagement
  */
 
-namespace Training\OrderDeliverydate\Plugin\Checkout;
+namespace Training\OrderDeliveryDate\Plugin\Checkout;
 
 use Magento\Quote\Model\QuoteRepository;
 
