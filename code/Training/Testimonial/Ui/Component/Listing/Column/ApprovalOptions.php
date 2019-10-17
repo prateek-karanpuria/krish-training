@@ -6,7 +6,7 @@ use Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * ApprovalOptions class
- * @package Training\Testimonial\Ui\Component\Listing\Column\ApprovalOptions
+ * @package Training\Testimonial\Ui\Component\Listing\Column
  */
 class ApprovalOptions implements OptionSourceInterface
 {

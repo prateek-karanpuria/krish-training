@@ -8,7 +8,7 @@ use Magento\Framework\View\Result\PageFactory;
 
 /**
  * ListView class
- * @package Training\Testimonial\Controller\Adminhtml\Index\ListView
+ * @package Training\Testimonial\Controller\Adminhtml\Index
  */
 class ListView extends Action
 {
@@ -24,7 +24,8 @@ class ListView extends Action
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory
-    ) {
+    )
+    {
         $this->_resultPageFactory = $resultPageFactory;
         parent::__construct($context);
     }

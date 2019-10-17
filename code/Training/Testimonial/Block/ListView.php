@@ -6,7 +6,7 @@ use Magento\Framework\View\Element\Template;
 use Training\Testimonial\Model\TestimonialFactory;
 
 /**
- * Class ListView
+ * class ListView
  * @package Training\Testimonial\Block
  */
 class ListView extends Template

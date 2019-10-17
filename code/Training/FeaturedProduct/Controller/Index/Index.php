@@ -14,7 +14,7 @@ use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 
 /**
  * class Index
- * @package Training\FeaturedProduct\Controller\Index\Index
+ * @package Training\FeaturedProduct\Controller\Index
  */
 class Index extends Action
 {

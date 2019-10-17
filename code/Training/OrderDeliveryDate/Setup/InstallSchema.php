@@ -12,7 +12,7 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 
 /**
  * class InstallSchema
- * @package Training\OrderDeliveryDate\Setup\InstallSchema
+ * @package Training\OrderDeliveryDate\Setup
  */
 class InstallSchema implements InstallSchemaInterface
 {

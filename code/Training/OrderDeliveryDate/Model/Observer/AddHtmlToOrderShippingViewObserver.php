@@ -5,9 +5,12 @@ namespace Training\OrderDeliveryDate\Model\Observer;
 use Magento\Framework\Event\Observer as EventObserver;
 use Magento\Framework\Event\ObserverInterface;
 
+/**
+ * class AddHtmlToOrderShippingViewObserver
+ * @package Training\OrderDeliveryDate\Model\Observer
+ */
 class AddHtmlToOrderShippingViewObserver implements ObserverInterface
 {
-
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
@@ -21,6 +24,11 @@ class AddHtmlToOrderShippingViewObserver implements ObserverInterface
         $this->_objectManager = $objectmanager;
     }
 
+    /**
+     * [execute description]
+     * @param  EventObserver $observer [description]
+     * @return [type]                  [description]
+     */
     public function execute(EventObserver $observer)
     {
         if ($observer->getElementName() == 'order_shipping_view')

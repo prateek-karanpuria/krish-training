@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
- * @Author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
@@ -9,7 +9,6 @@
         <plugin name="add-delivery-date-field"
                 type="Training\OrderDeliveryDate\Plugin\Checkout\LayoutProcessorPlugin" sortOrder="10"/>
     </type>
-
 
     <type name="Magento\Checkout\Model\ShippingInformationManagement">
         <plugin name="save-in-quote" type="Training\OrderDeliveryDate\Plugin\Checkout\ShippingInformationManagementPlugin" sortOrder="10"/>

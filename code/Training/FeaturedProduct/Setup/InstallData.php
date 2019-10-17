@@ -14,7 +14,7 @@ use Magento\Framework\Setup\ModuleContextInterface;
 
 /**
  * class InstallData
- * @package Training\FeaturedProduct\Setup\InstallData
+ * @package Training\FeaturedProduct\Setup
  */
 class InstallData implements InstallDataInterface
 {

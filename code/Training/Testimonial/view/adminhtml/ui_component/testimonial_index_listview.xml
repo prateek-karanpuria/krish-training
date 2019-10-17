@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
- * @Author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
  */
 -->
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
@@ -100,7 +100,7 @@
         <paging name="listing_paging"/>
     </listingToolbar>
 
-        <columns name="testimonialListingColumns" class="Magento\Ui\Component\Listing\Columns">
+    <columns name="testimonialListingColumns" class="Magento\Ui\Component\Listing\Columns">
         <settings>
             <editorConfig>
                 <param name="indexField" xsi:type="string">id</param>
@@ -297,5 +297,4 @@
             </argument>
         </actionsColumn>
     </columns>
-
 </listing>

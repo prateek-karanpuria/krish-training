@@ -11,7 +11,7 @@ use Magento\Quote\Model\QuoteRepository;
 
 /**
  * class ShippingInformationManagementPlugin
- * @package Training\OrderDeliverydate\Plugin\Checkout\ShippingInformationManagementPlugin
+ * @package Training\OrderDeliverydate\Plugin\Checkout
  */
 class ShippingInformationManagementPlugin
 {

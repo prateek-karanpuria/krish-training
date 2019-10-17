@@ -1,0 +1,18 @@
+{
+    "training_admin_login_logs": {
+        "column": {
+            "id": true,
+            "name": true,
+            "status": true,
+            "user_ip": true,
+            "user_agent": true,
+            "added_on": true
+        },
+        "index": {
+            "TRAINING_ADMIN_LOGIN_LOGS_NAME": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

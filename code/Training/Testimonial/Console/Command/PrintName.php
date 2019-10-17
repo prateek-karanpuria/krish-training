@@ -7,6 +7,10 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * class PrintName
+ * @package Training\Testimonial\Console\Command
+ */
 class PrintName extends Command
 {
     const NAME = 'name';
@@ -23,6 +27,12 @@ class PrintName extends Command
             );
     }
 
+    /**
+     * [execute description]
+     * @param  InputInterface  $input  [description]
+     * @param  OutputInterface $output [description]
+     * @return [type]                  [description]
+     */
     public function execute(
         InputInterface $input,
         OutputInterface $output

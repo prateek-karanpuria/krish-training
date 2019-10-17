@@ -11,7 +11,7 @@ use Magento\Catalog\Model\ResourceModel\Collection\AbstractCollection;
 
 /**
  * class Index
- * @package Training\FeaturedProduct\Block\Index
+ * @package Training\FeaturedProduct\Block
  */
 class Index extends ListProduct
 {

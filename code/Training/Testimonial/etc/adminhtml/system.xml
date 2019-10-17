@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
 /**
- * @Author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="testimonials" translate="label" sortOrder="100">
+        <tab id="testimonials" translate="label" sortOrder="105">
             <label>Testimonials</label>
         </tab>
         <section id="testimonials" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">

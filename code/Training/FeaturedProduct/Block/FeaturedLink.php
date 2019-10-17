@@ -10,7 +10,7 @@ use Magento\Framework\View\Element\Html\Link;
 use Magento\Framework\View\Element\Template\Context;
 
 /**
- * Class FeaturedLink
+ * class FeaturedLink
  * @package Training\FeaturedProduct\Block
  */
 class FeaturedLink extends Link

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <virtualType name="Training\AdminLoginLogs\Model\ResourceModel\AdminLoginLogs\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">training_admin_login_logs</argument>
+            <argument name="resourceModel" xsi:type="string">Training\AdminLoginLogs\Model\ResourceModel\AdminLoginLogs</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="adminloginlogs_index_listing_data_source" xsi:type="string">Training\AdminLoginLogs\Model\ResourceModel\AdminLoginLogs\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

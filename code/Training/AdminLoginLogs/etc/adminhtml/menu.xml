@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Training_AdminLoginLogs::admin_login_logs"
+             title="Login Logs"
+             module="Training_AdminLoginLogs"
+             sortOrder="17"
+             resource="Training_AdminLoginLogs::admin_login_logs" />
+
+        <add id="Training_AdminLoginLogs::admin_login_logs_list"
+             title="Login Logs"
+             module="Training_AdminLoginLogs"
+             sortOrder="1"
+             resource="Training_AdminLoginLogs::admin_login_logs"
+             parent="Training_AdminLoginLogs::admin_login_logs"
+             action="adminloginlogs/index/index"
+             dependsOnConfig="adminloginlogs/general/module_enable" />
+
+        <add id="Training_AdminLoginLogs::admin_login_logs_configuration"
+             title="Configuration"
+             module="Training_AdminLoginLogs"
+             sortOrder="2"
+             resource="Training_AdminLoginLogs::admin_login_logs"
+             parent="Training_AdminLoginLogs::admin_login_logs"
+             action="admin/system_config/edit/section/adminloginlogs/" />
+    </menu>
+</config>

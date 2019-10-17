@@ -11,7 +11,7 @@ use Magento\Framework\Event\ObserverInterface;
 
 /**
  * class SaveOrderDeliveryDateToOrderObserver
- * @package SaveOrderDeliveryDateToOrderObserver
+ * @package Training\OrderDeliveryDate\Model\Observer
  */
 class SaveOrderDeliveryDateToOrderObserver implements ObserverInterface
 {

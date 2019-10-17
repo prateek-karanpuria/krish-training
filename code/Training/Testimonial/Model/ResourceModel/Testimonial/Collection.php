@@ -2,7 +2,7 @@
 
 namespace Training\Testimonial\Model\ResourceModel\Testimonial;
 
-use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 /**
  * Class Collection

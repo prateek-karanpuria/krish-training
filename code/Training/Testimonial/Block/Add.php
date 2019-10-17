@@ -7,7 +7,7 @@ use Magento\Framework\View\Element\Template;
 use Training\Testimonial\Model\TestimonialFactory;
 
 /**
- * Class Add
+ * class Add
  * @package Training\Testimonial\Block
  */
 class Add extends Template

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Testimonial module registration file
+ * Testimonial module registration file.
  */
 
 use Magento\Framework\Component\ComponentRegistrar;

@@ -239,6 +239,7 @@ return [
         'OrangeCompany_RoutingExample' => 1,
         'SussexDev_Sample' => 0,
         'Temando_Shipping' => 1,
+        'Training_AdminLoginLogs' => 1,
         'Training_FeaturedProduct' => 1,
         'Training_OrderDeliveryDate' => 1,
         'Training_Testimonial' => 1,

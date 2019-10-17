@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="training_admin_login_logs" engine="innodb" resource="default"
+           comment="Admin Login Logs">
+        <column xsi:type="int" name="id" padding="11" unsigned="true" nullable="false" identity="true"
+                comment="Entity Id"/>
+        <column xsi:type="varchar" name="name" length="255" nullable="false" comment="User Name"/>
+        <column xsi:type="boolean" name="status" nullable="false" default="0" comment="Login Success / Failure"/>
+        <column xsi:type="varchar" name="user_ip" length="15" nullable="true" comment="IP Address"/>
+        <column xsi:type="varchar" name="user_agent" length="255" nullable="true" comment="User Agent"/>
+        <column xsi:type="datetime" name="added_on" nullable="false" comment="Added On"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="TRAINING_ADMIN_LOGIN_LOGS_ENTITY_NAME" indexType="fulltext">
+            <column name="name"/>
+        </index>
+    </table>
+</schema>

@@ -10,7 +10,7 @@ use  Magento\Checkout\Block\Checkout\LayoutProcessor;
 
 /**
  * class LayoutProcessorPlugin
- * @package Training\OrderDeliveryDate\Plugin\Checkout\LayoutProcessorPlugin
+ * @package Training\OrderDeliveryDate\Plugin\Checkout
  */
 class LayoutProcessorPlugin
 {
