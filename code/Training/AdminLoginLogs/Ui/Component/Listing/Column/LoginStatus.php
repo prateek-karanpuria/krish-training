@@ -4,17 +4,16 @@
  * Helper class to display login status
  */
 
-namespace Training\Testimonial\Ui\Component\Listing\Column;
+namespace Training\AdminLoginLogs\Ui\Component\Listing\Column;
 
 use Magento\Framework\Data\OptionSourceInterface;
 
 /**
- * class AdminLoginStatusValue
+ * class LoginStatus
  * @package Training\Testimonial\Ui\Component\Listing\Column
  */
-class AdminLoginStatusValue implements OptionSourceInterface
+class LoginStatus implements OptionSourceInterface
 {
-
     /**
      * [toOptionArray description]
      * @return Array
@@ -22,8 +21,8 @@ class AdminLoginStatusValue implements OptionSourceInterface
     public function toOptionArray()
     {
         $options = [
-            ['label' => 'Success', 'value' => 'success'],
-            ['label' => 'Failure', 'value' => 'failure'],
+            ['label' => 'Success', 'value' => '1'],
+            ['label' => 'Failure', 'value' => '0'],
         ];
         return $options;
     }

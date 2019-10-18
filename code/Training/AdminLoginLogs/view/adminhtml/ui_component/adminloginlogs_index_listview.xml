@@ -48,81 +48,69 @@
                 <templates>
                     <filters>
                         <select>
-                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
-                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                            <param name="template"
+                                   xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component"
+                                   xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
                         </select>
                     </filters>
                 </templates>
             </settings>
         </filters>
-
         <paging name="listing_paging"/>
     </listingToolbar>
 
     <columns name="adminLoginLogsListingColumns" class="Magento\Ui\Component\Listing\Columns">
-        <settings />
-
         <column name="id">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">textRange</item>
-                    <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">ID</item>
-                    <item name="sortOrder" xsi:type="number">2</item>
-                </item>
-            </argument>
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
         </column>
 
         <column name="name">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Name</item>
-                    <item name="sortOrder" xsi:type="number">4</item>
-                </item>
-            </argument>
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+                <visible>true</visible>
+            </settings>
         </column>
 
-<!--         <column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="8">
+        <column name="status" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Training\AdminLoginLogs\Ui\Component\Listing\Column\AdminLoginStatusValue"/>
+                <options class="Training\AdminLoginLogs\Ui\Component\Listing\Column\LoginStatus"/>
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">Status</label>
             </settings>
-        </column> -->
+        </column>
 
         <column name="user_ip">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">IP</item>
-                    <item name="sortOrder" xsi:type="number">9</item>
-                </item>
-            </argument>
+            <settings>
+                <filter>text</filter>
+                <label translate="true">User IP</label>
+                <visible>true</visible>
+            </settings>
         </column>
 
         <column name="user_agent">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">User Agent</item>
-                    <item name="sortOrder" xsi:type="number">10</item>
-                </item>
-            </argument>
+            <settings>
+                <filter>text</filter>
+                <label translate="true">User Agent</label>
+                <visible>true</visible>
+            </settings>
         </column>
 
-        <column name="added_on" class="Magento\Ui\Component\Listing\Columns\Date">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">dateRange</item>
-                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
-                    <item name="dataType" xsi:type="string">date</item>
-                    <item name="dateFormat" xsi:type="string">dd-mm-YY h:m A</item>
-                    <item name="label" xsi:type="string" translate="true">Added On</item>
-                    <item name="sortOrder" xsi:type="number">11</item>
-                </item>
-            </argument>
+        <column name="added_on"
+                class="Magento\Ui\Component\Listing\Columns\Date"
+                component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <dateFormat>d-M-Y</dateFormat>
+                <label translate="true">Added On</label>
+            </settings>
         </column>
     </columns>
 </listing>

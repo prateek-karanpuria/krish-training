@@ -2,6 +2,7 @@
 <!--
 /**
  * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ * Schema file to generate custom table.
  */
 -->
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
