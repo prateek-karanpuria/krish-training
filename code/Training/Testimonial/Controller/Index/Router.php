@@ -24,7 +24,7 @@ class Router implements RouterInterface
         $path = trim($request->getPathInfo(), '/');
         $paths = explode('-', $path);
 
-        $request->setModuleName('testimonial')->setControllerName('index')->setActionName($paths[2]);
+        $request->setModuleName('testimonial')->setControllerName('index')->setActionName($paths[2] ?? 'index');
 
         if (strpos($path, 'customer') !== false && strpos($path, 'login')) {
             $request->setModuleName('customer')->setControllerName('account')->setActionName('login');

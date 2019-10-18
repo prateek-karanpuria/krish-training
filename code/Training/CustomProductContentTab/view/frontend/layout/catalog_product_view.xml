@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.details">
+            <!-- For short description tab -->
+            <block class="Training\CustomProductContentTab\Block\CustomData"
+                   name="product.customdata"
+                   template="Training_CustomProductContentTab::custom-section.phtml"
+                   group="detailed_info"
+                   before="description">
+                <arguments>
+                    <argument name="title" translate="true" xsi:type="string">Custom Info</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
