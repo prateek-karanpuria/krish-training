@@ -243,6 +243,7 @@ return [
         'Training_CustomProductContentTab' => 1,
         'Training_FeaturedProduct' => 1,
         'Training_OrderDeliveryDate' => 1,
+        'Training_OrderDeliveryNote' => 1,
         'Training_Testimonial' => 1,
         'Vertex_Tax' => 1
     ]

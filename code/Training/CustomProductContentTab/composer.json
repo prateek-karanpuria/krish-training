@@ -1,6 +1,6 @@
 {
-    "name": "Training/FeaturedProduct",
-    "description": "Featured Products module",
+    "name": "Training/CustomProductContentTab",
+    "description": "Admin Login Logs module",
     "type": "magento2-module",
     "authors": [
         {
@@ -15,3 +15,4 @@
         ]
     }
 }
+ 

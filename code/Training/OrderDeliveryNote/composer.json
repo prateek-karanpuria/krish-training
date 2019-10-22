@@ -1,6 +1,6 @@
 {
-    "name": "Training/FeaturedProduct",
-    "description": "Featured Products module",
+    "name": "Training/OrderDeliveryNote",
+    "description": "Order Delivery Note module",
     "type": "magento2-module",
     "authors": [
         {
