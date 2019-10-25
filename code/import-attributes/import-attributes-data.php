@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Custom import script to add data in eav attribute [color & size]
+ * Custom import script to add data in EAV attribute [color & size]
  * 
  * Note:
- *  - Make 'Catalog Input Type for Store Owner' as 'Text Swatch' for eav attribute [color & size]
- *  - Keep strings.php file & this file in magento root before running it.
+ *  - Make 'Catalog Input Type for Store Owner' as 'Text Swatch' for EAV attribute [color & size]
+ *  - Keep strings.php file & this file in Magento root before running it.
  */
 
 /**
- * Data-set & arrays for eav attributes
+ * Data-set & arrays for EAV attributes
  */
 require_once('strings.php');
 
@@ -66,6 +66,9 @@ if ($eav_attribute_names) {
          */
         $attribute = $eavConfig->getAttribute($entityType, $attributeCode);
 
+        /**
+         * Set dynamic EAV dataset in variable
+         */
         $eavDataSet = ${$attributeCode};
 
         for ($i = 0; $i < count($eavDataSet); $i++) {
