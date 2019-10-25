@@ -27,7 +27,7 @@ foreach (glob("vendor-collaterals-30-09-2019/*/*") as $i => $filename) {
 }
 
 natcasesort($files);
-//print2($files);
+#print2($files);
 
 $final_files = [];
 if ($files) {
