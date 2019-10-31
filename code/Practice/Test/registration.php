@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * Module registration file
+ */
+
 use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'SampleModule_Module',
+    'Practice_Test',
     __DIR__
 );
