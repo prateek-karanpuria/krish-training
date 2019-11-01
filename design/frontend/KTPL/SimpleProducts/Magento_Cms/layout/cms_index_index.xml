@@ -8,6 +8,9 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
+            <!--
+              Note: Here class is not mandatory & can be omitted
+            -->
             <block class="Magento\Framework\View\Element\Template"
                    name="simple_products_block"
                    template="Magento_Cms::index.phtml" />
