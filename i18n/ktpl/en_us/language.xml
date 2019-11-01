@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ /**
+  * @author Prateek Karanpuria <prateek.karanpuria@krishtechnolabs.com>
+  */
+ -->
+<language xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:framework:App/Language/package.xsd">
+    <code>en_US</code>
+    <vendor>ktpl</vendor>
+    <package>en_us</package>
+    <sort_order>2</sort_order>
+</language>
