@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ /**
+ * Simple products theme.xml file
+ */ 
+-->
+<theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/theme.xsd">
+   <title>Simple Products Front Theme</title>
+   <parent>Magento/luma</parent>
+</theme>

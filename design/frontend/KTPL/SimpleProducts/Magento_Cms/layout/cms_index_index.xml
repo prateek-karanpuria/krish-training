@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * CMS index page xml file
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="simple_products_block"
+                   template="Magento_Cms::index.phtml" />
+
+            <block class="Magento\Framework\View\Element\Template"
+                   name="simple_products_block"
+                   template="Magento_CatalogWidget::product/widget/content/new-product.phtml" />
+        </referenceContainer>
+    </body>
+</page>
