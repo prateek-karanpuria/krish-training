@@ -21,7 +21,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 /**
- * Print result with formatted tag
+ * Print result with formatted content
  */
 function print2($context = '') {
     echo '<pre>';

@@ -226,6 +226,7 @@ return [
         'Amazon_Login' => 1,
         'Amazon_Payment' => 1,
         'Dotdigitalgroup_Email' => 1,
+        'Eadesigndev_RomCity' => 1,
         'KTPL_HelloWorld' => 1,
         'Klarna_Core' => 1,
         'Klarna_Ordermanagement' => 1,
@@ -245,7 +246,7 @@ return [
         'Training_CustomerNickName' => 1,
         'Training_FeaturedProduct' => 1,
         'Training_OrderDeliveryDate' => 1,
-        'Training_OrderDeliveryNote' => 1,
+        'Training_OrderDeliveryNote' => 0,
         'Training_Testimonial' => 1,
         'Vertex_Tax' => 1
     ]
