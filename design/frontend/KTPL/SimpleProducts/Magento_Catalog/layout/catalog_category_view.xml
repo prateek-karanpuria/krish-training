@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Extending catalog category view XML file
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="category.product.list.additional">
+        <block name="customAttributes"
+               template="Magento_Catalog::product/view/customAttributes.phtml" 
+               before="-"/>
+    </referenceContainer>
+</page>

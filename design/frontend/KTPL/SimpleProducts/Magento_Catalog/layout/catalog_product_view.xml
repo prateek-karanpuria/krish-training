@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Extending catalog product view XML file
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<!--     <referenceContainer name="product.info.type">
+        <block class="Magento\Framework\View\Element\Template"
+               name="saleInfo"
+               template="Magento_Catalog::product/view/saleInfo.phtml">
+        </block>
+    </referenceContainer> -->
+
+    <referenceContainer name="product.info.main">
+        <block name="customAttributes"
+               template="Magento_Catalog::product/view/customAttributes.phtml"
+               after="product.price.tier"/>
+    </referenceContainer>
+</page>
