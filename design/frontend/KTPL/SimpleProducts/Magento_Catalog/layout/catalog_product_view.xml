@@ -16,6 +16,12 @@
     <referenceContainer name="product.info.main">
         <block name="customAttributes"
                template="Magento_Catalog::product/view/customAttributes.phtml"
-               after="product.price.tier"/>
+               after="product.price.tier"
+               class="Magento\Catalog\Block\Product\View\Attributes"
+               cacheable="false">
+          <arguments>
+            <argument translate="true" name="title" xsi:type="string">Other Details: </argument>
+          </arguments>
+        </block>
     </referenceContainer>
 </page>

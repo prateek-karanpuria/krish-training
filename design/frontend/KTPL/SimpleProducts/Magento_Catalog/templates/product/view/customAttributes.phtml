@@ -1,3 +1,77 @@
 <?php
 
-echo 'Attributes';
+/**
+ * Block title
+ */
+$blockTitle = $block->getTitle();
+
+/**
+ * Function of class Magento\Catalog\Block\Product\View\Attribute
+ * Ref: vendor/magento/module-catalog/view/frontend/templates/product/view/attributes.phtml
+ */
+$attributesInfo = $block->getAdditionalData();
+
+$attribute_codes = [
+    'sale'                   => 'Is on sale',
+    'text_area_attr'         => 'Other Information',
+    'test'                   => 'Short Information',
+    'custom_tag'             => 'Category Type',
+    'climate'                => 'Climate Favorability',
+    'country_of_manufacture' => 'Manufacturer Country',
+    'custom_content'         => 'Notes from manufacturer',
+    'featured_product'       => 'Is Featured',
+];
+
+$tr = '';
+foreach ($attribute_codes as $attribute_code => $attribute_label) {
+    $attribute_value = $block->escapeHtml($block->getProduct()->getData($attribute_code));
+    $attribute_label = $block->escapeHtml($attribute_label);
+
+    if (in_array($attribute_code, array_keys($attributesInfo))) {
+        if (empty($attribute_label)) {
+            $attribute_label = $attributesInfo[$attribute_code]['label'];
+        }
+
+        if ($attributesInfo[$attribute_code]['value']) {
+            $attribute_value = $attributesInfo[$attribute_code]['value'];
+        }
+    }
+
+    if ($attribute_value === 1 || $attribute_value === 0) {
+        $attribute_value = $attribute_value ? 'Yes' : 'No';
+    }
+
+    $tr .= <<< CONTENT
+    <tr>
+        <th class="col label" scope="row" width="10%">{$attribute_label}</th>
+        <td class="col data" data-th="{$attribute_label}">{$attribute_value}</td>
+    </tr>
+CONTENT;
+}
+
+/**
+ * Custom Attributes Display
+ */
+echo <<< CONTENT
+<h3>{$blockTitle}</h3>
+<div class="additional-attributes-wrapper table-wrapper">
+    <table class="data table additional-attributes">
+        <tbody>
+        {$tr}
+        </tbody>
+    </table>
+</div>
+CONTENT;
+
+/**
+ * Product Description Display
+ */
+// echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getDescription(), 'description');
+
+// echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getCountryOfManufacture(), 'country_of_manufacture');
+
+function print2($content = '') {
+    echo '<pre>';
+    print_r($content);
+    echo '</pre>';
+}
