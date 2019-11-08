@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+       <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="checkout-summary-product-attribute" type="Krish\ExtendCheckoutMethod\Plugin\Checkout\Model\DefaultConfigProvider" />
+    </type>
+      
+      <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+         <plugin  name="Vendor_Module_Plugin_Block_Checkout_LayoutProcessor" sortOrder="99"
+                type="Krish\ExtendCheckoutMethod\Plugin\Block\Checkout\LayoutProcessor"/>
+     </type>
+
+    <type name="Magento\Payment\Model\CcConfigProvider">
+        <plugin name="krish_extended_checkout_ccicons_plugin" type="Krish\ExtendCheckoutMethod\Plugin\CcConfigProviderPlugin" sortOrder="1" />
+    </type>
+
+</config>
+
+ 
+

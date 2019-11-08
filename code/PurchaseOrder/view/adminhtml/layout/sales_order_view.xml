@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="sales_order_transactions_grid_block"/>
+    <update handle="sales_order_item_price"/>
+    <body>
+        <referenceContainer name="left">
+            <referenceBlock name="sales_order_tabs">
+                <referenceBlock name="order_tab_info">
+                    <action method="setTemplate">
+                        <argument name="template" xsi:type="string">Ktpl_PurchaseOrder::order/view/tab/info.phtml</argument>
+                    </action>
+                </referenceBlock>
+            </referenceBlock>
+        </referenceContainer>        
+    </body>
+</page>
