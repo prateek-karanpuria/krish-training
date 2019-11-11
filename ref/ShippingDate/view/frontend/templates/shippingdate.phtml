@@ -1,0 +1,11 @@
+<?php $dateHelper = $this->helper("Ktpl\ShippingDate\Helper\Data"); ?> <?php
+$product = $dateHelper->getCurrentProduct();
+if ($dateHelper->isEnabled()) { 
+	if(!empty($product)){
+		if ($product->isSaleable()) { ?>
+			<p class="ship-date"><?php echo __("Estimated Ship Date "); ?><?php $block->getHolidayDates(); ?></p><?php
+		}
+	}else{ ?>
+		<p class="ship-date"><?php echo __("Estimated Ship Date "); ?><?php $block->getHolidayDates(); ?></p><?php
+	}?> 
+<?php  } ?>

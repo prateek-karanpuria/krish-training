@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="ktpl_general" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>General Configurations</label>
+            <tab>ktpl</tab>
+            <resource>Ktpl_General::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="freeshipping_cutoff" translate="label comment" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <attribute type="expanded">1</attribute>
+                    <label>Free Shipping Cut Off Amount</label>
+                    <comment>Please enter free shipping cut off amount.</comment>
+                    <validate>validate-number</validate>
+                </field>
+                 <field id="minicart_tooltip" translate="label comment" type="textarea" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minicart Tooltip Text</label>
+                    <comment>Please enter minicart tooltip text.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

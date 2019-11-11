@@ -1,0 +1,263 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+use Magento\Framework\App\Action\Action;
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @var $block \Magento\Catalog\Block\Product\ListProduct
+ */
+?>
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$ktplHelper = $this->helper('Ktpl\General\Helper\Category');
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+$wishlistHelper = $this->helper('Magento\Wishlist\Helper\Data');
+$productHelper = $this->helper('Ktpl\ProductSlider\Helper\Data');
+$prodActionUrl = $productHelper->getRandomControllerActionUrl();
+$_category  = $ktplHelper->getCurrentCategory();
+
+    if (!$_productCollection->count()) { ?>
+        <div class="message info empty"><div><?= /* @escapeNotVerified */ __('We can\'t find products matching the selection.') ?></div></div><?php
+    }else{  ?>
+    
+    <?= $block->getToolbarHtml() ?>
+    <?= $block->getAdditionalHtml() ?>
+    
+    <?php
+    $viewMode = 'grid';
+    $imageDisplayArea = 'category_page_grid';    
+
+    /**
+     * Position for actions regarding image size changing in vde if needed
+     */
+    $pos = $block->getPositioned();
+    $class = "addalltocart-wrp";
+    ?>
+<div class="custom-product-list-wrap">   
+<div class="brand-title">
+    <h2><?php 
+        if ($_category->getLevel() > 2) {
+            $parentCategory = $_category->getParentCategory();        
+            echo $parentCategory->getName(); 
+        }else{
+            echo $_category->getName(); 
+        } ?>
+    </h2>
+</div> 
+<div class="left-wrapper block <?= /* @escapeNotVerified */ $class ?>">
+<form name="addalltocart" id="addalltocart" method="post" action="<?= $this->getUrl("generalaction/product/addalltocart/") ?>">
+    <div class="block-title title">
+        <button type="submit" title="<?= $block->escapeHtml(__('Add all to')) ?>" class="action tocart primary addalltocart" data-productid=""><span><?= /* @escapeNotVerified */ __('Add all to') ?></span></button>  
+    </div>
+    <div class="block-content content" aria-labelledby="block-<?= /* @escapeNotVerified */ $class ?>-heading">
+
+        <div class="products wrapper <?= /* @escapeNotVerified */ $viewMode ?> products-<?= /* @escapeNotVerified */ $viewMode ?>">
+            <ol class="products list items product-items">
+                <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+                <?php foreach ($_productCollection as $_product): ?>
+                <li class="item product product-item">
+
+                            <div class="product-item-info">
+                                <div class="mobile-rating-wrap">
+                                    <a href="<?= /* @escapeNotVerified */ $block->getProductUrl($_product) ?>" class="product photo product-item-photo">
+                                        <?= $block->getImage($_product, $imageDisplayArea)->toHtml() ?>
+                                    </a>
+                                    <div class="rating-wishlist-wrap wishlist-parent-<?= $_product->getId(); ?>">
+                                        <a href="<?= $_product->getProductUrl() ?>#reviews" class="rating-link-wrap">
+                                        <?php echo $block->getReviewsSummaryHtml($_product, \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW); ?>
+                                        </a>
+                                        <?php
+                                        if ($_product->getTypeId() === \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE)
+                                        {
+                                            $childProductCollection = $_product->getTypeInstance()->getAssociatedProducts($_product);
+                                            $qtyOptions = array(); 
+                                            foreach ($childProductCollection as $ky => $child) { ?>
+                                                <a href="javascript:void(0)" style="display: none;" data-post='<?php echo $wishlistHelper->getAddParams($child) ?>' class="action towishlist grouped_wishlist wishlist-link-<?= $child->getId(); ?>" data-action="add-to-wishlist"><span><?= __('Add to Wish List'); ?></span></a><?php
+                                            }
+                                        }else{ ?>
+                                            <a href="javascript:void(0)" data-post='<?php  echo $wishlistHelper->getAddParams($_product) ?>' class="action towishlist" data-action="add-to-wishlist"><span><?= __('Add to Wish List'); ?></span></a>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                                <div class="product details product-item-details">
+                                    <strong class="product name product-item-name"><a class="product-item-link" title="<?= $block->escapeHtml($_product->getName()) ?>" href="<?= /* @escapeNotVerified */ $block->getProductUrl($_product) ?>">
+                                        <?= $block->escapeHtml($_product->getName()) ?></a>
+                                    </strong>
+                                    <?php if ($_product->getAttribute1()) { ?>
+                                        <div class="attribute1">
+                                            <?php echo __($_product->getAttribute1()); ?>
+                                        </div> 
+                                    <?php } ?>
+                                    <div class="product-item-inner">
+
+                                        <div class="product actions product-item-actions">
+                                            <div class="actions-primary">
+                                            <?php if ($_product->isSaleable()): ?>
+                                                <input name="formdata[<?= $_product->getId() ?>][id]" type="hidden" value="<?= $_product->getId() ?>">
+                                                <input name="formdata[<?= $_product->getId() ?>][type]" type="hidden" value="<?= $_product->getTypeId() ?>">
+                                                <?php
+                                                if ($_product->getTypeId() === \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE)
+                                                { ?>
+                                                <div class="product-option-<?= $_product->getId() ?> options-wrap"><?php
+                                                    $childProductCollection = $_product->getTypeInstance()->getAssociatedProducts($_product);
+                                                    $qtyOptions = array(); ?>
+                                                    <select name="grouped_options" class="grouped_options" data-productid="<?= $_product->getId() ?>">
+                                                        <option value=""><?php echo __("Choose"); ?></option><?php
+                                                        foreach ($childProductCollection as $key => $options) {
+                                                            $optionArray = explode($_product->getName(),$options->getName());
+                                                            $optionName = array_pop($optionArray);
+                                                            $qtyOptions[$key]["qty"] = $options->getQty(); 
+                                                            $qtyOptions[$key]["id"] = $options->getId();
+                                                            $formattedPrice = $priceHelper->currency($options->getFinalPrice(), true, false); ?>
+                                                            <option value="<?php echo $options->getId(); ?>"><?php echo $optionName." ".$formattedPrice; ?></option>><?php    
+                                                        } ?>
+                                                    </select><?php
+                                                    echo $block->getLayout()->createBlock('Ktpl\General\Block\ProductPrice')->setProduct($_product)->setTemplate('Ktpl_General::product/price.phtml')->toHtml(); 
+                                                    foreach ($qtyOptions as $key => $itm) { ?>
+                                                        <div class="qty-box" id="super_group_<?= /* @escapeNotVerified */ $itm['id'] ?>" style="display: none;">  
+                                                            <div class="qty">
+                                                                <label><?= __("QTY"); ?></label>
+                                                                <input type="number"
+                                                           name="formdata[<?= $_product->getId() ?>][super_group][<?= $itm['id'] ?>]"
+                                                           data-selector="super_group[<?= $itm['id'] ?>]"
+                                                           id="qty_super_group_<?= $itm['id'] ?>"
+                                                           title="<?= __('Qty') ?>"
+                                                           class="input-text qty grouped_qty"
+                                                           data-validate="{'validate-grouped-qty':'#super-product-table'}"
+                                                           data-errors-message-box="#validation-message-box"/>
+                                                            </div>
+                                                              <button style="display: none;" type="submit"
+                                                        title="<?= $block->escapeHtml(__('Add')) ?>"
+                                                        class="action tocart primary grouped_btn addalltocart" data-productid="<?= $_product->getId() ?>">
+                                                        <span><?= /* @escapeNotVerified */ __('Add') ?></span> 
+                                                    </button>  
+                                                        </div>
+                                                        <?php
+                                                    } ?>
+                                                <input type="hidden" class="grpchild" name="formdata[<?= $_product->getId() ?>][grpchild]" value="">  
+                                                </div><?php
+
+                                                }else{
+                                                echo $block->getLayout()->createBlock('Ktpl\General\Block\ProductPrice')->setProduct($_product)->setTemplate('Ktpl_General::product/price.phtml')->toHtml(); ?>
+                                                    <div class="qty-box">  
+                                                        <div class="qty">
+                                                            <label><?= __("QTY"); ?></label>
+                                                            <input type="number" name="formdata[<?= $_product->getId() ?>][qty]" />
+                                                        </div>
+                                                         <button type="submit"
+                                                            title="<?= $block->escapeHtml(__('Add')) ?>"
+                                                            class="action tocart primary addalltocart" data-productid="<?= $_product->getId() ?>">
+                                                            <span><?= /* @escapeNotVerified */ __('Add') ?></span> 
+                                                        </button>   
+                                                    </div>
+                                            <?php } ?>
+                                            <?php else: ?>
+                                                <?php if ($_product->getIsSalable()): ?>
+                                                    <div class="stock available"><span><?= /* @escapeNotVerified */ __('In stock') ?></span></div>
+                                                <?php else: ?>
+                                                    <div class="stock unavailable"><span><?= /* @escapeNotVerified */ __('Out of stock') ?></span></div>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                            </div>
+                                            <div class="secondary-addto-links actions-secondary" data-role="add-to-links">
+                                                <?php if ($addToBlock = $block->getChildBlock('addto')): ?>
+                                                    <?= $addToBlock->setProduct($_product)->getChildHtml() ?>
+                                                <?php endif; ?>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                <?php endforeach; ?>
+            </ol>
+        </div>
+    
+        </div>
+    </form>
+</div>
+</div>
+<div id="marry-pick-container" class="list-marry-pick-container left-wrapper"></div>
+<script type="text/javascript">
+        require([
+            'jquery',
+            'Magento_Customer/js/customer-data',
+            'Magento_Ui/js/model/messageList',
+            'owlcarousel'
+        ], function ($,customerData,globalMessageList) {
+            $(document).ready(function(e){
+                
+                $.ajax({
+                    url: '<?php echo $prodActionUrl; ?>',
+                    cache: false,
+                    dataType: 'json',
+                    type: 'GET',
+                    showLoader: true
+                }).done(function (data) {
+                    if(data.status == "success"){
+                        $("#marry-pick-container").empty().html(data.html);
+                        $( "form[data-role='tocart-form']" ).catalogAddToCart({
+                            bindSubmit: true,
+                            addToCartButtonTextDefault: 'Add'
+                        });
+                    }
+                });
+
+                $(".options-wrap .grouped_options").change(function(e){
+                    var optionId = $(this).val();
+                    var productId = $(this).attr("data-productid");
+                    if (optionId) {
+                        $(".product-option-"+productId+" .grouped_qty").parent().parent().hide();
+                        $("#super_group_"+optionId).show();
+                        $(".wishlist-parent-"+productId+" .grouped_wishlist").hide();
+                        $(".product-option-"+productId+" .grpchild").val(optionId);
+                        $(".product-option-"+productId+" .grouped_btn, .wishlist-link-"+optionId).show();
+                    }else{
+                        $(".product-option-"+productId+" .grpchild").val('');
+                        $(".product-option-"+productId+" .qty-box, .product-option-"+productId+" .grouped_btn, .wishlist-parent-"+productId+" .grouped_wishlist").hide();
+                    }
+                });
+
+                $('.addalltocart').click(function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var btnchk = $(this).attr("data-productid")
+                    var couponForm = $("#addalltocart");
+
+                    $.ajax({
+                        url: couponForm.attr('action'),
+                        data: couponForm.serialize()+'&'+$.param({ 'issingle': btnchk }),
+                        type: 'POST',
+                        dataType: 'json',
+                        showLoader: true,
+                        success: function (res) {
+                            var sections = ['cart'];
+                            customerData.invalidate(sections);
+                            customerData.reload(sections, true);
+                            globalMessageList.addSuccessMessage({
+                                message: "this is for testing"
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            var err = eval("(" + xhr.responseText + ")");
+                            console.log(err.Message);
+                        }
+                    });
+                  
+                });
+            });
+        });
+    </script>
+    <?php
+}

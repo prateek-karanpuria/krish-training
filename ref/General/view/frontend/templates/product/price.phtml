@@ -1,0 +1,79 @@
+<?php
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+$_product = $block->getProduct();
+$isHomeFirst = $block->getIsHomeFirst();
+$whyPayPrice = $_product->getWhyPay();
+
+if ($_product->getTypeId() === \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE){
+    $groupedObj = $_product->getPriceInfo()->getPrice('final_price');
+    $minimalPrice = $groupedObj->getMinimalPrice()->getValue();
+    $formattedMinimalPrice = $priceHelper->currency($minimalPrice, true, false); ?>
+
+    <div class="price-box price-final_price" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+        <div class="price-box">
+            <p class="minimal-price">
+                <span class="price-label"><?php echo __("As low as:"); ?></span>
+                <span class="price-container tax weee">
+                    <span data-price-amount="<?= $minimalPrice; ?>" data-price-type="" class="price-wrapper ">
+                        <span class="price"><?= $formattedMinimalPrice; ?></span>
+                    </span>
+                </span>
+            </p>
+        </div>
+    </div><?php
+}else{
+
+    $finalPrice = $_product->getPriceInfo()->getPrice('final_price')->getValue();
+    $regularPrice = $_product->getPriceInfo()->getPrice('regular_price')->getValue();
+    $formattedFinalPrice = $priceHelper->currency($finalPrice, true, false);
+    $formattedRegularPrice = $priceHelper->currency($regularPrice, true, false); 
+    $formattedWhyPayPrice = $priceHelper->currency($whyPayPrice, true, false); ?>
+
+    <?php if ($finalPrice < $regularPrice) {
+    	$saleLabel = ($isHomeFirst == true) ? 'DEAL PRICE': 'SALE'; ?>
+        <div class="price-box price-final_price special-price-wrap" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+            <span class="old-price">
+                <span class="price-container price-final_price tax weee">
+                    <span class="price-label"><?php echo __("Reg."); ?></span>
+                    <span id="old-price-<?= $_product->getId(); ?>" data-price-amount="<?= $regularPrice; ?>" data-price-type="oldPrice" class="price-wrapper ">
+                        <span class="price"><?= $formattedRegularPrice; ?></span>
+                    </span>
+                </span>
+            </span>
+            <span class="special-price">
+                <span class="price-container price-final_price tax weee">
+                        <span class="price-label"><?php echo __($saleLabel); ?></span>
+                        <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $finalPrice; ?>" data-price-type="finalPrice" class="price-wrapper ">
+                            <span class="price"><?= $formattedFinalPrice; ?></span>
+                        </span>    
+                </span>
+            </span>
+        </div><?php
+    }elseif ($whyPayPrice > $regularPrice) { ?>
+        <div class="price-box price-final_price whypay-price-wrap" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+            <span class="old-price">
+                <span class="price-container price-final_price tax weee">
+                    <span class="price-label"><?php echo __("Reg."); ?></span>
+                    <span id="old-price-<?= $_product->getId(); ?>" data-price-amount="<?= $regularPrice; ?>" data-price-type="oldPrice" class="price-wrapper ">
+                        <span class="price"><?= $formattedWhyPayPrice; ?></span>
+                    </span>
+                </span>
+            </span>
+            <span class="regular-price">
+                <span class="price-container price-final_price tax weee">
+                        <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $finalPrice; ?>" data-price-type="finalPrice" class="price-wrapper ">
+                            <span class="price"><?= $formattedFinalPrice; ?></span>
+                        </span>    
+                </span>
+            </span>
+        </div><?php
+    }else{ ?>
+        <div class="price-box price-final_price regular-price-wrap" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+            <span class="price-container price-final_price tax weee">
+                <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $finalPrice; ?>" class="price-wrapper ">
+                    <span class="price"><?= $formattedFinalPrice; ?></span>
+                </span>
+            </span>
+        </div><?php
+    } 
+} 

@@ -1,0 +1,26 @@
+{
+    "name": "ktpl/module-shippingdate",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "info@mage2gen.com",
+            "name": "Mage2Gen"
+        },
+        {
+            "email": "vrutik.suthar@krishtechnolabs.com",
+            "name": "Vrutik Suthar"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ktpl\\ShippingDate\\": ""
+        }
+    }
+}

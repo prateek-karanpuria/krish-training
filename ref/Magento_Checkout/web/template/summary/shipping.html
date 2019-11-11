@@ -1,0 +1,35 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko if: quoteIsVirtual == 0 -->
+    <tr class="totals shipping excl">
+        <th class="mark" scope="row">
+            <!-- ko if: getIntValue() > 0 -->
+                <span class="label" data-bind="text: $t('Estimated Shipping')"></span>
+            <!-- /ko -->
+
+            <!-- ko ifnot: getIntValue() > 0 -->
+                <span class="label red-label" data-bind="text: $t('Estimated Shipping')"></span>
+            <!-- /ko -->
+            <!-- <span class="value" data-bind="text: getShippingMethodTitle()"></span> -->
+        </th>
+        <td class="amount">
+            <!-- ko if: isCalculated() -->
+                <!-- ko if: getIntValue() > 0 -->
+                    <span class="price" data-bind="text: getValue(), attr: {'data-th': title}"></span>
+                <!-- /ko -->
+                <!-- ko ifnot: getIntValue() > 0 -->
+                    <span class="price red-label" data-bind="text: $t('FREE')"></span>
+                <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko ifnot: isCalculated() -->
+            <span class="not-calculated"
+                  data-bind="text: getValue(), attr: {'data-th': title}"></span>
+            <!-- /ko -->
+            
+        </td>
+    </tr>
+<!-- /ko -->

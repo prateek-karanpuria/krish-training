@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Theme\Block\Html\Topmenu" type="Ktpl\General\Block\Html\Topmenu"/>
+    <type name="Magento\Checkout\Block\Checkout\AttributeMerger">
+    	<plugin name="shippingAddress" type="Ktpl\General\Plugin\Checkout\Block\Checkout\AttributeMerger\Plugin"/>
+ 	</type>   
+ 	<type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+    	<plugin name="Ktpl_General_Plugin_Block_Checkout_LayoutProcessor" sortOrder="99"
+                type="Ktpl\General\Plugin\Checkout\Block\Checkout\LayoutProcessor"/>
+	</type>
+	<type name="Magedelight\Subscribenow\Model\Subscription">
+    	<plugin name="around_subscriberedirection_method" type="Ktpl\General\Plugin\Subscribenow\Model\Subscription"/>
+ 	</type>
+ 	<preference for="Magento\Checkout\Controller\Cart\Add" type="Ktpl\General\Controller\Cart\Add" />
+</config>

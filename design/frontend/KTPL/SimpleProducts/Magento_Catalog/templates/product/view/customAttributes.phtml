@@ -4,6 +4,8 @@
  * Block title
  */
 $blockTitle = $block->getTitle();
+$helper     = $this->helper('Magento\Catalog\Helper\Output');
+$product    = $block->getProduct();
 
 /**
  * Function of class Magento\Catalog\Block\Product\View\Attribute
@@ -16,29 +18,62 @@ $attribute_codes = [
     'text_area_attr'         => 'Other Information',
     'test'                   => 'Short Information',
     'custom_tag'             => 'Category Type',
-    'climate'                => 'Climate Favorability',
+    'climate'                => 'Favorable Climate',
     'country_of_manufacture' => 'Manufacturer Country',
-    'custom_content'         => 'Notes from manufacturer',
+    'custom_comment'         => 'Notes from manufacturer',
     'featured_product'       => 'Is Featured',
+    'media_gallery'          => 'Default Media',
 ];
 
 $tr = '';
 foreach ($attribute_codes as $attribute_code => $attribute_label) {
-    $attribute_value = $block->escapeHtml($block->getProduct()->getData($attribute_code));
-    $attribute_label = $block->escapeHtml($attribute_label);
+    $attribute_value = $block->escapeHtml($product->getData($attribute_code));
+    $attribute_label = $block->escapeHtml(__($attribute_label));
 
     if (in_array($attribute_code, array_keys($attributesInfo))) {
         if (empty($attribute_label)) {
             $attribute_label = $attributesInfo[$attribute_code]['label'];
         }
 
-        if ($attributesInfo[$attribute_code]['value']) {
+        if (isset($attributesInfo[$attribute_code]['value']) &&
+            $attributesInfo[$attribute_code]['value']) {
             $attribute_value = $attributesInfo[$attribute_code]['value'];
+
+            /**
+             * Text editor content display
+             */
+            if (in_array($attribute_code, ['custom_comment'])) {
+                $altered_attr_code_txt = str_replace([' ', '_', '-'], ' ', strtolower($attribute_code));
+                $propertyMethod = str_replace(' ', '', 'get'.ucwords($altered_attr_code_txt));
+
+                $attribute_value = $helper->productAttribute($product, $product->$propertyMethod(), $attribute_code);
+            }
         }
     }
 
-    if ($attribute_value === 1 || $attribute_value === 0) {
-        $attribute_value = $attribute_value ? 'Yes' : 'No';
+    /**
+     * Default media gallery display
+     */
+    if (in_array($attribute_code, ['media_gallery'])) {
+        $default_media = [];
+
+        foreach ($attribute_value as $value) {
+            foreach ($value as $vl) {
+                if ($vl[2] == 'image') {
+                    $alt_text = !empty($vl[7]) ? 'alt="'.$vl[7].'"' : '';
+                    $mediaUrl = str_replace('default/', '', $block->getBaseUrl()).'pub/media/catalog/product';
+                    $default_media[] = '<img src="'.$mediaUrl.$vl[1].'" '.$alt_text.' >';
+                }
+            }
+        }
+        $attribute_value = implode('<br >', $default_media);
+    }
+
+    /**
+     * Boolean value display
+     */
+    if (($attribute_value === '1' || $attribute_value ===  '0'))  {
+        $attribute_value = $attribute_value ? __('Yes') : __('No');
     }
 
     $tr .= <<< CONTENT
@@ -66,9 +101,14 @@ CONTENT;
 /**
  * Product Description Display
  */
-// echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getDescription(), 'description');
+// echo $helper->productAttribute($product, $product->getDescription(), 'description');
 
-// echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getCountryOfManufacture(), 'country_of_manufacture');
+// echo $helper->productAttribute($product, $product->getCountryOfManufacture(), 'country_of_manufacture');
+
+/**
+ * TinyMCE editor content display
+ */
+//$a = $helper->productAttribute($product, $product->getCustomComment(), 'custom_comment');
 
 function print2($content = '') {
     echo '<pre>';

@@ -1,0 +1,14 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko if: !isShippingStep() -->
+<div class="totals">
+    <div class="mark" scope="row" data-bind="text: title"></div>
+    <div class="amount">
+        <span class="price" data-bind ="text: getValue(), attr:{'data-label': title}"></span>
+    </div>
+</div>
+<!-- /ko -->

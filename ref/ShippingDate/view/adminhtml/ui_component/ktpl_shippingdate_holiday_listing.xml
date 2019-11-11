@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">ktpl_shippingdate_holiday_listing.ktpl_shippingdate_holiday_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>ktpl_shippingdate_holiday_columns</spinner>
+		<deps>
+			<dep>ktpl_shippingdate_holiday_listing.ktpl_shippingdate_holiday_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new Holiday</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource component="Magento_Ui/js/grid/provider" name="ktpl_shippingdate_holiday_listing_data_source">
+		<settings>
+			<updateUrl path="mui/index/render"/>
+			<storageConfig>
+                <param name="dataScope" xsi:type="string">filters.website_id</param>
+            </storageConfig>
+		</settings>
+		<aclResource>Ktpl_ShippingDate::Holiday</aclResource>
+		<dataProvider class="Ktpl\ShippingDate\Ui\DataProvider\DataProvider" name="ktpl_shippingdate_holiday_listing_data_source">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>holiday_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>false</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+		<massaction name="listing_massaction">
+           <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="ktpl_shippingdate/holiday/massdelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
+	</listingToolbar>
+	<columns name="ktpl_shippingdate_holiday_columns">
+		<settings>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">ktpl_shippingdate_holiday_listing.ktpl_shippingdate_holiday_listing.ktpl_shippingdate_holiday_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>holiday_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="holiday_id" sortOrder="20">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="holiday_name" sortOrder="30">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Holiday Name</label>
+			</settings>
+		</column>
+		<column name="holiday_date" component="Magento_Ui/js/grid/columns/date" sortOrder="40">
+			<settings>
+				<filter>dateRange</filter>
+				<label translate="true">Holiday Date</label>
+				<dataType>date</dataType>
+				<dateFormat>YYYY-MM-dd</dateFormat>
+			</settings>
+		</column>
+		<column name="enabled" component="Magento_Ui/js/grid/columns/select" sortOrder="50">
+			<settings>
+				<options class="Magento\Config\Model\Config\Source\Yesno"/>
+				<filter>select</filter>
+				<label translate="true">Enabled</label>
+				<dataType>select</dataType>
+			</settings>
+		</column>
+		<column name="website_id" component="Magento_Ui/js/grid/columns/select" sortOrder="60">
+			<settings>
+				<options class="Ktpl\ShippingDate\Model\Config\Source\WebsiteList"/>
+				<filter>select</filter>
+				<label translate="true">Website</label>
+				<dataType>select</dataType>
+			</settings>
+		</column>
+		<actionsColumn class="Ktpl\ShippingDate\Ui\Component\Listing\Column\HolidayActions" name="actions" sortOrder="80">
+			<settings>
+				<indexField>holiday_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

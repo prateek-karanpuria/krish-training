@@ -1,0 +1,31 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="checkout-top-wrap">
+	<div class="checkout-containers">  
+	<div class="checkout-logo"> <a href="#"> <img alt="" src="http://10.16.16.8:1480/discountcoffee/pub/media/checkoutpage/logo.png"/></a></div>
+	<ul class="opc-progress-bar">
+	    <!-- ko foreach: { data: steps().sort(sortItems), as: 'item' } -->
+	        <li class="opc-progress-bar-item" data-bind="css: item.isVisible() ? '_active' : ($parent.isProcessed(item) ? '_complete' : '')">
+	            <span data-bind="i18n: item.title, click: $parent.navigateTo"></span>
+	        </li>
+	    <!-- /ko -->
+	</ul>
+	<div class="checkout-logos-wrap">
+		<ul>
+			<li>
+				<div class="secyred-logo"><img alt="" src="http://10.16.16.8:1480/discountcoffee/pub/media/checkoutpage/secyred-logo.jpg"/></div>
+			</li>
+			<li>
+				<div class="bizate-logo"><img alt="" src="http://10.16.16.8:1480/discountcoffee/pub/media/checkoutpage/bizate-logo.jpg"/></div>
+				
+			</li>
+		</ul>
+		
+
+	</div>
+</div>
+</div> 

@@ -1,0 +1,87 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="block-title">
+    <strong>
+        <span class="text" translate="'My Cart'"/>
+        <span
+            class="qty empty"
+            text="getCartParam('summary_count')"
+            data-bind="css: { empty: !!getCartParam('summary_count') == false },
+                       attr: { title: $t('Items in Cart') }">
+        </span>
+    </strong>
+</div>
+
+<div class="block-content">
+    <if args="getCartParam('summary_count')">
+        <strong class="subtitle" translate="'Recently added item(s)'"/>
+        <div data-action="scroll" class="minicart-items-wrapper">
+            <ol id="mini-cart" class="minicart-items" data-bind="foreach: { data: getCartItems(), as: 'item' }">
+                <each args="$parent.getRegion($parent.getItemRenderer(item.product_type))"
+                      render="{name: getTemplate(), data: item, afterRender: function() {$parents[1].initSidebar()}}"
+                />
+            </ol>
+        </div>
+    </if>
+
+    <ifnot args="getCartParam('summary_count')">
+        <strong class="subtitle empty"
+                data-bind="visible: closeSidebar()"
+                translate="'You have no items in your shopping cart.'"
+        />
+        <if args="getCartParam('cart_empty_message')">
+            <p class="minicart empty text" text="getCartParam('cart_empty_message')"/>
+            <div class="actions">
+                <div class="secondary">
+                    <a class="action viewcart" data-bind="attr: {href: shoppingCartUrl}">
+                        <span translate="'View and Edit Cart'"/>
+                    </a>
+                </div>
+            </div>
+        </if>
+    </ifnot>
+
+    <div class="custom-cart-content-wrapper" if="getCartParam('summary_count')">
+        <div class="custom-cart-content-wraps">
+            <div class="custom-cart-content-wrap">
+            <div style="display: none;" data-bind="visible: checkShippingAmount()">
+                <!-- ko if: calculateFreeShippingAmount() > 0 -->
+                Add $<span data-bind="text: calculateFreeShippingAmount()"></span> for<br>Fast & FREE Shipping
+                <!-- /ko -->
+                <!-- ko ifnot: calculateFreeShippingAmount() > 0 -->
+                Fast & Free Shipping
+                <!-- /ko -->
+                <div class="tooltip" data-bind="html: getTooltipText()"></div>
+                 </div> 
+            </div> 
+        </div>
+        <div class="subtotal-minicart">    
+            <span data-bind="i18n: 'Subtotal: '"></span>
+            <span class="counter qty empty" data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
+                <span class="counter-number" data-bind="html: getCartParam('subtotal')"></span>
+            </span>
+        </div>
+    </div>
+
+    <div class="actions" if="getCartParam('summary_count')">
+        <div class="secondary">
+            <a class="action viewcart" data-bind="attr: {href: shoppingCartUrl}">
+                <span translate="'View/Edit Cart'"/>
+            </a>
+        </div>
+        <div class="minicart-checkout-link">
+            <a class="action viewcart" data-bind="attr: {href: getCheckoutUrl()}">
+                <span translate="'Checkout'"/>
+            </a>
+        </div>
+    </div>
+
+    <div id="minicart-widgets" class="minicart-widgets" if="getRegion('promotion').length">
+        <each args="getRegion('promotion')" render=""/>
+    </div>
+</div>
+<each args="getRegion('sign-in-popup')" render=""/>

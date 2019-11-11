@@ -1,0 +1,63 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+    <div class="red-label" data-bind="scope: 'koexample'">
+        <!-- ko if: getPureValue() > 0 -->
+            <?php echo __("You are Saving")." "; ?>
+            <span data-bind="text: getCouponCodeAmount()">$0.0</span>
+            <?php echo " ".__("on this order."); ?>
+        <!-- /ko -->
+    </div>
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "koexample": {
+                            "component": "Ktpl_CouponPopup/js/discount-detail"
+                         }
+                    }
+                }
+            }
+        }
+    </script>
+<?php if ($block->isPossibleOnepageCheckout()): ?>
+    <button type="button"
+            data-role="proceed-to-checkout"
+            title="<?= /* @escapeNotVerified */
+            __('Proceed to Checkout') ?>"
+            data-mage-init='{"Magento_Checkout/js/proceed-to-checkout":{"checkoutUrl":"<?= /* @escapeNotVerified */
+            $block->getCheckoutUrl() ?>"}}'
+            class="action primary checkout<?= ($block->isDisabled()) ? ' disabled' : '' ?>"
+            <?php if ($block->isDisabled()): ?>disabled="disabled"<?php endif; ?>>
+        <span><?= /* @escapeNotVerified */
+            __('Proceed to Checkout') ?></span>
+    </button>
+<?php endif ?>
+<?php
+$pdfURL = $block->getUrl('pub/media/ucontent')."bizCREDIT-Application-Net-20-2018.pdf";
+$corporateURL = $block->getUrl('corporate-customer');
+?>
+<div class="aditional-cart-info">
+    <div class="we-accept">
+        <?php echo __("We accept"); ?>
+    </div>
+    <div class="corporate-ac"> 
+        <a target="_blank" href="javascript:void()" onclick="window.open('<?php echo $pdfURL;?>','bizCREDIT-Application','toolbar=0,menubar=0,location=0')"><?php echo __("Corporate Accounts"); ?></a>
+        <div class="header-cart-tooltip">
+            <div class="tooltip">
+                <ul>
+                    <li><a href="javascript: void" onclick="window.open('<?php echo $corporateURL; ?>')"><?= __("Learn more"); ?></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="cards-image">
+        <img alt="Pay Pal" src="<?php echo $block->getViewFileUrl('images/card-img.png'); ?>"/>
+    </div>
+</div>

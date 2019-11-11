@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Ktpl\ShippingDate\Api\HolidayRepositoryInterface" type="Ktpl\ShippingDate\Model\HolidayRepository"/>
+	<preference for="Ktpl\ShippingDate\Api\Data\HolidayInterface" type="Ktpl\ShippingDate\Model\Data\Holiday"/>
+	<preference for="Ktpl\ShippingDate\Api\Data\HolidaySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Ktpl\ShippingDate\Model\ResourceModel\Holiday\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">ktpl_shippingdate_holiday</argument>
+			<argument name="resourceModel" xsi:type="string">Ktpl\ShippingDate\Model\ResourceModel\Holiday\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="ktpl_shippingdate_holiday_listing_data_source" xsi:type="string">Ktpl\ShippingDate\Model\ResourceModel\Holiday\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

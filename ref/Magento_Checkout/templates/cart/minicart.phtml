@@ -1,0 +1,94 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Checkout\Block\Cart\Sidebar */
+
+$childBlock = $block->getChildBlock('minicart_customization');
+$helper = $childBlock->getHelper();
+$cutOffAmount = $helper->getFreeShippingCutoff();
+$tooltipText = $helper->getMinicartTooltipText();
+//$tooltipText = "this is test tooltip";
+
+//$tooltipText = '<div class="header-cart-tooltip"><div class="tooltip"><ul><div class="title">FREE Standard Shipping</div><li><a href="#">On orders over $59</a></li><li><a href="#"> within the 48 states.</a></li><li><a href="#">We ship worldwide.</a></li></ul></div></div>';
+$tooltipTextNew = '';
+$checkoutUrl = $block->getUrl('checkout/cart', ['_secure' => true]);
+?>
+<script>
+    window.cutoffamount = <?= /* @escapeNotVerified */ $helper->getFreeShippingCutoff() ?>;
+    window.tooltiptext = '<?= /* @escapeNotVerified */ $tooltipText ?>';
+    window.checkouturl = "<?= /* @escapeNotVerified */ $checkoutUrl ?>";
+</script>
+<div data-block="minicart" class="minicart-wrapper">
+    <div class="custom-cart-wrap" data-bind="scope: 'minicart_content'">
+        <div style="display: none;" data-bind="visible: checkShippingAmount()">
+            <!-- ko if: calculateFreeShippingAmount() > 0 -->
+            Add $<span data-bind="text: calculateFreeShippingAmount()"></span> for<br>Fast & Free Shipping
+            <!-- /ko -->
+            <!-- ko ifnot: calculateFreeShippingAmount() > 0 -->
+            Fast & Free Shipping
+            <!-- /ko -->
+            <div class="tooltip"><?php echo $tooltipText; ?></div>
+        </div> 
+    </div>
+    <a class="action showcart" data-bind="scope: 'minicart_content'" href="<?= /* @escapeNotVerified */ $block->getShoppingCartUrl() ?>">
+        <span class="text"><?= /* @escapeNotVerified */ __('My Cart') ?></span>
+        
+        <div class="custom-link">(<span data-bind="text: getCartParam('summary_count')"></span>) Items</div>
+       
+        <?php /*<span class="counter qty empty"
+              data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
+            <span class="counter-number"><!-- ko text: getCartParam('summary_count') --><!-- /ko --></span>
+            <span class="counter-label">
+            <!-- ko if: getCartParam('summary_count') -->
+                <!-- ko text: getCartParam('summary_count') --><!-- /ko -->
+                <!-- ko i18n: 'items' --><!-- /ko -->
+            <!-- /ko -->
+            </span>
+        </span>*/ ?>
+    </a>
+    <div class="chkbtn-wrap"><a href="<?php echo $checkoutUrl; ?>"><?php echo __("Checkout"); ?></a></div>
+    <?php if ($block->getIsNeedToDisplaySideBar()): ?>
+        <div class="block block-minicart"
+             data-role="dropdownDialog"
+             data-mage-init='{"dropdownDialog":{
+                "appendTo":"[data-block=minicart]",
+                "triggerTarget":".showcart",
+                "timeout": "2000",
+                "closeOnMouseLeave": false,
+                "closeOnEscape": true,
+                "triggerClass":"active",
+                "parentClass":"active",
+                "buttons":[]}}'>
+            <div id="minicart-content-wrapper" data-bind="scope: 'minicart_content'">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+            <?= $block->getChildHtml('minicart.addons') ?>
+        </div>
+    <?php else: ?>
+        <script>
+            require(['jquery'], function ($) {
+                $('a.action.showcart').click(function() {
+                    $(document.body).trigger('processStart');
+                });
+            });
+        </script>
+    <?php endif ?>
+    <script>
+        window.checkout = <?= /* @escapeNotVerified */ $block->getSerializedConfig() ?>;
+    </script>
+    <script type="text/x-magento-init">
+    {
+        "[data-block='minicart']": {
+            "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+        },
+        "*": {
+            "Magento_Ui/js/block-loader": "<?= /* @escapeNotVerified */ $block->getViewFileUrl('images/loader-1.gif') ?>"
+        }
+    }
+    </script>
+</div>

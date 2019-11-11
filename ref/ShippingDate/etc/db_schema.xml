@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table comment="ktpl_shippingdate_holiday Table" engine="innodb" name="ktpl_shippingdate_holiday" resource="default">
+		<column comment="Entity Id" identity="true" name="holiday_id" nullable="false" padding="6" unsigned="false" xsi:type="smallint"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="holiday_id"/>
+		</constraint>
+		<column length="255" name="holiday_name" nullable="true" xsi:type="varchar"/>
+		<column name="holiday_date" nullable="true" xsi:type="date"/>
+		<column default="1" name="enabled" nullable="true" xsi:type="smallint"/>
+		<column length="255" name="website_id" nullable="true" xsi:type="varchar"/>
+	</table>
+</schema>

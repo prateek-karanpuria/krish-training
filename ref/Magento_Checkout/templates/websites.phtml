@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php 
+$websiteId = $block->getCurrentWebsiteId(); 
+$websites = $block->getWebsites();
+
+if (!empty($websites)) { ?>
+<div class="sister-stores-wrap">
+	<div class="sister-title"><?= __("Shop our Sister Stores") ?></div>
+	<div class="sister-stores-logos"><?php
+		uasort(
+            $websites,
+            function ($websiteA,$websiteB) {
+                return $websiteA->getSortOrder() <=> $websiteB->getSortOrder();
+            }    
+        );
+	    foreach ($websites as $website):
+	    	if (!($websiteId == $website->getId())):
+	            foreach($website->getStores() as $store){
+	                $url = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WEB); ?>
+                    <a title="<?php echo $block->escapeHtml($website->getName()) ?>" href='<?php echo $url; ?>'>
+                    	<img src="<?php echo $block->getWebsiteLogoUrl($website->getId()); ?>">
+                    </a><?php
+	            }
+	        endif;
+   		endforeach; ?>		
+	</div>
+</div>
+<?php } ?>

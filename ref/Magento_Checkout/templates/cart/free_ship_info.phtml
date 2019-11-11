@@ -1,0 +1,30 @@
+<?php
+$helper = $this->helper('Ktpl\General\Helper\Data');
+$cutOffAmount = $helper->getFreeShippingCutoff();
+$tooltipText = $helper->getMinicartTooltipText();
+?>
+<div class="custome-cart">
+<div class="aditional-cart-info">
+    <div class="custom-cart-wrap" data-bind="scope: 'minicart_content'">
+        <div>
+            <!-- ko if: calculateFreeShippingAmount() > 0 -->
+            Add $<span data-bind="text: calculateFreeShippingAmount()"></span> for<br>Fast & FREE Shipping
+            <!-- /ko -->
+            <!-- ko ifnot: calculateFreeShippingAmount() > 0 -->
+            Fast & Free Shipping
+            <!-- /ko -->
+            <div class="tooltip"><?php echo $tooltipText; ?></div>
+        </div>
+    </div>
+</div>
+<div class="cart main actions">
+    <?php if ($block->getContinueShoppingUrl()): ?>
+        <a class="action continue"
+           href="<?= $block->escapeUrl($block->getContinueShoppingUrl()) ?>"
+           title="<?= $block->escapeHtml(__('Continue Shopping')) ?>">
+            <span><?= /* @escapeNotVerified */ __('Continue Shopping') ?></span>
+        </a>
+    <?php endif; ?>
+    <input type="hidden" value="" id="update_cart_action_container" data-cart-item-update=""/>
+</div>
+</div>

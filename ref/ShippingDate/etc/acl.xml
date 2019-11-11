@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Ktpl_ShippingDate::Holiday" sortOrder="10" title="Holiday">
+					<resource id="Ktpl_ShippingDate::Holiday_save" sortOrder="10" title="Save Holiday"/>
+					<resource id="Ktpl_ShippingDate::Holiday_delete" sortOrder="20" title="Delete Holiday"/>
+					<resource id="Ktpl_ShippingDate::Holiday_update" sortOrder="30" title="Update Holiday"/>
+					<resource id="Ktpl_ShippingDate::Holiday_view" sortOrder="40" title="View Holiday"/>
+				</resource>
+				<resource id="Magento_Backend::stores">
+					<resource id="Magento_Backend::stores_settings">
+						<resource id="Magento_Config::config">
+							<resource id="Ktpl_ShippingDate::config_ktpl_shippingdate" title="shipping_date"/>
+						</resource>
+					</resource>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>
