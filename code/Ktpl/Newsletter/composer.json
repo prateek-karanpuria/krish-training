@@ -1,0 +1,6 @@
+{
+    "name": "ktpl/newsletter",
+    "description": "Ktpl Newsletter Popup",
+    "type": "magento2-module",
+    "require": {}
+}

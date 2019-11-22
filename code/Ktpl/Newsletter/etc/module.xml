@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Module XML file
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/Module.xsd">
+    <module name="Ktpl_Newsletter" setup_version="1.0.0" />
+</config>

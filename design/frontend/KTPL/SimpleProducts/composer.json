@@ -1,6 +1,6 @@
 {
-    "name": "KTPL/SimpleProducts",
-    "description": "Simple Products theme",
+    "name": "ktpl/simple-products-front-theme",
+    "description": "Simple Products Front theme",
     "require": {
         "php": "7.2.0",
         "magento/framework": "*",
@@ -8,6 +8,8 @@
     },
     "type": "magento2-theme",
     "license": [
+        "OSL-3.0",
+        "AFL-3.0"
     ],
     "autoload": {
         "files": [
@@ -16,7 +18,8 @@
     },
     "authors": [
         {
-            "name": "KTPL"
+            "name": "Prateek Karanpuria",
+            "email": "prateek.karanpuria@krishtechnolabs.com"
         }
     ]
 }

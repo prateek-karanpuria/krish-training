@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Extension of module-newsletter/etc/adminhtml/system.xml file
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="newsletter" translate="label" type="text" sortOrder="110"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="general" translate="label" type="text" sortOrder="1"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+
+                <field id="popup_title" translate="label" type="text" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Popup Title</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+
+                <field id="popup_subtitle" translate="label" type="text" sortOrder="31"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Popup Sub-title</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+
+                <field id="popup_message" translate="label" type="textarea" sortOrder="32"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Popup Message</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+
+                <field id="newsletter_image" translate="label comment" type="image" sortOrder="34"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Newsletter Image</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">newsletter/store/image</upload_dir>
+                    <base_url type="media" scope_info="1">newsletter/store/image</base_url>
+                    <comment>
+                        <![CDATA[Image should be 162 x 216 Pixels(jpeg, gif, png)]]>
+                    </comment>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
