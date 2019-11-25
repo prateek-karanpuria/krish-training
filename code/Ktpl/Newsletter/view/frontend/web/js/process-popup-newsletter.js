@@ -27,12 +27,12 @@ define([
             modal(popup_newsletter_options, this.element);
 
             setTimeout(function() {
-               // if (!get_cookie('newsletter_popup_hide')) {
+                if (!get_cookie('newsletter_popup_hide')) {
                     self._setStyleCss();
                     self.element.modal('openModal').on('modalclosed', function() { 
-                      // set_cookie("newsletter_popup_hide", true, 1);
+                        set_cookie("newsletter_popup_hide", true, 1);
                     });
-                //}
+                }
             }, 2000);
 
             this.element.find('form').submit(function() {

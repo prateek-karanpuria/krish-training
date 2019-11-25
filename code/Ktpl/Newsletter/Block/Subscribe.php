@@ -7,10 +7,9 @@ namespace Ktpl\Newsletter\Block;
  * Extended from Magento\Newsletter\Block\Subscribe
  */
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Newsletter\Block\Subscribe as Newsletter_Subscribe;
 use Magento\Framework\View\Element\Template;
 use Ktpl\Newsletter\Helper\Data;
-
 /**
  * Subscribe class
  * @package Ktpl\Newsletter\Block
@@ -23,18 +22,15 @@ class Subscribe extends Template
     public $scopeConfig;
 
     public function __construct(
-        Data $scopeConfig
+        Template\Context $context,
+        Data $scopeConfig,
+        array $data = []
     )
     {
         $this->scopeConfig = $scopeConfig;
+        parent::__construct($context, $data);
     }
 
-    /**
-     * Retrieve form action url and set "secure" param to avoid confirm
-     * message when we submit form from secure page to unsecure
-     *
-     * @return string
-     */
     public function getFormActionUrl()
     {
         return $this->getUrl('newsletter/subscriber/new', ['_secure' => true]);

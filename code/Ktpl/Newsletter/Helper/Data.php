@@ -3,7 +3,6 @@
 namespace Ktpl\Newsletter\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
-use Magento\Store\Model\ScopeInterface;
 
 /**
  * Config class
@@ -15,7 +14,26 @@ class Data extends AbstractHelper
     /**
      * @constant(XML_PATH)
      */
-    const XML_PATH = 'newsletter/general';
+    const XML_PATH = 'newsletter/general/';
+
+    /**
+     * @constant
+     */
+    const NEWSLETTER_MEDIA_DIRECTORY = 'newsletter/store/image/';
+
+    /**
+     * @var Store based media URL
+     */
+    public $mediaUrl;
+
+    public function __construct(
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Magento\Framework\App\Helper\Context $context
+    )
+    {
+        $this->mediaUrl = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+        parent::__construct($context);
+    }
 
     /**
      * [getConfigValue description]
@@ -25,17 +43,6 @@ class Data extends AbstractHelper
      */
     public function getConfigValue($field, $storeId = null)
     {
-        return $this->scopeConfig->getValue($field, ScopeInterface::SCOPE_STORE, $storeId);
-    }
-
-    /**
-     * [getGeneralConfig description]
-     * @param  [type] $code    [description]
-     * @param  [type] $storeId [description]
-     * @return [type]          [description]
-     */
-    public function getGeneralConfig($code, $storeId = null)
-    {
-        return $this->getConfigValue(self::XML_PATH . $code, $storeId);
+        return $this->scopeConfig->getValue(self::XML_PATH.$field, \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $storeId);
     }
 }
