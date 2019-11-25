@@ -17,7 +17,7 @@ define([
                 popup_newsletter_options = {
                     type: 'popup',
                     responsive: true,
-                    innerScroll: false,
+                    innerScroll: true,
                     title: this.options.popupTitle,
                     buttons: false,
                     modalClass : 'popup-newsletter',
@@ -30,12 +30,13 @@ define([
                 if (!get_cookie('newsletter_popup_hide')) {
                     self._setStyleCss();
                     self.element.modal('openModal').on('modalclosed', function() { 
-                        set_cookie("newsletter_popup_hide", true, 1);
+                        set_cookie("newsletter_popup_hide", true, 1440); // Set cookie for 1 day = 1440 min
                     });
                 }
             }, 2000);
 
             this.element.find('form').submit(function() {
+
                 if ($(this).validation('isValid')) {
                     $.ajax({
                         url: $(this).attr('action'),
@@ -46,20 +47,37 @@ define([
                         showLoader: true
                     }).done(function (data) {
                         self.element.find('.messages .message div').html(data.message);
+
                         if (data.error) {
                             self.element.find('.messages .message').addClass('message-error error');
-                        } else {
+                        }
+                        else {
                             self.element.find('.messages .message').addClass('message-success success');
+
                             setTimeout(function() {
                                 self.element.modal('closeModal');
+
+                                if (!get_cookie('newsletter_popup_hide')) {
+                                    set_cookie("newsletter_popup_hide", true, 1440); // Set cookie for 1 day = 1440 min
+                                }
+
                             }, 1000);
                         }
+
                         self.element.find('.messages').show();
+
                         setTimeout(function() {
                             self.element.find('.messages').hide();
                         }, 5000);
-                    });
+                    }).fail(function(data) {
+                        // self.element.find('.messages .message div').html(data.message);
+
+                        // if (data.error) {
+                        //     self.element.find('.messages .message').addClass('message-error error');
+                        // }
+                    })
                 }
+
                 return false;
             });
 

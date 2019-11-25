@@ -42,7 +42,7 @@
                     <upload_dir config="system/filesystem/media" scope_info="1">newsletter/store/image</upload_dir>
                     <base_url type="media" scope_info="1">newsletter/store/image</base_url>
                     <comment>
-                        <![CDATA[Image should be 162 x 216 Pixels(jpeg, gif, png)]]>
+                        <![CDATA[Image should be of 162 x 216 pixels (jpeg, gif, png)]]>
                     </comment>
                     <depends>
                         <field id="active">1</field>

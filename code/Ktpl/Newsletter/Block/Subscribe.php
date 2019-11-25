@@ -7,9 +7,9 @@ namespace Ktpl\Newsletter\Block;
  * Extended from Magento\Newsletter\Block\Subscribe
  */
 
-use Magento\Newsletter\Block\Subscribe as Newsletter_Subscribe;
 use Magento\Framework\View\Element\Template;
 use Ktpl\Newsletter\Helper\Data;
+
 /**
  * Subscribe class
  * @package Ktpl\Newsletter\Block
