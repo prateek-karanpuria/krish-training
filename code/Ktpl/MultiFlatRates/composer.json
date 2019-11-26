@@ -1,0 +1,6 @@
+{
+    "name": "ktpl/multiflatshippingrate",
+    "description": "Ktpl Multi Flat Shipping Rate Popup",
+    "type": "magento2-module",
+    "require": {}
+}

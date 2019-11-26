@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Extension of module-newsletter/etc/adminhtml/system.xml file
+ * Referenced from module-newsletter/etc/adminhtml/system.xml file
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">

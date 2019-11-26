@@ -4,7 +4,7 @@ namespace Ktpl\Newsletter\Block;
 
 /**
  * Subscribe form block class
- * Extended from Magento\Newsletter\Block\Subscribe
+ * Referenced from Magento\Newsletter\Block\Subscribe
  */
 
 use Magento\Framework\View\Element\Template;

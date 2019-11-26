@@ -47,11 +47,11 @@ define([
                         showLoader: true
                     }).done(function (data) {
                         self.element.find('.messages .message div').html(data.message);
+                        self.element.find('.messages').show();
 
                         if (data.error) {
                             self.element.find('.messages .message').addClass('message-error error');
-                        }
-                        else {
+                        } else {
                             self.element.find('.messages .message').addClass('message-success success');
 
                             setTimeout(function() {
@@ -64,11 +64,10 @@ define([
                             }, 1000);
                         }
 
-                        self.element.find('.messages').show();
-
                         setTimeout(function() {
                             self.element.find('.messages').hide();
                         }, 5000);
+
                     }).fail(function(data) {
                         // self.element.find('.messages .message div').html(data.message);
 

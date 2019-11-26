@@ -1,7 +1,7 @@
 ## Ktpl Newsletter Magento 2 module
 
-Custom newsletter popup extension based on backend settings
-
+- Custom newsletter popup extension based on backend settings.
+- This module is built by referencing Magento 2 module-newsletter.
 
 ## Prerequisites
 
