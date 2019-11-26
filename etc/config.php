@@ -242,6 +242,7 @@ return [
         'Mageplaza_Smtp' => 1,
         'Mastering_Sample' => 1,
         'OrangeCompany_RoutingExample' => 1,
+        'PHPCuong_Newsletter' => 0,
         'Practice_Test' => 1,
         'SussexDev_Sample' => 0,
         'Temando_Shipping' => 1,

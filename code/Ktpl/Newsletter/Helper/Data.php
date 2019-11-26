@@ -5,8 +5,8 @@ namespace Ktpl\Newsletter\Helper;
 use Magento\Framework\App\Helper\AbstractHelper;
 
 /**
- * Config class
- * @package  Training\Testimonial\Controller\Index
+ * Data class
+ * @package Ktpl\Newsletter\Controller\Index
  */
 class Data extends AbstractHelper
 {

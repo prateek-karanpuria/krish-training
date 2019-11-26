@@ -9,7 +9,7 @@
     <body>
         <referenceContainer name="content.top">
             <block class="Ktpl\Newsletter\Block\Subscribe" name="form.popup.subscribe"
-                   as="form_popup_subscribe" before="-" template="Ktpl_Newsletter::subscribe.phtml"
+                   as="form_popup_subscribe" before="-" template="Ktpl_Newsletter::popup-subscribe.phtml"
                    ifconfig="newsletter/general/active" cacheable="false"/>
         </referenceContainer>
     </body>

@@ -1,3 +1,9 @@
+/*
+* @Author: Ngo Quang Cuong
+* @Date:   2017-10-29 22:28:37
+* @Last Modified by:   https://www.facebook.com/giaphugroupcom
+* @Last Modified time: 2017-10-30 00:08:01
+*/
 define([
     'jquery',
     'Magento_Ui/js/modal/modal',
@@ -6,7 +12,7 @@ define([
 ], function ($, modal) {
     'use strict';
 
-    $.widget('newsletter_popup.processPopupNewsletter', {
+    $.widget('phpcuong.processPopupNewsletter', {
 
         /**
          *
@@ -20,23 +26,17 @@ define([
                     innerScroll: true,
                     title: this.options.popupTitle,
                     buttons: false,
-                    modalClass : 'popup-newsletter',
-                    clickableOverlay: false // Prevent popup close on Esc key or background click
+                    modalClass : 'popup-newsletter'
                 };
 
             modal(popup_newsletter_options, this.element);
 
             setTimeout(function() {
-                if (!get_cookie('newsletter_popup_hide')) {
-                    self._setStyleCss();
-                    self.element.modal('openModal').on('modalclosed', function() { 
-                        set_cookie("newsletter_popup_hide", true, 1440); // Set cookie for 1 day = 1440 min
-                    });
-                }
-            }, 2000);
+                self._setStyleCss();
+                self.element.modal('openModal');
+            }, 3000);
 
             this.element.find('form').submit(function() {
-
                 if ($(this).validation('isValid')) {
                     $.ajax({
                         url: $(this).attr('action'),
@@ -47,26 +47,20 @@ define([
                         showLoader: true
                     }).done(function (data) {
                         self.element.find('.messages .message div').html(data.message);
-
                         if (data.error) {
                             self.element.find('.messages .message').addClass('message-error error');
                         } else {
                             self.element.find('.messages .message').addClass('message-success success');
-
                             setTimeout(function() {
                                 self.element.modal('closeModal');
                             }, 1000);
                         }
-
                         self.element.find('.messages').show();
-
                         setTimeout(function() {
                             self.element.find('.messages').hide();
                         }, 5000);
-
                     });
                 }
-
                 return false;
             });
 
@@ -102,36 +96,5 @@ define([
         }
     });
 
-    function get_cookie(cookie)
-    {
-        var cookie_name = cookie + "=";
-        var cookies = document.cookie.split(';');
-
-        for (var key = 0; key < cookies.length; key++)
-        {
-            var cookie_value = cookies[key];
-
-            while (cookie_value.charAt(0) == ' ')
-            {
-                cookie_value = cookie_value.substring(1);
-            }
-
-            if (cookie_value.indexOf(cookie_name) == 0)
-            {
-                return cookie_value.substring(cookie_name.length, cookie_value.length);
-            }
-        }
-
-      return "";
-    }
-
-    function set_cookie(cookie_name, cookie_value, expiring_min)
-    {
-        var d = new Date();
-        d.setTime(d.getTime() + (expiring_min*60*1000));
-        var expires = "expires="+d.toUTCString();
-        document.cookie = cookie_name + "=" + cookie_value + "; " + expires;
-    }
-
-    return $.newsletter_popup.processPopupNewsletter;
+    return $.phpcuong.processPopupNewsletter;
 });

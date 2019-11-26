@@ -3,7 +3,6 @@
 namespace Ktpl\Newsletter\Block;
 
 /**
- * Subscribe form block class
  * Referenced from Magento\Newsletter\Block\Subscribe
  */
 
@@ -21,6 +20,12 @@ class Subscribe extends Template
      */
     public $scopeConfig;
 
+    /**
+     * [__construct description]
+     * @param Template\Context $context
+     * @param Data             $scopeConfig
+     * @param array            $data
+     */
     public function __construct(
         Template\Context $context,
         Data $scopeConfig,
@@ -31,8 +36,12 @@ class Subscribe extends Template
         parent::__construct($context, $data);
     }
 
+    /**
+     * [getFormActionUrl description]
+     * @return form action URL
+     */
     public function getFormActionUrl()
     {
-        return $this->getUrl('newsletter/subscriber/new', ['_secure' => true]);
+        return $this->getUrl('newsletter_popup/subscriber/new', ['_secure' => true]);
     }
 }
