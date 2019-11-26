@@ -2,13 +2,5 @@
     "name": "ktpl/newsletter",
     "description": "Ktpl Newsletter Popup",
     "type": "magento2-module",
-    "require": {},
-    "autoload": {
-        "files": [
-            "registration.php"
-        ],
-        "psr-4": {
-            "PHPCuong\\Newsletter\\": ""
-        }
-    }
+    "require": {}
 }
