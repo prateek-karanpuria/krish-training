@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * DI XML file
+ * @author KTPL
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Quote\Model\ShippingMethodManagement">
+        <plugin name="estimateByExtendedAddressBeforePlugin"
+                type="Ktpl\CityDropdown\Plugin\ShippingMethodManagementPlugin"
+                sortOrder="5"
+                disabled="false" />
+    </type>
+
+    <preference for="Magento\Quote\Model\ShippingMethodManagement"
+                type="Ktpl\CityDropdown\Model\ShippingMethodManagement"/>
+
+    <type name="Magento\Quote\Model\GuestCart\GuestShippingMethodManagement">
+        <plugin name="estimateByExtendedAddressBeforePlugin"
+                type="Ktpl\CityDropdown\Plugin\GuestShippingMethodManagementPlugin"
+                sortOrder="5"
+                disabled="false" />
+    </type>
+</config>

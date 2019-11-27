@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Schema declaration for generating custom city table
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="ktpl_city" engine="innodb" resource="default" comment="City">
+        <column xsi:type="int" name="entity_id" padding="11" unsigned="true" nullable="false" identity="true"
+                comment="City Id"/>
+        <column xsi:type="varchar" name="arabic_city_name" length="255" nullable="true"
+                comment="Arabic City Name"/>
+        <column xsi:type="varchar" name="english_city_name" length="255" nullable="true"
+                comment="English City Name"/>
+        <column xsi:type="timestamp" name="added_on" nullable="false" default="CURRENT_TIMESTAMP" comment="Added On"/>
+        <column xsi:type="timestamp" name="updated_on" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated On"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY_ID">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="INDEX_ARABIC_CITY_NAME" indexType="btree">
+            <column name="arabic_city_name"/>
+        </index>
+    </table>
+</schema>

@@ -1,0 +1,6 @@
+{
+    "name": "ktpl/city-dropdown",
+    "description": "City Dropdown module",
+    "type": "magento2-module",
+    "require": {}
+}

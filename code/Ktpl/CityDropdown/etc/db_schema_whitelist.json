@@ -1,0 +1,17 @@
+{
+    "ktpl_city": {
+        "column": {
+            "entity_id": true,
+            "arabic_city_name": true,
+            "english_city_name": true,
+            "added_on": true,
+            "updated_on": true
+        },
+        "index": {
+            "KTPL_CITY_ARABIC_CITY_NAME": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Module's setup name & version xml file
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/config.xsd">
+    <module name="Ktpl_CityDropdown" setup_version="1.0.0" />
+</config>
