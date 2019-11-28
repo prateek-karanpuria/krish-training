@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * DI XML file
+ * @author KTPL
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\CatalogSearch\Block\Result">
+        <plugin name="catalogSearchProductSortAsc"
+                type="Ktpl\CatalogSearchProductSortAsc\Plugin\CatalogSearchProductSortAscPlugin"
+                sortOrder="10"
+                disabled="false" />
+    </type>
+</config>
