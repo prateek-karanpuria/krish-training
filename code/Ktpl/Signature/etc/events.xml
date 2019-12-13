@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Ktpl
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!--
+    /** 
+     * This event will be used to validate customer signature &
+     * save appropriate customer signature information in order table at time of placing of order.
+     */
+    -->
+    <event name="sales_model_service_quote_submit_before">
+        <observer name="ktpl_signature_sales_model_service_quote_submit_before"
+                  instance="Ktpl\Signature\Model\Observer\SalesModelServiceQuoteSubmitBeforeObserver"/>
+    </event>
+
+    <!--
+    /** 
+     * This event will be used to validate customer signature &
+     * save appropriate customer signature information in order table.
+     */
+    -->
+    <event name="sales_quote_save_before">
+        <observer name="ktpl_signature_sales_quote_save_before"
+                  instance="Ktpl\Signature\Model\Observer\SalesQuoteSaveBeforeObserver"/>
+    </event>
+
+    <!--
+    /** 
+     * This event will be used to validate customer signature &
+     * save appropriate customer signature information in invoice table.
+     *
+     * This is an alternative of M1's event - sales_order_invoice_save_before
+     *
+     * sales_order_invoice_pay is not proper replacement of M1::sales_order_invoice_save_before event
+     * as it may not get called sometimes.
+     *
+     * Ref: https://magento.stackexchange.com/questions/96589/best-way-to-implement-observer-for-invoiced-order-in-1-7
+     */
+    -->
+    <event name="sales_order_invoice_register">
+        <observer name="ktpl_signature_sales_order_invoice_register"
+                  instance="Ktpl\Signature\Model\Observer\SalesOrderInvoiceRegisterObserver"/>
+    </event>
+
+    <!--
+    /** 
+     * This event will be used to validate customer signature &
+     * save appropriate customer signature information in shipment table.
+     *
+     * This is an alternative of M1's event - sales_order_invoice_save_before
+     */
+    -->
+    <event name="sales_order_shipment_save_after">
+        <observer name="ktpl_signature_sales_order_shipment_save_after"
+                  instance="Ktpl\Signature\Model\Observer\SalesOrderShipmentSaveAfterObserver"/>
+    </event>
+</config>

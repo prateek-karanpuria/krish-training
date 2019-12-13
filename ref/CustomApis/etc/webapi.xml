@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/hello/name/:name" method="GET">
+        <service class="Ktpl\CustomApis\Api\CrossSellInterface" method="name"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/crosssell/products/:quote" method="GET">
+        <service class="Ktpl\CustomApis\Api\CrossSellInterface" method="getCrossByQuote"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+     <route url="/V1/crosssell/product/:quoteId" method="GET">
+        <service class="Ktpl\CustomApis\Api\CrossSellInterface" method="getCrossProducts"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/reorder/:orderId" method="POST">
+        <service class="Ktpl\CustomApis\Api\ReorderInterface" method="createReorder"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+</routes>

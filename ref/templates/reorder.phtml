@@ -1,0 +1,44 @@
+<?php 
+$isLoggedIn = $block->isLoggedIn(); ?>
+
+<li class="reorder-wrap nav item<?php echo ($isLoggedIn) ? '' : ' customlink'; ?>">
+    <a href="javascript:void(0)" class="re-order login"><span><?php echo __("Reorder"); ?></span>
+    </a>
+    <?php if ($isLoggedIn) { ?>
+    	<div class="reorder-wrapper autho-reorder-wrapper" style="display: none;"> 
+	    	<div class="reorder-label"><span><?= __("Easy Way to Order Faster"); ?></span></div>
+		    <ul class="reorder submenu">
+		    	<li class="nav item subitem"><a href="#"><?= __("Frequently Purchased"); ?></a></li>
+		    	<li class="nav item subitem"><a href="<?= $this->getUrl('wishlist'); ?>"><?= __("My Favorites"); ?></a></li>
+		    	<li class="nav item subitem"><a href="<?= $this->getUrl('quickorder'); ?>"><?= __("Order by Number"); ?></a></li>
+		    	<li class="nav item subitem"><a href="<?= $this->getUrl('sales/order/history'); ?>"><?= __("My Order History"); ?></a></li>
+		    	<li class="nav item subitem"><a href="<?= $this->getUrl('subscribenow/account/profile'); ?>"><?= __("My Scheduled Auto Restock"); ?></a></li>
+		    </ul>
+	    </div><?php
+    } ?>
+</li>
+<?php
+if ($isLoggedIn) { ?>
+	<script>
+	    require([
+	        'jquery'
+		], function ($) {
+			$(".nav .re-order").click(function(e){
+				if ($(".reorder-wrapper").is(":visible")) {
+					$(".reorder-wrapper").hide();
+					$(this).parent().removeClass("active");
+				}else{
+					$(this).parent().addClass("active");
+					$(".reorder-wrapper").show();
+				}
+			});
+
+			$(document).mouseup(function (e) { 
+	            if ($(e.target).closest(".reorder-wrap").length === 0) { 
+	                $(".reorder-wrapper").hide(); 
+					$(".reorder-wrapper").parent().removeClass("active");
+	            } 
+        	}); 
+	    });
+	</script>
+<?php } ?>

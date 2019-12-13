@@ -21,8 +21,8 @@ app/code/Ktpl/Newsletter/
 And run the following commands in the project root of your M2 installation
 
 ```
-bin/magento module:enable Ktpl_Newsletter
-bin/magento setup:upgrade
+php bin/magento module:enable Ktpl_Newsletter
+php bin/magento setup:upgrade
 
 ```
 

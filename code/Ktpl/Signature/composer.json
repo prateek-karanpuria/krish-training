@@ -1,0 +1,6 @@
+{
+    "name": "ktpl/skydailywebshipments",
+    "description": "Ktpl Skydailywebshipments",
+    "type": "magento2-module",
+    "require": {}
+}

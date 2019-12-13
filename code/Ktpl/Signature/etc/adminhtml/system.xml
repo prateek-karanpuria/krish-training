@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Referenced from vendor/magento/module-checkout/etc/adminhtml/system.xml
+ *
+ * Here given sort order as '1', same as 'Checkout Options' as to load this section after 'Checkout Options' section.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="checkout" translate="label" type="text" sortOrder="305" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="signature" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Customer Signature</label>
+
+                <field id="require_signature_text" translate="label" type="text" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Required signature Text</label>
+                </field>
+
+                <field id="no_require_signature_text" translate="label" type="text" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>No required signature Text</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

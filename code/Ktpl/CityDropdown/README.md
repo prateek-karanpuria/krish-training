@@ -21,8 +21,8 @@ app/code/Ktpl/CityDropdown/
 And run the following commands in the root of your M2 installation
 
 ```
-bin/magento module:enable Ktpl_CityDropdown
-bin/magento setup:upgrade
+php bin/magento module:enable Ktpl_CityDropdown
+php bin/magento setup:upgrade
 
 ```
 

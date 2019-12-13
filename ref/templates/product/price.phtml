@@ -1,0 +1,289 @@
+<?php
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+$_product = $block->getProduct();
+$isHomeFirst = $block->getIsHomeFirst();
+$isHomePage = $block->getIsHomePage();
+$whyPayPrice = $_product->getWhyPay();
+if(empty($whyPayPrice)){
+    $generalHelper = $this->helper('Ktpl\General\Helper\Data');
+    $_product = $generalHelper->getProductById($_product->getId()); 
+    $whyPayPrice = $_product->getWhyPay();
+}
+if ($_product->getTypeId() === \Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE){
+    /* if product is type grouped condition start */
+    $groupedObj = $_product->getPriceInfo()->getPrice('final_price');
+    $minimalPrice = $groupedObj->getMinimalPrice()->getValue();
+    $formattedMinimalPrice = $priceHelper->currency($minimalPrice, true, false);
+    
+    if($isHomePage){    
+        /* if page is home page and merry deal block condition start */
+        $childProductCollection = $_product->getTypeInstance()->getAssociatedProducts($_product);
+        foreach ($childProductCollection as $key => $childProduct) {
+            $_product = $block->getProductById($childProduct->getId());
+            $_whyPayPrice = $_product->getWhyPay();
+            $finalPrice = $_product->getPriceInfo()->getPrice('final_price')->getValue();
+            $regularPrice = $_product->getPriceInfo()->getPrice('regular_price')->getValue();
+            $formattedFinalPrice = $priceHelper->currency($finalPrice, true, false);
+            $formattedRegularPrice = $priceHelper->currency($regularPrice, true, false); 
+            $formattedWhyPayPrice = $priceHelper->currency($_whyPayPrice, true, false);
+            break;
+        }
+
+        if ($finalPrice < $regularPrice) {
+            /* Discount price condition start */
+            $saleLabel = ($isHomeFirst == true) ? 'DEAL PRICE': 'SALE';
+            $_savePercent = 100 - round(($finalPrice / $regularPrice) * 100); ?>
+            <div class="price-box price-final_price special-price-wrap" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+                <span class="special-price deal-price">
+                    <span class="price-container price-final_price tax weee">
+                            <span class="price-label"><?php echo __($saleLabel); ?></span>
+                            <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $finalPrice; ?>" data-price-type="finalPrice" class="price-wrapper ">
+                                <span class="price"><?= $formattedFinalPrice; ?></span>
+                            </span>    
+                    </span>
+                </span>
+                <span class="old-price">
+                    <span class="price-container price-final_price tax weee">
+                        <span class="price-label"><?php echo __("Reg."); ?></span>
+                        <span id="old-price-<?= $_product->getId(); ?>" data-price-amount="<?= $regularPrice; ?>" data-price-type="oldPrice" class="price-wrapper ">
+                            <span class="price"><?= $formattedRegularPrice; ?></span>
+                        </span>
+                    </span>
+                </span>
+                <p class="yousave">
+                    <span class="price-label label"><?= __("SAVE: "); ?></span>
+                    <span class="price"><?php echo $_savePercent; ?>%</span>
+                </p>
+            </div><?php
+            /* Discount price condition end */
+        }elseif ($_whyPayPrice > $regularPrice) { 
+            /* Why Pay discount price condition start */
+            $_savePercent = 100 - round(($regularPrice / $_whyPayPrice) * 100); ?>
+            <div class="price-box price-final_price whypay-price-wrap" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+                <span class="regular-price deal-price">
+                    <span class="price-container price-final_price tax weee"><?php
+                        if ($_product->getClearance()) { ?>
+                            <span class="price-label"><?php echo __("CLEARANCE"); ?></span><?php 
+                        } ?>
+                        <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $finalPrice; ?>" data-price-type="finalPrice" class="price-wrapper ">
+                            <span class="price"><?= $formattedFinalPrice; ?></span>
+                        </span>    
+                    </span>
+                </span>
+                <span class="old-price">
+                    <span class="price-container price-final_price tax weee">
+                        <span class="price-label"><?php echo __("Reg."); ?></span>
+                        <span id="old-price-<?= $_product->getId(); ?>" data-price-amount="<?= $_whyPayPrice; ?>" data-price-type="oldPrice" class="price-wrapper ">
+                            <span class="price"><?= $formattedWhyPayPrice; ?></span>
+                        </span>
+                    </span>
+                </span>
+                <p class="yousave">
+                    <span class="price-label label"><?= __("SAVE: "); ?></span>
+                    <span class="price"><?php echo $_savePercent; ?>%</span>
+                </p>
+            </div><?php
+            /* Why Pay discount price condition end */
+        }else{ 
+            /* Regular price condition start */ ?>
+            <div class="price-box price-final_price regular-price-wrap deal-price" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+                <span class="price-container price-final_price tax weee"><?php
+                if ($_product->getClearance()) { ?>
+                    <span class="price-label"><?php echo __("CLEARANCE"); ?></span><?php 
+                } ?>
+                    <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $finalPrice; ?>" class="price-wrapper ">
+                        <span class="price"><?= $formattedFinalPrice; ?></span>
+                    </span>
+                </span>
+            </div><?php
+            /* Regular price condition end */ 
+        } 
+        /* if page is home page and merry deal block condition end */
+    }else{
+    /* if page is not home page and merry deal block condition start */ ?>
+        <div class="grp-parent-wrap grp-parent-id-<?= $_product->getId(); ?>">
+            <div class="price-box price-final_price grp-parent-product-<?= $_product->getId(); ?>" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+                <div class="minimal-price">
+                    <span class="price-label"><?php echo __("As low as:"); ?></span>
+                    <span class="price-container tax weee">
+                        <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $minimalPrice; ?>" data-price-type="" class="price-wrapper ">
+                            <span class="price"><?= $formattedMinimalPrice; ?></span>
+                        </span>
+                    </span>
+                </div>
+            </div><?php
+
+        $childProductCollection = $_product->getTypeInstance()->getAssociatedProducts($_product);
+        foreach ($childProductCollection as $key => $childProduct) {
+            $_product = $block->getProductById($childProduct->getId());
+            $_whyPayPrice = $_product->getWhyPay();
+            $finalPrice = $_product->getPriceInfo()->getPrice('final_price')->getValue();
+            $regularPrice = $_product->getPriceInfo()->getPrice('regular_price')->getValue();
+            $formattedFinalPrice = $priceHelper->currency($finalPrice, true, false);
+            $formattedRegularPrice = $priceHelper->currency($regularPrice, true, false); 
+            $formattedWhyPayPrice = $priceHelper->currency($_whyPayPrice, true, false); 
+
+            if ($finalPrice < $regularPrice) {
+                /* Discount price condition start */
+                $saleLabel = ($isHomeFirst == true) ? 'DEAL PRICE': 'SALE';
+                $_savePercent = 100 - round(($finalPrice / $regularPrice) * 100); ?>
+                <div class="price-box price-final_price special-price-wrap grp-hidden-wrap grp-hidden-price-<?= $_product->getId(); ?>" style="display: none;" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+                    <span class="special-price deal-price">
+                        <span class="price-container price-final_price tax weee">
+                                <span class="price-label"><?php echo __($saleLabel); ?></span>
+                                <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $finalPrice; ?>" data-price-type="finalPrice" class="price-wrapper ">
+                                    <span class="price"><?= $formattedFinalPrice; ?></span>
+                                </span>    
+                        </span>
+                    </span>
+                    <span class="old-price">
+                        <span class="price-container price-final_price tax weee">
+                            <span class="price-label"><?php echo __("Reg."); ?></span>
+                            <span id="old-price-<?= $_product->getId(); ?>" data-price-amount="<?= $regularPrice; ?>" data-price-type="oldPrice" class="price-wrapper ">
+                                <span class="price"><?= $formattedRegularPrice; ?></span>
+                            </span>
+                        </span>
+                    </span>
+                    <p class="yousave">
+                        <span class="price-label label"><?= __("SAVE: "); ?></span>
+                        <span class="price"><?php echo $_savePercent; ?>%</span>
+                    </p>
+                </div><?php
+                /* Discount price condition end */
+            }elseif ($_whyPayPrice > $regularPrice) { 
+                /* Why Pay discount price condition start */
+                $_savePercent = 100 - round(($regularPrice / $_whyPayPrice) * 100); ?>
+                <div class="price-box price-final_price whypay-price-wrap grp-hidden-wrap grp-hidden-price-<?= $_product->getId(); ?>" style="display: none;" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+                    <span class="old-price">
+                        <span class="price-container price-final_price tax weee">
+                            <span class="price-label"><?php echo __("Reg."); ?></span>
+                            <span id="old-price-<?= $_product->getId(); ?>" data-price-amount="<?= $_whyPayPrice; ?>" data-price-type="oldPrice" class="price-wrapper ">
+                                <span class="price"><?= $formattedWhyPayPrice; ?></span>
+                            </span>
+                        </span>
+                    </span>
+                    <p class="yousave">
+                        <span class="price-label label"><?= __("SAVE: "); ?></span>
+                        <span class="price"><?php echo $_savePercent; ?>%</span>
+                    </p>
+                </div><?php
+                /* Why Pay discount price condition end */
+            }else{ 
+                /* Regular price condition start */ ?>
+                <div class="price-box price-final_price regular-price-wrap grp-hidden-wrap grp-hidden-price-<?= $_product->getId(); ?>" style="display: none;" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+                    <span class="price-container price-final_price tax weee">
+                        <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $finalPrice; ?>" class="price-wrapper ">
+                            <span class="price"><?= $formattedFinalPrice; ?></span>
+                        </span>
+                    </span>
+                </div><?php
+                /* Regular price condition end */ 
+            }
+
+        } ?>
+        </div>
+        <script type="text/javascript">
+            require([
+                'jquery'
+            ], function ($) {
+                $(document).ready(function(e){                
+                    $(".options-wrap .grouped_options").change(function(e){
+                        var optionId = $(this).val();
+                        var productId = $(this).attr("data-productid");
+                        if (optionId) {
+                            $(".product-option-"+productId+" .qty-box:not(#super_group_"+optionId+") .grouped_qty").val("0");
+                            $("#super_group_"+optionId+" .grouped_qty").val("");
+                            $(".grp-parent-id-"+productId+" .grp-hidden-wrap").hide();
+                            $(".grp-parent-id-"+productId+" .grp-parent-product-"+productId).hide();
+                            $(".grp-parent-id-"+productId+" .grp-hidden-price-"+optionId).show();
+                        }else{
+                            $(".grp-parent-id-"+productId+" .grp-hidden-wrap").hide();
+                            $(".grp-parent-id-"+productId+" .grp-parent-product-"+productId).show();
+                        }
+                    });
+                });
+            });
+        </script><?php
+
+        /* if page is not home page and merry deal block condition end */   
+    }
+    /* if product is type grouped condition end */
+}else{
+    /* if product is type simple condition start */
+    $finalPrice = $_product->getPriceInfo()->getPrice('final_price')->getValue();
+    $regularPrice = $_product->getPriceInfo()->getPrice('regular_price')->getValue();
+    $formattedFinalPrice = $priceHelper->currency($finalPrice, true, false);
+    $formattedRegularPrice = $priceHelper->currency($regularPrice, true, false); 
+    $formattedWhyPayPrice = $priceHelper->currency($whyPayPrice, true, false); ?>
+
+    <?php if ($finalPrice < $regularPrice) {
+        /* Discount price condition start */
+        $saleLabel = ($isHomeFirst == true) ? 'DEAL PRICE': 'SALE';
+        $_savePercent = 100 - round(($finalPrice / $regularPrice) * 100); ?>
+        <div class="price-box price-final_price special-price-wrap" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+            <span class="special-price deal-price">
+                <span class="price-container price-final_price tax weee">
+                        <span class="price-label"><?php echo __($saleLabel); ?></span>
+                        <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $finalPrice; ?>" data-price-type="finalPrice" class="price-wrapper ">
+                            <span class="price"><?= $formattedFinalPrice; ?></span>
+                        </span>    
+                </span>
+            </span>
+            <span class="old-price">
+                <span class="price-container price-final_price tax weee">
+                    <span class="price-label"><?php echo __("Reg."); ?></span>
+                    <span id="old-price-<?= $_product->getId(); ?>" data-price-amount="<?= $regularPrice; ?>" data-price-type="oldPrice" class="price-wrapper ">
+                        <span class="price"><?= $formattedRegularPrice; ?></span>
+                    </span>
+                </span>
+            </span>
+            <p class="yousave">
+                <span class="price-label label"><?= __("SAVE: "); ?></span>
+                <span class="price"><?php echo $_savePercent; ?>%</span>
+            </p>
+        </div><?php
+        /* Discount price condition end */
+    }elseif ($whyPayPrice > $regularPrice) { 
+        /* Why Pay discount price condition start */
+        $_savePercent = 100 - round(($regularPrice / $whyPayPrice) * 100); ?>
+        <div class="price-box price-final_price whypay-price-wrap" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+            <span class="regular-price deal-price">
+                <span class="price-container price-final_price tax weee"><?php
+                    if ($_product->getClearance()) { ?>
+                        <span class="price-label"><?php echo __("CLEARANCE"); ?></span><?php 
+                    } ?>
+                    <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $finalPrice; ?>" data-price-type="finalPrice" class="price-wrapper ">
+                        <span class="price"><?= $formattedFinalPrice; ?></span>
+                    </span>    
+                </span>
+            </span>
+            <span class="old-price">
+                <span class="price-container price-final_price tax weee">
+                    <span class="price-label"><?php echo __("Reg."); ?></span>
+                    <span id="old-price-<?= $_product->getId(); ?>" data-price-amount="<?= $whyPayPrice; ?>" data-price-type="oldPrice" class="price-wrapper ">
+                        <span class="price"><?= $formattedWhyPayPrice; ?></span>
+                    </span>
+                </span>
+            </span>
+            <p class="yousave">
+                <span class="price-label label"><?= __("SAVE: "); ?></span>
+                <span class="price"><?php echo $_savePercent; ?>%</span>
+            </p>
+        </div><?php
+        /* Why Pay discount price condition end */
+    }else{ 
+        /* Regular price condition start */ ?>
+        <div class="price-box price-final_price deal-price regular-price-wrap" data-role="priceBox" data-product-id="<?= $_product->getId(); ?>" data-price-box="product-id-<?= $_product->getId(); ?>">
+            <span class="price-container price-final_price tax weee"><?php
+                if ($_product->getClearance()) { ?>
+                    <span class="price-label"><?php echo __("CLEARANCE"); ?></span><?php 
+                } ?>
+                <span id="product-price-<?= $_product->getId(); ?>" data-price-amount="<?= $finalPrice; ?>" class="price-wrapper ">
+                    <span class="price"><?= $formattedFinalPrice; ?></span>
+                </span>
+            </span>
+        </div><?php
+        /* Regular price condition end */ 
+    } 
+    /* if product is type simple condition end */
+} 

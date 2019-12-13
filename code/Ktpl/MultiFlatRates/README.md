@@ -22,8 +22,8 @@ app/code/Ktpl/MultiFlatRates/
 And run the following commands in the project root of your M2 installation
 
 ```
-bin/magento module:enable Ktpl_MultiFlatRates
-bin/magento setup:upgrade
+php bin/magento module:enable Ktpl_MultiFlatRates
+php bin/magento setup:upgrade
 
 ```
 
