@@ -239,6 +239,7 @@ return [
         'Ktpl_Newsletter' => 1,
         'Ktpl_Signature' => 1,
         'Ktpl_Skydailywebshipments' => 1,
+        'Ktpl_SpranksConfigurableTierPrices' => 1,
         'Magento_PaypalReCaptcha' => 1,
         'MSP_TwoFactorAuth' => 1,
         'Mageplaza_Core' => 1,

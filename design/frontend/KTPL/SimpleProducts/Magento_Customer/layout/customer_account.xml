@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Referenced from:
+ *   vendor/magento/theme-frontend-luma/Magento_Customer/layout/customer_account.xml
+ *
+ * Note:
+ *    While referring from M1's Wage Customer extension: 
+ *        app/code/local/Wage/Customer/Block/Customer/Account
+ *        app/design/frontend/response/default/layout/local.xml
+ *        
+ *    Didn't found 'tags' & 'OAuth Customer Tokens' link in M2 frontend customer area - sidebar.
+ */
+-->
+<page layout="2columns-left" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="sidebar.main">
+           <!-- Billing agreement link -->
+           <referenceBlock name="customer-account-navigation-billing-agreements-link" remove="true"/>
+
+           <!-- Product review link -->
+           <referenceBlock name="customer-account-navigation-product-reviews-link" remove="true"/>
+
+           <!-- Downloadable product link -->
+           <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true"/>
+        </referenceContainer>
+    </body>
+</page>

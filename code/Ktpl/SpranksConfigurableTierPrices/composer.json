@@ -1,0 +1,6 @@
+{
+    "name": "ktpl/spranksConfigurableTierPrices",
+    "description": "Ktpl SpranksConfigurableTierPrices",
+    "type": "magento2-module",
+    "require": {}
+}
