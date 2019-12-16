@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Referenced from module-offline-payment/etc/config.xml file
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <spranks_configurabletierprices>
+            <general>
+                <is_enabled>1</is_enabled>
+            </general>
+        </spranks_configurabletierprices>
+    </default>
+</config>
