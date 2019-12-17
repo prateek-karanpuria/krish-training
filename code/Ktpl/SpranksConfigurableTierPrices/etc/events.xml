@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Ktpl
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <event name="catalog_product_get_final_price">
+        <observer name="ktpl_spranksconfigurabletierprices_catalog_product_get_final_price"
+                  instance="Ktpl\SpranksConfigurableTierPrices\Model\Observer\CatalogProductGetFinalPriceObserver"/>
+    </event>
+
+</config>

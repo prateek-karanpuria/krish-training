@@ -7,10 +7,10 @@ namespace Ktpl\SpranksConfigurableTierPrices\Setup;
  */
 
 use Magento\Eav\Setup\EavSetupFactory;
+use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-
 /**
  * class InstallData
  * @package Ktpl\SpranksConfigurableTierPrices\Setup
@@ -43,10 +43,10 @@ class InstallData implements InstallDataInterface
 
         $eavSetup->addAttribute(
             \Magento\Catalog\Model\Product::ENTITY,
-            Ktpl\SpranksConfigurableTierPrices\Helper\Data::ATTRIBUTE_DISABLED_FOR_PRODUCT,
+            \Ktpl\SpranksConfigurableTierPrices\Helper\Data::ATTRIBUTE_DISABLED_FOR_PRODUCT,
             [
                 'group' => 'General',
-                'type' => \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+                'type' => 'int',
                 'backend' => \Magento\Catalog\Model\Product\Attribute\Backend\Boolean::class,
                 'frontend' => '',
                 'label' => 'Disable Spranks Configurable Tier Prices',
@@ -54,14 +54,15 @@ class InstallData implements InstallDataInterface
                 'source' => \Magento\Eav\Model\Entity\Attribute\Source\Boolean::class,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'visible' => true,
+                'used_in_product_listing' => true,
                 'required' => false,
                 'user_defined' => false,
                 'default' => false,
                 'filterable_in_search' => false,
-                'used_in_product_listing' => true,
+                'unique' => false,
+                'searchable' => false,
             ]
         );
-
-        $eavSetup->endSetup();
     }
 }
+            
