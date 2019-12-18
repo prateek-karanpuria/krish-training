@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Wage_Newsletter>
+            <version>1.0.0</version>
+        </Wage_Newsletter>
+    </modules>
+    <frontend>
+     <routers>
+          <newsletter>
+               <args>
+                    <modules>
+                         <Wage_Newsletter before="Mage_Newsletter_SubscriberController">Wage_Newsletter</Wage_Newsletter>
+                    </modules>
+               </args>
+          </newsletter>
+     </routers>
+    </frontend>
+    <global>
+        <models>
+            <wage_newsletter>
+                <class>Wage_Newsletter_Model</class>
+            </wage_newsletter>
+        </models>
+        <events>
+            <checkout_type_onepage_save_order_after>
+                <observers>
+                    <order_place_subscribe>
+                        <type>model</type>
+                        <class>wage_newsletter/observer</class>
+                        <method>subscribeNewsletter</method>
+                    </order_place_subscribe>
+                </observers>
+            </checkout_type_onepage_save_order_after>
+        </events>
+    </global>
+</config>

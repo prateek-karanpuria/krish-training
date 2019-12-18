@@ -46,7 +46,7 @@ class CatalogProductGetFinalPriceObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
 
-        $product = $observer->getProduct();
+        $product = $observer->getEvent()->getProduct();
 
         if (!$this->helperData->isExtensionEnabled()
             || $this->helperData->isProductInDisabledCategory($product)

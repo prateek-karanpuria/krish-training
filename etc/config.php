@@ -240,6 +240,7 @@ return [
         'Ktpl_Signature' => 0,
         'Ktpl_Skydailywebshipments' => 0,
         'Ktpl_SpranksConfigurableTierPrices' => 1,
+        'Ktpl_WageNewsletter' => 1,
         'Magento_PaypalReCaptcha' => 1,
         'MSP_TwoFactorAuth' => 1,
         'Mageplaza_Core' => 1,

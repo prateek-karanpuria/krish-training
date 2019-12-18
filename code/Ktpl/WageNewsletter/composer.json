@@ -1,0 +1,6 @@
+{
+    "name": "ktpl/wagenewsletter",
+    "description": "Ktpl Wage Newsletter",
+    "type": "magento2-module",
+    "require": {}
+}
