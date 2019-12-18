@@ -2,6 +2,14 @@
 
 namespace Ktpl\SpranksConfigurableTierPrices\Helper;
 
+/**
+ * This class contains extension related additional functionality & string literals.
+ */
+
+/**
+ * Data class
+ * @package Ktpl\SpranksConfigurableTierPrices\Helper
+ */
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**
@@ -14,11 +22,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_PATH_DISABLED_FOR_CATEGORY = 'spranks_configurabletierprices/general/disabled_for_category';
 
     /**
-     * @var StoreManagerInterface
-     */
-    public $storeManager;
-
-    /**
      * @var DesignInterface
      */
     public $design;
@@ -28,33 +31,62 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public $state;
 
+    /**
+     * @var ProductFactory
+     */
+    public $productFactory;
+
+    /**
+     * [__construct description]
+     * @param \Magento\Framework\View\DesignInterface $design         [description]
+     * @param \Magento\Framework\App\Helper\Context   $context        [description]
+     * @param \Magento\Framework\App\State            $state          [description]
+     * @param \Magento\Catalog\Model\ProductFactory   $productFactory [description]
+     */
     public function __construct(
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\View\DesignInterface $design,
         \Magento\Framework\App\Helper\Context $context,
-        \Magento\Framework\App\State $state
+        \Magento\Framework\App\State $state,
+        \Magento\Catalog\Model\ProductFactory $productFactory
     )
     {
-        $this->storeManager = $storeManager;
-        $this->design = $design; # NEED TO REMOVE
+        $this->design = $design;
         $this->state = $state;
+        $this->productFactory = $productFactory;
+
         parent::__construct($context);
     }
 
+    /**
+     * Check whether in admin area or not
+     * 
+     * @return boolean
+     */
     public function isAdmin()
     {
         if ($this->state->getAreaCode() == \Magento\Framework\App\Area::AREA_ADMINHTML) return true;
 
-        if ($this->design->getDesignTheme()->getArea() == 'adminhtml') return true;
+        if ($this->design->getDesignTheme()->getArea() == \Magento\Framework\App\Area::AREA_ADMINHTML) return true;
 
         return false;
     }
 
+    /**
+     * [isExtensionEnabled description]
+     * 
+     * @return boolean [description]
+     */
     public function isExtensionEnabled()
     {
         return $this->scopeConfig->getValue(self::XML_PATH_IS_ENABLED, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 
+    /**
+     * Check if product category listed in disabled category
+     * 
+     * @param  [type]  $product
+     * @return boolean
+     */
     public function isProductInDisabledCategory($product)
     {
         $disabledSetCategories = $this->scopeConfig->getValue(self::XML_PATH_DISABLED_FOR_CATEGORY, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
@@ -70,12 +102,20 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         return false;
     }
 
+    /**
+     * Check if extension is disabled for product
+     * 
+     * @param  [type]  $product
+     * @return boolean
+     */
     public function isExtensionDisabledForProduct($product)
     {
+        $product = $this->productFactory->create()->load($product->getId());
+
         /**
-         * Get the product attribute
+         * Get the product attribute from factory as attribute value may not be loaded
          */
-        $configtierpricesDisabled = $product->getAttribute(self::ATTRIBUTE_DISABLED_FOR_PRODUCT);
+        $configtierpricesDisabled = $product->getData('configtierprices_disabled');
 
         if ($configtierpricesDisabled) return true;
 

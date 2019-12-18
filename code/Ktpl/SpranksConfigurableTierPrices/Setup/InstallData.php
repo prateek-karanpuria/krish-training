@@ -11,6 +11,7 @@ use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+
 /**
  * class InstallData
  * @package Ktpl\SpranksConfigurableTierPrices\Setup
@@ -34,8 +35,11 @@ class InstallData implements InstallDataInterface
     }
 
     /**
-     * @param ModuleDataSetupInterface $setup
-     * @param ModuleContextInterface $context
+     * [install description]
+     * 
+     * @param  ModuleDataSetupInterface $setup
+     * @param  ModuleContextInterface   $context
+     * @return [type]
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
