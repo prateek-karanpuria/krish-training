@@ -1,0 +1,6 @@
+{
+    "name": "ktpl/wagewysiwyg",
+    "description": "Ktpl WageWysiwyg",
+    "type": "magento2-module",
+    "require": {}
+}

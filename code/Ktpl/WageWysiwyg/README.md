@@ -1,6 +1,6 @@
-## Ktpl Wage Newsletter Magento 2 module
+## Ktpl Wage WageWysiwyg Magento 2 module
 
--  This extension will make automatic subscription for customer after placing an order.
+-  This extension will allow jpg, jpeg, png, gif, pdf extensions while uploading attachments from CMS adminhtml
 
 ## Prerequisites
 
@@ -13,14 +13,14 @@
 To install the module simply put all the files inside 
 
 ```
-app/code/Ktpl/WageNewsletter/
+app/code/Ktpl/WageWysiwyg/
 
 ```
 
 And run the following commands in the project root of your M2 installation
 
 ```
-php bin/magento module:enable Ktpl_WageNewsletter
+php bin/magento module:enable Ktpl_WageWysiwyg
 php bin/magento setup:upgrade
 
 ```
