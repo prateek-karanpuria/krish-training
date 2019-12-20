@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <CreativeArc_Shipping>
+      <active>true</active>
+      <codePool>local</codePool>
+    </CreativeArc_Shipping>
+  </modules>
+</config>

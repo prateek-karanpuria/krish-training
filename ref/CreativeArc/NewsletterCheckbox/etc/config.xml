@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<CreativeArc_NewsletterCheckbox>
+			<version>0.1.1</version>
+		</CreativeArc_NewsletterCheckbox>
+ 	</modules>
+ 
+ 	<global>
+ 		<models>
+			<ca_newsletter>
+				<class>CreativeArc_NewsletterCheckbox_Model</class>
+			</ca_newsletter>
+		</models>
+		<resources>
+			<ca_newsletter_setup>
+				<setup>
+					<module>CreativeArc_NewsletterCheckbox</module>
+					<class>Mage_Sales_Model_Mysql4_Setup</class>
+				</setup>
+				<connection>
+					<use>default_setup</use>
+				</connection>
+			</ca_newsletter_setup>
+			
+			<ca_newsletter_write>
+				<connection><use>default_write</use></connection>
+			</ca_newsletter_write>
+			
+			<ca_newsletter_read>
+				<connection><use>default_read</use></connection>
+			</ca_newsletter_read>
+			
+		</resources>
+	</global>
+	
+	<frontend> 
+       <events>
+        	<sales_quote_save_before>
+				<observers>
+					<ca_newsletter>
+						<type>singleton</type>
+						<class>ca_newsletter/observer</class>
+						<method>salesQuoteSaveBefore</method>
+					</ca_newsletter>
+				</observers>
+        	</sales_quote_save_before>
+
+			<sales_convert_quote_to_order>
+				<observers>
+					<ca_newsletter>
+						<type>singleton</type>
+						<class>ca_newsletter/observer</class>
+						<method>salesEventConvertQuoteToOrder</method>
+					</ca_newsletter>
+				</observers>
+			</sales_convert_quote_to_order>
+        </events>
+  </frontend>
+	
+	<default>
+		
+	</default>
+</config>

@@ -106,14 +106,9 @@ class CatalogProductGetFinalPriceObserver implements ObserverInterface
                 if ($item->getParentItem()) continue;
 
                 /**
-                 * This is the product ID of the parent items
-                 */
-                $id = $item->getProductId();
-
-                /**
                  * This array is used to map the parent ID with the quantity of the simple product
                  */
-                $idQuantities[$id][] = $item->getQty();
+                $idQuantities[$productId][] = $item->getQty();
             }
 
             /**
@@ -121,7 +116,7 @@ class CatalogProductGetFinalPriceObserver implements ObserverInterface
              */
             if (isset($productId) && in_array($productId, array_keys($idQuantities)))
             {
-                $totalQty  = array_sum($idQuantities[$product->getId()]);
+                $totalQty  = array_sum($idQuantities[$productId]);
                 $tierPrice = $product->getPriceModel()->getBasePrice($product, $totalQty);
             }
         }

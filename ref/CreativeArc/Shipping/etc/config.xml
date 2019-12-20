@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<CreativeArc_Shipping>
+			<version>0.1.2</version>
+		</CreativeArc_Shipping>
+ 	</modules>
+ 
+ 	<global>
+ 		<models>
+			<cashipping>
+				<class>CreativeArc_Shipping_Model</class>
+                <resourceModel>cashipping_mysql4</resourceModel>
+			</cashipping>
+			<cashipping_mysql4>
+				<class>CreativeArc_Shipping_Model_Mysql4</class>
+				<entities>
+					<canadarates>
+						<table>cashipping_canadarates</table>
+					</canadarates>
+				</entities>
+			</cashipping_mysql4>
+		</models>
+		<resources>
+			<cashipping_setup>
+				<setup>
+					<module>CreativeArc_Shipping</module>
+					<class>CreativeArc_Shipping_Model_Entity_Setup</class>
+				</setup>
+				<connection>
+					<use>default_setup</use>
+				</connection>
+			</cashipping_setup>
+			<cashipping_write>
+				<connection>
+					<use>default_write</use>
+				</connection>
+			</cashipping_write>
+			<cashipping_read>
+				<connection>
+					<use>default_read</use>
+				</connection>
+			</cashipping_read>
+		</resources>
+		
+		<helpers>
+			<cashipping>
+				<class>CreativeArc_Shipping_Helper</class>
+			</cashipping>
+		</helpers>
+	</global>
+	
+	<default>
+		<carriers>
+			<ca_world>
+				<active>0</active>
+				<title>International</title>
+				<method_title>Contact Us</method_title>
+				<contact_us_message>Contact us</contact_us_message>
+				<!-- no backend options, simply set values here because they don't make sense for this module: -->
+				<free_shipping_enable>0</free_shipping_enable>
+				<free_shipping_subtotal>0</free_shipping_subtotal>
+				<free_method></free_method>
+				<showmethod>0</showmethod>
+				<model>cashipping/carrier_world</model>
+			</ca_world>
+			<ca_canada>
+				<active>0</active>
+				<title>Shipping Method</title>
+				<name>Best Way</name>
+				<min_shipping>39.17</min_shipping>
+				<contact_us_message_dropship>Contact us</contact_us_message_dropship>
+				<contact_us_message_weight>Contact us</contact_us_message_weight>
+				<contact_us_title>Contact us</contact_us_title>
+				<!-- no backend options, simply set values here because they don't make sense for this module: -->
+				<free_shipping_enable>0</free_shipping_enable>
+				<free_shipping_subtotal>0</free_shipping_subtotal>
+				<free_method></free_method>
+				<showmethod>0</showmethod>
+				<model>cashipping/carrier_canada</model>
+			</ca_canada>
+			<ca_usa>
+				<active>0</active>
+				<title>United Parcel Service</title>
+				<ups_api_user></ups_api_user>
+				<ups_api_pass></ups_api_pass>
+				<ups_api_key></ups_api_key>
+				<ups_shipper_number></ups_shipper_number>
+				<max_box_weight>150</max_box_weight>
+				<max_weight_charge>250</max_weight_charge>
+				<pickup>CC</pickup>
+				<container>00</container>
+				<dest_type>COM</dest_type>
+				<unit_of_measure>LBS</unit_of_measure>
+				<customer_classification>W</customer_classification>
+				<contact_us_message_dropship>Contact Us</contact_us_message_dropship>
+				<contact_us_message_weight>Contact Us</contact_us_message_weight>
+				<title_1da>UPS Next Day Air</title_1da>
+				<title_2da>UPS Second Day Air</title_2da>
+				<title_3ds>UPS Three-Day Select</title_3ds>
+				<title_gnd>UPS Ground</title_gnd>
+				<per_item_charge_default>0</per_item_charge_default>
+				<per_item_charge_1da>1.0</per_item_charge_1da>
+				<per_item_charge_2da>0.5</per_item_charge_2da>
+				<per_item_charge_3ds>0.25</per_item_charge_3ds>
+				<per_item_charge_gnd>0</per_item_charge_gnd>
+				<ups_rate_factor_default>1</ups_rate_factor_default>
+				<ups_rate_factor_1da>1.03</ups_rate_factor_1da>
+				<ups_rate_factor_2da>1.03</ups_rate_factor_2da>
+				<ups_rate_factor_3ds>1.03</ups_rate_factor_3ds>
+				<ups_rate_factor_gnd>1.07</ups_rate_factor_gnd>
+				<min_shipping_rate_default>0</min_shipping_rate_default>
+				<min_shipping_rate_1da>22</min_shipping_rate_1da>
+				<min_shipping_rate_2da>14</min_shipping_rate_2da>
+				<min_shipping_rate_3ds>8</min_shipping_rate_3ds>
+				<min_shipping_rate_gnd>5.12</min_shipping_rate_gnd>
+				<contact_us_title_default>Contact us</contact_us_title_default>
+				<contact_us_title_1da>Contact us</contact_us_title_1da>
+				<contact_us_title_2da>Contact us</contact_us_title_2da>
+				<contact_us_title_3ds>Contact us</contact_us_title_3ds>
+				<contact_us_title_gnd>Contact us</contact_us_title_gnd>
+				<model>cashipping/carrier_usa</model>
+			</ca_usa>
+		</carriers>
+	</default>
+</config>
+<!--
+
+<?xml version="1.0"?>
+<RatingServiceSelectionResponse>
+	<Response>
+		<TransactionReference></TransactionReference>
+		<ResponseStatusCode>0</ResponseStatusCode>
+		<ResponseStatusDescription>Failure</ResponseStatusDescription>
+		<Error>
+			<ErrorSeverity>Hard</ErrorSeverity>
+			<ErrorCode>111030</ErrorCode>
+			<ErrorDescription>Packages must weigh more than zero pounds.</ErrorDescription>
+		</Error>
+	</Response>
+</RatingServiceSelectionResponse>
+
+
+
+
+
+
+
+
+
+
+-->
