@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Reciproci\CommitApis\Api\ReciprociOrdersApiRepositoryInterface" type="Reciproci\CommitApis\Model\ReciprociOrdersApiRepository"/>
+	<preference for="Reciproci\CommitApis\Api\Data\ReciprociOrdersApiInterface" type="Reciproci\CommitApis\Model\Data\ReciprociOrdersApi"/>
+	<preference for="Reciproci\CommitApis\Api\Data\ReciprociOrdersApiSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Reciproci\CommitApis\Model\ResourceModel\ReciprociOrdersApi\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">reciproci_commitapis_reciproci_orders_api</argument>
+			<argument name="resourceModel" xsi:type="string">Reciproci\CommitApis\Model\ResourceModel\ReciprociOrdersApi\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="reciproci_commitapis_reciproci_orders_api_listing_data_source" xsi:type="string">Reciproci\CommitApis\Model\ResourceModel\ReciprociOrdersApi\Grid\Collection</item>
+				<item name="reciproci_commitapis_reciproci_cancel_api_listing_data_source" xsi:type="string">Reciproci\CommitApis\Model\ResourceModel\ReciprociCancelApi\Grid\Collection</item>
+				<item name="reciproci_commitapis_reciproci_delivery_api_listing_data_source" xsi:type="string">Reciproci\CommitApis\Model\ResourceModel\ReciprociDeliveryApi\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<preference for="Reciproci\CommitApis\Api\ReciprociCancelApiRepositoryInterface" type="Reciproci\CommitApis\Model\ReciprociCancelApiRepository"/>
+	<preference for="Reciproci\CommitApis\Api\Data\ReciprociCancelApiInterface" type="Reciproci\CommitApis\Model\Data\ReciprociCancelApi"/>
+	<preference for="Reciproci\CommitApis\Api\Data\ReciprociCancelApiSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Reciproci\CommitApis\Model\ResourceModel\ReciprociCancelApi\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">reciproci_commitapis_reciproci_cancel_api</argument>
+			<argument name="resourceModel" xsi:type="string">Reciproci\CommitApis\Model\ResourceModel\ReciprociCancelApi\Collection</argument>
+		</arguments>
+	</virtualType>
+	<preference for="Reciproci\CommitApis\Api\ReciprociDeliveryApiRepositoryInterface" type="Reciproci\CommitApis\Model\ReciprociDeliveryApiRepository"/>
+	<preference for="Reciproci\CommitApis\Api\Data\ReciprociDeliveryApiInterface" type="Reciproci\CommitApis\Model\Data\ReciprociDeliveryApi"/>
+	<preference for="Reciproci\CommitApis\Api\Data\ReciprociDeliveryApiSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Reciproci\CommitApis\Model\ResourceModel\ReciprociDeliveryApi\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">reciproci_commitapis_reciproci_delivery_api</argument>
+			<argument name="resourceModel" xsi:type="string">Reciproci\CommitApis\Model\ResourceModel\ReciprociDeliveryApi\Collection</argument>
+		</arguments>
+	</virtualType>
+</config>

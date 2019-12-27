@@ -1,0 +1,22 @@
+{
+    "name": "reciproci/module-commitapis",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "prakash.patel@krishtechnolabs.com",
+            "name": "Ktpl"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Reciproci\\CommitApis\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

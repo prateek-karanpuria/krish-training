@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="reciproci" sortOrder="999" translate="label">
+            <label>reciproci</label>
+        </tab>
+        <section id="customer_management" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+            <label>Customer Management</label>
+            <tab>reciproci</tab>
+            <resource>Reciproci_Base::config_reciproci_base</resource>
+            <group id="emailnotification" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>Email Notification</label>
+                <field id="customer_email_notification" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+                    <label>email</label>
+                    <comment>Enter comma(,) separated email</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

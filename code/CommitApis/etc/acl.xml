@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Reciproci_CommitApis::reciproci_orders_api" sortOrder="10" title="reciproci_orders_api">
+					<resource id="Reciproci_CommitApis::reciproci_orders_api_save" sortOrder="10" title="Save reciproci_orders_api"/>
+					<resource id="Reciproci_CommitApis::reciproci_orders_api_delete" sortOrder="20" title="Delete reciproci_orders_api"/>
+					<resource id="Reciproci_CommitApis::reciproci_orders_api_update" sortOrder="30" title="Update reciproci_orders_api"/>
+					<resource id="Reciproci_CommitApis::reciproci_orders_api_view" sortOrder="40" title="View reciproci_orders_api"/>
+				</resource>
+				<resource id="Reciproci_CommitApis::reciproci_cancel_api" sortOrder="10" title="reciproci_cancel_api">
+					<resource id="Reciproci_CommitApis::reciproci_cancel_api_save" sortOrder="10" title="Save reciproci_cancel_api"/>
+					<resource id="Reciproci_CommitApis::reciproci_cancel_api_delete" sortOrder="20" title="Delete reciproci_cancel_api"/>
+					<resource id="Reciproci_CommitApis::reciproci_cancel_api_update" sortOrder="30" title="Update reciproci_cancel_api"/>
+					<resource id="Reciproci_CommitApis::reciproci_cancel_api_view" sortOrder="40" title="View reciproci_cancel_api"/>
+				</resource>
+				<resource id="Reciproci_CommitApis::reciproci_delivery_api" sortOrder="10" title="reciproci_delivery_api">
+					<resource id="Reciproci_CommitApis::reciproci_delivery_api_save" sortOrder="10" title="Save reciproci_delivery_api"/>
+					<resource id="Reciproci_CommitApis::reciproci_delivery_api_delete" sortOrder="20" title="Delete reciproci_delivery_api"/>
+					<resource id="Reciproci_CommitApis::reciproci_delivery_api_update" sortOrder="30" title="Update reciproci_delivery_api"/>
+					<resource id="Reciproci_CommitApis::reciproci_delivery_api_view" sortOrder="40" title="View reciproci_delivery_api"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

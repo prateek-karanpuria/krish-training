@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * WebAPI XML file
+ * @author Ktpl
+ * 
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/api/:actionFile/:actionMethod/:data" method="GET">
+        <service class="Ktpl\ApiConnector\Api\ResultInterface" method="getResults"/>
+
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

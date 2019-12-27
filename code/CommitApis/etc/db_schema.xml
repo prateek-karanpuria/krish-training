@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table comment="reciproci_commitapis_reciproci_orders_api Table" engine="innodb" name="reciproci_commitapis_reciproci_orders_api" resource="default">
+		<column comment="Entity Id" identity="true" name="reciproci_orders_api_id" nullable="false" padding="6" unsigned="false" xsi:type="smallint"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="reciproci_orders_api_id"/>
+		</constraint>
+		<column length="255" name="order_id" nullable="true" xsi:type="varchar"/>
+		<column name="request_data" nullable="true" xsi:type="text"/>
+		<column name="response_data" nullable="true" xsi:type="text"/>
+		<column name="skip" nullable="true" xsi:type="boolean"/>
+		<column name="status" nullable="true" xsi:type="boolean"/>
+		<column name="created_at" nullable="true" xsi:type="timestamp"/>
+		<column name="updated_at" nullable="true" xsi:type="timestamp"/>
+		<constraint xsi:type="unique" referenceId="RECIPROCI_COMMITAPIS_RECIPROCI_ORDERS_API_ORDER_ID">
+	        <column name="order_id"/>
+    	</constraint>
+	</table>
+	<table comment="reciproci_commitapis_reciproci_cancel_api Table" engine="innodb" name="reciproci_commitapis_reciproci_cancel_api" resource="default">
+		<column comment="Entity Id" identity="true" name="reciproci_cancel_api_id" nullable="false" padding="6" unsigned="false" xsi:type="smallint"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="reciproci_cancel_api_id"/>
+		</constraint>
+		<column length="255" name="cancel_id" nullable="true" xsi:type="varchar"/>
+		<column length="255" name="order_id" nullable="true" xsi:type="varchar"/>
+		<column name="request_data" nullable="true" xsi:type="text"/>
+		<column name="response_data" nullable="true" xsi:type="text"/>
+		<column name="skip" nullable="true" xsi:type="boolean"/>
+		<column name="status" nullable="true" xsi:type="boolean"/>
+		<column name="created_at" nullable="true" xsi:type="timestamp"/>
+		<column name="updated_at" nullable="true" xsi:type="timestamp"/>
+		<constraint xsi:type="unique" referenceId="RECIPROCI_COMMITAPIS_RECIPROCI_CANCEL_API_CANCEL_ID_ORDER_ID">
+			<column name="cancel_id"/>
+	        <column name="order_id"/>
+    	</constraint>
+	</table>
+	<table comment="reciproci_commitapis_reciproci_delivery_api Table" engine="innodb" name="reciproci_commitapis_reciproci_delivery_api" resource="default">
+		<column comment="Entity Id" identity="true" name="reciproci_delivery_api_id" nullable="false" padding="6" unsigned="false" xsi:type="smallint"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="reciproci_delivery_api_id"/>
+		</constraint>
+		<column length="255" name="shipment_id" nullable="true" xsi:type="varchar"/>
+		<column length="255" name="order_id" nullable="true" xsi:type="varchar"/>
+		<column name="request_data" nullable="true" xsi:type="text"/>
+		<column name="response_data" nullable="true" xsi:type="text"/>
+		<column name="skip" nullable="true" xsi:type="boolean"/>
+		<column name="status" nullable="true" xsi:type="boolean"/>
+		<column name="created_at" nullable="true" xsi:type="timestamp"/>
+		<column name="updated_at" nullable="true" xsi:type="timestamp"/>
+		<constraint xsi:type="unique" referenceId="RECIPROCI_COMMITAPIS_RECIPROCI_DELIVERY_API_SHIPMENT_ID_ORDER_ID">
+			<column name="shipment_id"/>
+	        <column name="order_id"/>
+    	</constraint>
+	</table>
+</schema>

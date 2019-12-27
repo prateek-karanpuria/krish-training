@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Reciproci::top_level" module="Reciproci_CommitApis" resource="Magento_Backend::content" sortOrder="9999" title="Reciproci"/>
+		<add action="reciproci_commitapis/reciprociordersapi/index" id="Reciproci_CommitApis::reciproci_commitapis_reciproci_orders_api" module="Reciproci_CommitApis" parent="Reciproci::top_level" resource="Magento_Backend::content" sortOrder="9999" title="reciproci orders api"/>
+		<add action="reciproci_commitapis/reciprocicancelapi/index" id="Reciproci_CommitApis::reciproci_commitapis_reciproci_cancel_api" module="Reciproci_CommitApis" parent="Reciproci::top_level" resource="Magento_Backend::content" sortOrder="9999" title="reciproci cancel api"/>
+		<add action="reciproci_commitapis/reciprocideliveryapi/index" id="Reciproci_CommitApis::reciproci_commitapis_reciproci_delivery_api" module="Reciproci_CommitApis" parent="Reciproci::top_level" resource="Magento_Backend::content" sortOrder="9999" title="reciproci delivery api"/>
+	</menu>
+</config>

@@ -1,0 +1,6 @@
+{
+    "name": "ktpl/apiconnector",
+    "description": "Ktpl ApiConnector",
+    "type": "magento2-module",
+    "require": {}
+}

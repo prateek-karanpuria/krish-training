@@ -1,0 +1,178 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">reciproci_commitapis_reciproci_cancel_api_form.reciproci_cancel_api_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button class="Reciproci\CommitApis\Block\Adminhtml\Reciproci\Cancel\Api\Edit\BackButton" name="back"/>
+			<button class="Reciproci\CommitApis\Block\Adminhtml\Reciproci\Cancel\Api\Edit\DeleteButton" name="delete"/>
+			<button class="Reciproci\CommitApis\Block\Adminhtml\Reciproci\Cancel\Api\Edit\SaveButton" name="save"/>
+			<button class="Reciproci\CommitApis\Block\Adminhtml\Reciproci\Cancel\Api\Edit\SaveAndContinueButton" name="save_and_continue"/>
+		</buttons>
+		<namespace>reciproci_commitapis_reciproci_cancel_api_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>reciproci_commitapis_reciproci_cancel_api_form.reciproci_cancel_api_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="reciproci_cancel_api_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider class="Reciproci\CommitApis\Model\Reciprocicancelapi\DataProvider" name="reciproci_cancel_api_form_data_source">
+			<settings>
+				<requestFieldName>reciproci_cancel_api_id</requestFieldName>
+				<primaryFieldName>reciproci_cancel_api_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label>General</label>
+		</settings>
+		<field formElement="input" name="cancel_id" sortOrder="80">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_cancel_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">cancel_id</label>
+				<dataScope>cancel_id</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="order_id" sortOrder="90">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_cancel_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">order_id</label>
+				<dataScope>order_id</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="textarea" name="request_data" sortOrder="100">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_cancel_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">request_data</label>
+				<dataScope>request_data</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="textarea" name="response_data" sortOrder="110">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_cancel_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">response_data</label>
+				<dataScope>response_data</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="skip" sortOrder="120">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_cancel_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>select</dataType>
+				<label translate="true">skip</label>
+				<dataScope>skip</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+			<formElements>
+		        <select>
+		            <settings>
+		                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+		            </settings>
+		        </select>
+		    </formElements>
+		</field>
+		<field formElement="input" name="status" sortOrder="130">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_cancel_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>select</dataType>
+				<label translate="true">status</label>
+				<dataScope>status</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+			<formElements>
+		        <select>
+		            <settings>
+		                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+		            </settings>
+		        </select>
+		    </formElements>
+		</field>
+		<field formElement="date" name="created_at" sortOrder="140">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_cancel_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">created_at</label>
+				<dataScope>created_at</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="date" name="updated_at" sortOrder="150">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_cancel_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">updated_at</label>
+				<dataScope>updated_at</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+	</fieldset>
+</form>

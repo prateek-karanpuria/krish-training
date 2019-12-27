@@ -1,0 +1,178 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">reciproci_commitapis_reciproci_delivery_api_form.reciproci_delivery_api_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button class="Reciproci\CommitApis\Block\Adminhtml\Reciproci\Delivery\Api\Edit\BackButton" name="back"/>
+			<button class="Reciproci\CommitApis\Block\Adminhtml\Reciproci\Delivery\Api\Edit\DeleteButton" name="delete"/>
+			<button class="Reciproci\CommitApis\Block\Adminhtml\Reciproci\Delivery\Api\Edit\SaveButton" name="save"/>
+			<button class="Reciproci\CommitApis\Block\Adminhtml\Reciproci\Delivery\Api\Edit\SaveAndContinueButton" name="save_and_continue"/>
+		</buttons>
+		<namespace>reciproci_commitapis_reciproci_delivery_api_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>reciproci_commitapis_reciproci_delivery_api_form.reciproci_delivery_api_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="reciproci_delivery_api_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider class="Reciproci\CommitApis\Model\Reciprocideliveryapi\DataProvider" name="reciproci_delivery_api_form_data_source">
+			<settings>
+				<requestFieldName>reciproci_delivery_api_id</requestFieldName>
+				<primaryFieldName>reciproci_delivery_api_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label>General</label>
+		</settings>
+		<field formElement="input" name="shipment_id" sortOrder="160">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_delivery_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">shipment_id</label>
+				<dataScope>shipment_id</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="order_id" sortOrder="170">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_delivery_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">order_id</label>
+				<dataScope>order_id</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="textarea" name="request_data" sortOrder="180">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_delivery_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">request_data</label>
+				<dataScope>request_data</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="textarea" name="response_data" sortOrder="190">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_delivery_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">response_data</label>
+				<dataScope>response_data</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="skip" sortOrder="200">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_delivery_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>select</dataType>
+				<label translate="true">skip</label>
+				<dataScope>skip</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+			<formElements>
+		        <select>
+		            <settings>
+		                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+		            </settings>
+		        </select>
+		    </formElements>
+		</field>
+		<field formElement="input" name="status" sortOrder="210">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_delivery_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>select</dataType>
+				<label translate="true">status</label>
+				<dataScope>status</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+			<formElements>
+		        <select>
+		            <settings>
+		                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+		            </settings>
+		        </select>
+		    </formElements>
+		</field>
+		<field formElement="date" name="created_at" sortOrder="220">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_delivery_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">created_at</label>
+				<dataScope>created_at</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="date" name="updated_at" sortOrder="230">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">reciproci_delivery_api</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">updated_at</label>
+				<dataScope>updated_at</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+	</fieldset>
+</form>

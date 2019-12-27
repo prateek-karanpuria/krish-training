@@ -1,0 +1,170 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">reciproci_commitapis_reciproci_orders_api_listing.reciproci_commitapis_reciproci_orders_api_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>reciproci_commitapis_reciproci_orders_api_columns</spinner>
+		<deps>
+			<dep>reciproci_commitapis_reciproci_orders_api_listing.reciproci_commitapis_reciproci_orders_api_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new reciproci_orders_api</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource component="Magento_Ui/js/grid/provider" name="reciproci_commitapis_reciproci_orders_api_listing_data_source">
+		<settings>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Reciproci_CommitApis::reciproci_orders_api</aclResource>
+		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="reciproci_commitapis_reciproci_orders_api_listing_data_source">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>reciproci_orders_api_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="reciproci_commitapis_reciproci_orders_api_columns">
+		<settings>
+			<editorConfig>
+				<param name="selectProvider" xsi:type="string">reciproci_commitapis_reciproci_orders_api_listing.reciproci_commitapis_reciproci_orders_api_listing.reciproci_commitapis_reciproci_orders_api_columns.ids</param>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">reciproci_orders_api_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" path="reciproci_commitapis/reciprociordersapi/inlineEdit" xsi:type="url"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">reciproci_commitapis_reciproci_orders_api_listing.reciproci_commitapis_reciproci_orders_api_listing.reciproci_commitapis_reciproci_orders_api_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>reciproci_orders_api_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="reciproci_orders_api_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="order_id">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">order_id</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		
+		<column name="request_data">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">request_data</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="response_data">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">response_data</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="skip">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">skip</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="status">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">status</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="created_at">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">created_at</label>
+				<editor>
+					<editorType>date</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="updated_at">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">updated_at</label>
+				<editor>
+					<editorType>date</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<actionsColumn class="Reciproci\CommitApis\Ui\Component\Listing\Column\ReciprociordersapiActions" name="actions">
+			<settings>
+				<indexField>reciproci_orders_api_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<draggable>true</draggable>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>
