@@ -1,0 +1,14 @@
+<div class="primary">
+    <button class="action primary checkout"
+            type="submit"
+            data-bind="
+                click: placeOrder,
+                attr: {'title': $t('Place Order')},
+                css: {disabled: !isPlaceOrderActionAllowed()},
+                enable: isPlaceOrderActionAllowed()
+                "
+            disabled>
+        <span class="place-order-button-span-text" data-bind="i18n: 'Proceed to Payment'"></span>
+        <!-- <span class="place-order-button-span-text" data-bind="text:paymentMethodCheckedText() == 'telr_telrpayments' ?'Proceed to Payment':'Place Order'"></span> -->
+    </button>
+</div>

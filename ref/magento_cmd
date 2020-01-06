@@ -1,0 +1,167 @@
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy -f
+php bin/magento indexer:reindex
+php bin/magento dev:tests:run
+php bin/magento deploy:mode:set production	
+php bin/magento deploy:mode:set developer
+php bin/magento maintenance:enable
+php bin/magento maintenance:disable
+php bin/magento maintenance:allow-ips 202.131.115.180 
+git config core.fileMode false
+php bin/magento config:show payment
+php bin/magento maintenance:allow-ips --none
+
+===========================
+git log --author="Ravi Chandra"
+git start merge commit #4 id
+5f976fa4eba2a311f2aecd699af89928d71daa6b
+sudo openvpn brosu.ovpn
+============================
+git cmd
+
+git fetch upstream
+git merge upstream/2.3-develop
+git merge upstream/2.2-develop
+git fetch && git checkout patch-13915-2.3-develop
+
+git push -u origin <new_branch>
+git cherry-pick 19e7380
+============================
+git ls-files --modified | xargs git add
+git add -u (only modified files add)
+git checkout --track origin/2.2-develop
+git checkout -b 2.2-develop  remotes/origin/2.2
+git fetch origin 2.2-develop
+============================
+# For the next commit
+$ git add .   # Add only files created/modified to the index and not those deleted
+$ git add -u  # Add only files deleted/modified to the index and not those created
+$ git add -A  # Do both operations at once, add to all files to the index
+============================
+list file with size
+du -msh *
+zip directory
+tar cvzf weltpixel_1_5_2019.tar.gz weltpixel/
+tar cvzf filename.tar.gz  * --exclude='var'  --exclude='media'
+
+tar cvzf supplementation-ca-29-04-2019.tar.gz  * --exclude='var'  --exclude='pub' --exclude='before_urls_backup.sql' --exclude='db_10032018.sql' --exclude='transfor_canada-15-12-2017.sql' --exclude='dump0711.sql'
+
+'host' => 'mce274-db1-int',
+        'dbname' => 'suppleme_canada',
+        'username' => 'suppleme_transfo',
+        'password' => 'RotorWakedDriestEyrie45',
+
+mysqldump -h mce274-db1-int -u suppleme_transfo -p suppleme_canada | gzip -9 > suppleme_canada_30_4_2019.sql.gz
+
+ zcat/home/ravi/Downloads/f6370082fcd1abf6264a5fddf75af4a7.sql.gz|mysql-uroot-
+ pcoveprod_bn0z1_live_30_04_19
+
+
+mysql -h mce274-db1-int  -u suppleme_transfo suppleme_supplementation_db_current < db_current.sql
+
+tar cvzf media.tar.gz media/ 
+============================
+file cmd
+
+create tar.gz
+	tar cvzf cove-products_27_2_2019.tar.gz  * --exclude='var'  --exclude='pub'
+
+check file size
+du -sh cove-products_27_2_2019.tar.gz
+============================
+
+php bin/magento setup:upgrade && php bin/magento setup:di:compile && php bin/magento setup:static-content:deploy -f
+
+redis-cli -n 1 flushdb
+
+varnishadm -T 127.0.0.1:6082 'ban req.url ~ /'
+
+php bin/magento setup:upgrade
+
+php bin/magento setup:static-content:deploy -f
+
+git fetch && git checkout patch-13915-2.3-develop
+
+ php bin/magento s:up && php bin/magento s:s:d -f && php bin/magento indexer:reindex
+
+php bin/magento s:up && php bin/magento setup:di:compile && php bin/magento s:s:d -f && php bin/magento indexer:reindex
+ 
+  php <your Magento install dir>/bin/magento sampledata:deploy
+  php Magento23/bin/magento sampledata:deploy
+  
+
+/bin/magento setup:install --backend-frontname=? --db-host=? --db-name=? --db-user=? --db-password=? --base-url=? --admin-user=? --admin-password=? --admin-email=? --admin-firstname=? --admin-lastname=?
+
+php bin/magento admin:user:create --admin-user='admin' --admin-password='sSU@yq9A' --admin-email='ssp32.bleuciel@gmail.com' --admin-firstname='admin' --admin-lastname='admin'
+
+php bin/magento admin:user:create --admin-user='admin' --admin-password='admin@123' --admin-email='ssp32.bleuciel@gmail.com' --admin-firstname='admin' --admin-lastname='admin'
+
+git show --name-only 2bda1358fa7a64adfa65950316a052a4be5de9b4
+
+wget https://www.premierglow.com/media/catalog/product/product_17_12_2018.tar.gz
+
+wget https://www.cove-products.com/home/coveproducts/public_html/cove-products_27_2_2019.tar.gz
+
+ tar -xzf Magento-EE-2.2.5_sample_data-2018-06-26-10-22-07.tar.gz
+ 
+grep -rl "text" grep -r "text"
+ 
+ git fetch && git checkout patch-13915-2.3-develop
+  git fetch && git checkout patch-8952
+
+rm -rf var/cache/ var/page_cache/ var/generation/ var/view_preprocessed/ pub/static/frontend/
+
+Export database : 
+mysqldump -u username -p database_to_backup > backup_name.sql
+
+Import database : 
+mysql -p -u root test_import < backup_magento2.2.3.sql
+
+wget http://supcan.transformagency.com/pub/media/weltpixel_1_5_2019.tar.gz
+wget http://supcan.transformagency.com/db_current.sql
+------------------
+php bin/magento admin:user:unlock admin-username
+------------------------
+Export database : 
+mysqldump -u username -p database_to_backup > backup_name.sql
+
+Import database : 
+mysql -p -u root test_import < backup_magento2.2.3.sql
+
+on server/docer :
+mysql -h db -u premierglow -p -P 3306 premierglow > premierglow.sql 
+
+mysqldump -h 10.16.16.2 -u root -p -P 53306 balmain > balmain.sql
+
+mysql -h 10.16.16.2 -u root -p -P 53306
+
+------
+mysql -p -u root premierglowm2_new < /home/ravi/Downloads/premierglow.sql
+premierglowm2_new
+ mysql -u root -p  premierglow  < /home/ravi/Downloads/premierglow_image/wp/wp_posts.sql
+ ----------------
+ git 
+.gitignore exclude folder but include specific subfolder
+**/node_modules/*
+!**/node_modules/keep-dir
+--------------
+ git fetch && git checkout patch-13915-2.3-develop
+ --------------------
+ mysqldump -u username -p database_to_backup > backup_name.sql
+
+
+ php bin/magento admin:user:create --admin-user='hardik' --admin-password='sSU@yq9A' --admin-email='ssp32.bleuciel@gmail.com' --admin-firstname='hardik' --admin-lastname='krish'
+
+ user = hardik
+ password = sSU@yq9A
+ ===================
+ echo test | mail -s "test message" -a "From: ssp92.bleuciel@gmail.com" ssp32.bleuciel@gmail.com 
+
+ ssp92@bleuciel
+
+  php bin/magento admin:user:create --admin-user='admin' --admin-password='admin@123' --admin-email='ravi.chandra@rocketbazaar.com' --admin-firstname='ravi' --admin-lastname='chandra'
+
+  php bin/magento admin:user:create --admin-user='ravichandra' --admin-password='admin@123' --admin-email='ravi.chandra@rocketbazaar.com' --admin-firstname='ravi' --admin-lastname='chandra'
+
+  mysqldump -u root -p magento227 > magento227_17_04_19.sql
