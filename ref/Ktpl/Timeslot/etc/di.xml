@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Ktpl\Timeslot\Api\TimeslotRepositoryInterface" type="Ktpl\Timeslot\Model\TimeslotRepository"/>
+	<preference for="Ktpl\Timeslot\Api\Data\TimeslotInterface" type="Ktpl\Timeslot\Model\Timeslot"/>
+	<preference for="Ktpl\Timeslot\Api\Data\TimeslotSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Ktpl\Timeslot\Model\ResourceModel\Timeslot\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">ktpl_timeslot_timeslot</argument>
+			<argument name="resourceModel" xsi:type="string">Ktpl\Timeslot\Model\ResourceModel\Timeslot\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="ktpl_timeslot_timeslot_listing_data_source" xsi:type="string">Ktpl\Timeslot\Model\ResourceModel\Timeslot\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\OfflineShipping\Model\Carrier\Freeshipping">
+        <plugin name="disable-freeshipping" type="Ktpl\Timeslot\Model\Carrier\Freeshipping" sortOrder="1" />
+    </type>
+</config>

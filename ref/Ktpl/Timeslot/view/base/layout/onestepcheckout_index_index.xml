@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2018 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- Uncomment for enable compatibility with themes which not supported LESS compilation -->
+        <!-- <css src="Aheadworks_OneStepCheckout::css/aw_osc_styles.css"/> -->
+        <script  type="text/javascript"  src="Ktpl_Timeslot/js/action/set-shipping-information-mixin.js"></script>
+    </head>
+</page>

@@ -1,0 +1,5 @@
+var config = {
+    paths: {
+        'Magento_Checkout/js/action/set-shipping-information': 'Ktpl_Timeslot/js/action/set-shipping-information-mixin'
+    }
+};

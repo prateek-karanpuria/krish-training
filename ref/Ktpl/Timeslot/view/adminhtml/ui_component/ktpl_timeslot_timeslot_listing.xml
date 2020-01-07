@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">ktpl_timeslot_timeslot_listing.ktpl_timeslot_timeslot_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>ktpl_timeslot_timeslot_columns</spinner>
+		<deps>
+			<dep>ktpl_timeslot_timeslot_listing.ktpl_timeslot_timeslot_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new Timeslot</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource component="Magento_Ui/js/grid/provider" name="ktpl_timeslot_timeslot_listing_data_source">
+		<settings>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Ktpl_Timeslot::Timeslot</aclResource>
+		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="ktpl_timeslot_timeslot_listing_data_source">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>timeslot_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<!-- <bookmark name="bookmarks"/> -->
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="ktpl_timeslot_timeslot_columns">
+		<settings>
+			<editorConfig>
+				<param name="selectProvider" xsi:type="string">ktpl_timeslot_timeslot_listing.ktpl_timeslot_timeslot_listing.ktpl_timeslot_timeslot_columns.ids</param>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">timeslot_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" path="ktpl_timeslot/Timeslot/inlineEdit" xsi:type="url"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">ktpl_timeslot_timeslot_listing.ktpl_timeslot_timeslot_listing.ktpl_timeslot_timeslot_columns.actions</item>
+					<item name="target" xsi:type="string">applyAction</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<!-- <selectionsColumn name="ids">
+			<settings>
+				<indexField>timeslot_id</indexField>
+			</settings>
+		</selectionsColumn> -->
+		<column name="timeslot_id">
+			<settings>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="country_id" class="Ktpl\Timeslot\Model\Renderer\Countrystate">
+			<settings>
+				<label translate="true">Country</label>
+			</settings>
+		</column>
+		<column name="state_id" class="Ktpl\Timeslot\Model\Renderer\Countrystate">
+			<settings>
+				<label translate="true">State</label>
+			</settings>
+		</column>
+		<!-- <column name="city_id">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">City</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">true</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column> -->
+		<column name="start_date" class="Ktpl\Timeslot\Model\Renderer\Time">
+			<settings>
+				
+				<label translate="true">Start Time</label>
+				<editor>
+					<editorType>date</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">true</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="end_date" class="Ktpl\Timeslot\Model\Renderer\Time">
+			<settings>
+				<label translate="true">End Time</label>
+				<editor>
+					<editorType>date</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">true</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="shipping_charge">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Shipping Charge</label>
+				<editor>
+					<editorType>date</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">true</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="module_status" class="Ktpl\Timeslot\Model\Renderer\Status">
+			<settings>
+				<label translate="true">Status</label>
+			</settings>
+		</column>
+		<actionsColumn class="Ktpl\Timeslot\Ui\Component\Listing\Column\TimeslotActions" name="actions">
+			<settings>
+				<indexField>timeslot_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

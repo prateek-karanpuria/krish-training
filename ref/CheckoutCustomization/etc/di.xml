@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Ktpl
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Aheadworks\OneStepCheckout\Model\Layout\Processor\AddressAttributes">
+        <plugin name="afterProcess"
+                type="Ktpl\CheckoutCustomization\Plugin\ProcessorPlugin"
+                disabled="false"
+                sortOrder="10" />
+    </type>
+
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="address_of_address_save_plugin"
+                type="Ktpl\CheckoutCustomization\Plugin\ShippingInformationManagement"
+                disabled="false"
+                sortOrder="10"/>
+    </type>
+</config>

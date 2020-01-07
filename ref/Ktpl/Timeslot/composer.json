@@ -1,0 +1,26 @@
+{
+    "name": "ktpl/module-timeslot",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        },
+        {
+            "name": "Developer Account",
+            "email": "krishtechnolabs.kushal@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ktpl\\Timeslot\\": ""
+        }
+    }
+}

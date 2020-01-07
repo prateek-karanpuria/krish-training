@@ -1,0 +1,241 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">ktpl_timeslot_timeslot_form.timeslot_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button class="Ktpl\Timeslot\Block\Adminhtml\Timeslot\Edit\BackButton" name="back"/>
+			<button class="Ktpl\Timeslot\Block\Adminhtml\Timeslot\Edit\DeleteButton" name="delete"/>
+			<button class="Ktpl\Timeslot\Block\Adminhtml\Timeslot\Edit\SaveButton" name="save"/>
+			<button class="Ktpl\Timeslot\Block\Adminhtml\Timeslot\Edit\SaveAndContinueButton" name="save_and_continue"/>
+		</buttons>
+		<namespace>ktpl_timeslot_timeslot_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>ktpl_timeslot_timeslot_form.timeslot_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="timeslot_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider class="Ktpl\Timeslot\Model\Timeslot\DataProvider" name="timeslot_form_data_source">
+			<settings>
+				<requestFieldName>timeslot_id</requestFieldName>
+				<primaryFieldName>timeslot_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label/>
+		</settings>
+		<field name="country_id">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Magento\Directory\Model\Config\Source\Country</item>
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" xsi:type="string" translate="true">Country</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="source" xsi:type="string">Timeslot</item>
+					<item name="component" xsi:type="string">Magento_Ui/js/form/element/country</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="region">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" xsi:type="string" translate="true">State/Region</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">Timeslot</item>
+					<item name="sortOrder" xsi:type="number">15</item>
+					<item name="visible" xsi:type="boolean">false</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="state_id">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Magento\Directory\Model\ResourceModel\Region\Collection</item>
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" xsi:type="string" translate="true">State/Region</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="source" xsi:type="string">Timeslot</item>
+					<item name="sortOrder" xsi:type="number">20</item>
+					<item name="customEntry" xsi:type="string">region</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+					<item name="filterBy" xsi:type="array">
+						<item name="target" xsi:type="string">${ $.provider }:${ $.parentScope }.country_id</item>
+						<item name="field" xsi:type="string">country_id</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<!-- <field formElement="input" name="city_id" sortOrder="30">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Timeslot</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">City</label>
+				<dataScope>city_id</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field> -->
+		<field formElement="select" name="start_date" sortOrder="40">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Timeslot</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Start Time</label>
+				<dataScope>start_date</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+			<formElements>
+				<select>
+					<settings>
+						<options class="\Ktpl\Timeslot\Model\Config\Backend\Timedropdown"/>
+					</settings>
+				</select>
+			</formElements>
+		</field>
+		<field formElement="select" name="end_date" sortOrder="50">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Timeslot</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">End Time</label>
+				<dataScope>end_date</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+			<formElements>
+				<select>
+					<settings>
+						<options class="\Ktpl\Timeslot\Model\Config\Backend\Timedropdown"/>
+					</settings>
+				</select>
+			</formElements>
+		</field>
+		<field formElement="select" name="cutoff_time" sortOrder="50">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Timeslot</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Cutoff Time</label>
+				<dataScope>cutoff_time</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+			<formElements>
+				<select>
+					<settings>
+						<options class="\Ktpl\Timeslot\Model\Config\Backend\Timedropdown"/>
+					</settings>
+				</select>
+			</formElements>
+		</field>
+		<!-- <field name="maximum_orders">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" xsi:type="string" translate="true">Maximum Number Of Orders</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">maximum_orders</item>
+					<item name="sortOrder" xsi:type="number">51</item>
+					<item name="visible" xsi:type="boolean">true</item>					
+				</item>
+			</argument>
+		</field> -->
+		<field formElement="input" name="shipping_charge" sortOrder="60">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Timeslot</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Shipping Charge</label>
+				<dataScope>shipping_charge</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field name="module_status" formElement="select" sortOrder="80">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Timeslot</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Status</label>
+				<dataScope>module_status</dataScope>
+			</settings>
+			<formElements>
+				<select>
+					<settings>
+						<options class="Magento\Config\Model\Config\Source\Enabledisable"/>
+					</settings>
+				</select>
+			</formElements>
+		</field>
+		<field name="midnight_status">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="sortOrder" xsi:type="number">70</item>
+					<item name="dataType" xsi:type="string">boolean</item>
+					<item name="formElement" xsi:type="string">checkbox</item>
+					<item name="source" xsi:type="string">Timeslot</item>
+					<item name="prefer" xsi:type="string">toggle</item>
+					<item name="label" xsi:type="string" translate="true">Midnight Delivery</item>
+					<item name="valueMap" xsi:type="array">
+						<item name="true" xsi:type="string">1</item>
+						<item name="false" xsi:type="string">0</item>
+					</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+					<item name="default" xsi:type="string">0</item>
+				</item>
+			</argument>
+		</field>
+	</fieldset>
+</form>

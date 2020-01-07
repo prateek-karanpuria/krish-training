@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Ktpl::top_level" module="Ktpl_Timeslot" parent="Ktpl_Core::core" resource="Ktpl_Core::config" sortOrder="10" title="Timeslot"/>
+		<add action="ktpl_timeslot/timeslot/index" id="Ktpl_Timeslot::ktpl_timeslot_timeslot" module="Ktpl_Timeslot" parent="Ktpl::top_level" resource="Magento_Backend::content" sortOrder="10" title="Timeslot Data"/>
+	</menu>
+</config>
