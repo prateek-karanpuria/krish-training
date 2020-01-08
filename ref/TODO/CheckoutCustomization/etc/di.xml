@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Ktpl
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Aheadworks\OneStepCheckout\Model\Layout\Processor\AddressAttributes">
+        <plugin name="add-address-of-field"
+                type="Ktpl\CheckoutCustomization\Plugin\ProcessorPlugin"
+                disabled="false"
+                sortOrder="10" />
+    </type>
+
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="save-address_of-in-quote"
+                type="Ktpl\CheckoutCustomization\Plugin\ShippingInformationManagement"
+                disabled="false"
+                sortOrder="10"/>
+    </type>
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="address_of" xsi:type="string">sales_order.address_of</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

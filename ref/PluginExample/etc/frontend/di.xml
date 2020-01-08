@@ -1,0 +1,32 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Exam\PluginExample\Controller\Index\Index">
+        <plugin name="exam_plugin_example_before_one" type="Exam\PluginExample\Plugin\IndexBeforeOnePlugin" sortOrder="1"/>
+    </type>
+    <type name="Exam\PluginExample\Controller\Index\Index">
+        <plugin name="exam_plugin_example_before_two" type="Exam\PluginExample\Plugin\IndexBeforeOTwoPlugin" sortOrder="4"/>
+    </type>
+     <type name="Exam\PluginExample\Controller\Index\Index">
+        <plugin name="exam_plugin_example_before_three" type="Exam\PluginExample\Plugin\IndexBeforeOThreePlugin" sortOrder="7"/>
+    </type>
+     <type name="Exam\PluginExample\Controller\Index\Index">
+        <plugin name="exam_plugin_example_before_four" type="Exam\PluginExample\Plugin\IndexBeforeFourPlugin" sortOrder="11"/>
+    </type>
+     <type name="Exam\PluginExample\Controller\Index\Index">
+        <plugin name="exam_plugin_example_after_one" type="Exam\PluginExample\Plugin\IndexAfterOnePlugin" sortOrder="3"/>
+    </type>
+    <type name="Exam\PluginExample\Controller\Index\Index">
+        <plugin name="exam_plugin_example_after_two" type="Exam\PluginExample\Plugin\IndexAfterTwoPlugin" sortOrder="6"/>
+    </type>
+    <type name="Exam\PluginExample\Controller\Index\Index">
+        <plugin name="exam_plugin_example_after_four" type="Exam\PluginExample\Plugin\IndexAfterFourPlugin" sortOrder="13"/>
+    </type>
+    <type name="Exam\PluginExample\Controller\Index\Index">
+        <plugin name="exam_plugin_example_after_three" type="Exam\PluginExample\Plugin\IndexAfterThreePlugin" sortOrder="10"/>
+    </type>
+    <type name="Exam\PluginExample\Controller\Index\Index">
+        <plugin name="exam_plugin_example_after_five" type="Exam\PluginExample\Plugin\IndexAfterFivePlugin" sortOrder="5"/>
+    </type>
+    <!-- <type name="Exam\PluginExample\Controller\Index\Index">
+        <plugin name="exam_plugin_example_around_one" type="Exam\PluginExample\Plugin\IndexAroundOnePlugin" sortOrder="2"/>
+    </type> -->
+</config>

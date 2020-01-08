@@ -1,0 +1,31 @@
+<li class="aw-onestep-groups_item">
+    <div class="group-title">
+        <h2><span class="mark"></span><span data-bind="i18n: 'Select Delivery Type 123'"></span></h2>
+    </div>
+    <div class="aw-sidebar_order-note">
+        <div class="content" data-role="content">
+            <form class="form form-order-note"
+                  data-role="checkout-toggle"
+                  method="post">
+                <div class="delivery-options">
+                      <div class="first-option">
+                        <input type="radio" name="delivery_type" value="delivery" class='radio' checked> 
+                          <div class="delivery_type_list">
+                            <span class="label" data-bind="i18n: 'Delivery'"></span>
+                            <span class="detail" data-bind="i18n: 'Get your product delivered to your door step.'"></span>
+                          </div>
+                        </input>
+                      </div>
+                      <div class="second-option">
+                        <input type="radio" name="delivery_type" value="store_pickup" class='radio'>
+                          <div class="delivery_type_list">
+                            <span class="label" data-bind="i18n: 'Collect In-Store (Free)'"></span>
+                            <span class="detail" data-bind="i18n: 'Collect your order from a store of your choice.'"></span>
+                          </div>
+                        </input>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</li>

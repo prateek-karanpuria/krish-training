@@ -1,0 +1,165 @@
+<!-- Part of column top and sidebar for mobile devices -->
+
+
+<!-- Shipping and payment methods -->
+<div class="aw-onestep aw-onestep-main">
+    <div class="aw-mobile-hide">
+        <!-- ko foreach: getRegion('column-top') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </div>
+    <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <!-- ko foreach: getRegion('authentication') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <ul class="aw-onestep-groups">
+        <li class="section1">
+        <!-- ko foreach: getRegion('checkout-toggle') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    
+        <!-- ko foreach: getRegion('email') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+
+        <!-- ko foreach: getRegion('shippingAddress') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        </li>
+
+
+
+
+
+         <li class="section2">
+           
+
+            <!-- ko foreach: getRegion('order-note') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </li>
+
+        <li class="section3">
+
+             <!-- Sidebar -->
+                <div class="aw-onestep aw-onestep-sidebar" data-bind="mageInit: {'awOscSidebar':{}}">
+                            <div class="step-title" data-role="title">Summary</div>
+                            <div class="aw-onestep-sidebar-wrapper">
+                                <div class="aw-mobile">
+                                    <div class="aw-onestep-sidebar-content">
+                                        <!-- ko foreach: getRegion('cart-items') -->
+                                            <!-- ko template: getTemplate() --><!-- /ko -->
+                                        <!--/ko-->
+                                    </div>
+                                </div>
+                              
+                            </div>
+                            <!-- ko foreach: getRegion('trustSeals') -->
+                                <!-- ko template: getTemplate() --><!-- /ko -->
+                            <!--/ko-->
+                </div>
+
+            
+
+
+                        <div class="aw-onestep-sidebar-content">  
+                              <!-- ko foreach: getRegion('shippingMethod') -->
+                                <!-- ko template: getTemplate() --><!-- /ko -->
+                                <!--/ko-->
+
+                                <!-- ko foreach: getRegion('payment-options') -->
+                                                                    <!-- ko template: getTemplate() --><!-- /ko -->
+                                                                    <!--/ko-->
+
+                                                                    
+                                <!-- ko foreach: getRegion('totals') -->
+                                    <!-- ko template: getTemplate() --><!-- /ko -->
+                                    <!--/ko-->                                  
+
+                                 <!-- ko foreach: getRegion('paymentMethod') -->
+                                                <!-- ko template: getTemplate() --><!-- /ko -->
+                                            <!--/ko-->
+
+                                    
+                                </div>
+
+                                    
+
+
+
+            
+                           
+
+                    <!-- ko foreach: getRegion('actions-toolbar') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!--/ko-->
+        </li>
+
+        <div class="aw-onestep aw-onestep-sidebar1" data-bind="mageInit: {'awOscSidebar':{}}">
+            <div class="step-title" data-role="title">Summary</div>
+            <div class="aw-onestep-sidebar-wrapper">
+                <div class="aw-mobile">
+                    <div class="aw-onestep-sidebar-content">
+                        <!-- ko foreach: getRegion('cart-items') -->
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                        <!--/ko-->
+                    </div>
+                </div>
+                <div class="aw-onestep-sidebar-content">
+                    <!-- ko foreach: getRegion('payment-options') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!--/ko-->
+
+                    <!-- ko foreach: getRegion('totals') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!--/ko-->
+                </div>
+            </div>
+            <!-- ko foreach: getRegion('trustSeals') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+
+
+
+   
+
+    </ul>
+</div>
+
+
+
+
+
+<style type="text/css">
+    .section1, .section2, .section3 { 
+        float: left;
+        width: 32%;
+        border: 1px solid #cccccc; 
+        margin: 10px;
+        list-style: none;
+        box-sizing: border-box;
+        padding: 20px;
+        padding-top: 0px; 
+    }
+
+    .onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar {
+    /* background-color: #fff; */
+    border: none;
+    margin-left: 0;
+    position: -webkit-sticky;
+    position: static;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    margin-top: 50px;
+    }
+
+    .onestepcheckout-index-index .page-main .aw-onestep-main .aw-onestep-groups .actions-toolbar .primary {
+    margin-left: 10px;
+    margin-top: -1px;
+    }
+
+</style>

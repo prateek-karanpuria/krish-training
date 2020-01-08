@@ -1,0 +1,6 @@
+{
+    "name": "ktpl/checkoutcustomization",
+    "description": "Ktpl CheckoutCustomization",
+    "type": "magento2-module",
+    "require": {}
+}

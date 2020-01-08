@@ -1,0 +1,46 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$cart = $objectManager->get('\Magento\Checkout\Model\Session');
+$quoteCollection = $cart->getQuote();
+$timeslot = $quoteCollection->getTimeslot();
+$paymentmethod = $quoteCollection->getPayment();
+// echo "<pre>";
+// print_r($paymentmethod->getData());
+// exit;
+$paymentmethodname = $paymentmethod->getMethod();
+?>
+<?php /* if($timeslot != ''): ?>
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui','domReady!'], function($){
+        if(jQuery("[name='time'] option").length)
+        {
+            alert('hghgh');
+        //$(document).ready(function(){
+            $("[name='time'] option").each(function(){
+                alert($(this).val());
+            });
+        //});
+    }
+    });
+</script>
+<?php endif; */ ?>
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui'], function($) {
+    jQuery(document).ready(function() {
+        //alert(jQuery(".new-shipping-address-form .content .form .osc-fluid .fl-placeholder-state .control .select").val());
+        
+        setTimeout(function()
+        {
+            jQuery('.onestep-shipping-address .form .osc-fluid .fl-placeholder-state .control .select').find('option').each(function() {
+                if(jQuery(this).val() != "AE")
+                {
+                    jQuery(this).remove();
+                }
+                
+            });
+        }, 
+        5000);
+    });
+});
+
+</script>

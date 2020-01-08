@@ -1,0 +1,20 @@
+<input class="input-text osc-datepicker" type="text" data-bind="
+    hasFocus: focused,
+    awOscDatepicker: { storage: shiftedValue, options: options },
+    valueUpdate: valueUpdate,
+    attr: {
+        value: shiftedValue,
+        name: inputName,
+        placeholder: placeholder,
+        'aria-describedby': noticeId,
+        disabled: disabled
+    }" />
+<!-- <div afterRender="function (target, viewModel) {
+    console.log('Rendered element:', target);
+    console.log('Associated view model:', viewModel);
+    console.log(this === viewModel);
+}"></div> -->
+<input type="hidden"
+        class=""
+        afterRender="onDeliveryElementRender"
+        />
