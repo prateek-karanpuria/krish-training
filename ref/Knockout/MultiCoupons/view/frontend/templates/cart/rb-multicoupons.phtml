@@ -1,0 +1,48 @@
+<?php
+/*
+ * Copyright © 2017 Rocket Bazaar. All rights reserved.
+ * See COPYING.txt for license details
+ */
+?>
+
+<div class="block discount" id="block-discount" data-mage-init='{"collapsible":{"openedState": "active", "saveState": false}}'>
+    <div class="content" data-role="content" aria-labelledby="block-discount-heading">
+        <form id="discount-coupon-form"
+              action="<?php /* @escapeNotVerified */ echo $block->getUrl('checkout/cart/couponPost') ?>"
+              method="post"
+              data-mage-init='{"rb-multicoupons":{"applyCouponButtonSelector":"button.apply.action", 
+                                            "applyCouponTextWhileApplying":"Applying..",
+                                            "applyCouponButtonTextDefault":"Apply Discount",
+                                            "applyCouponButtonTextApplied":"Coupon Applied",
+                                            "invalidCouponText":"Coupon Invalid"}}'>
+            <div class="fieldset coupon<?php strlen($block->getCouponCode()) ? ' applied' : ''?>">
+                <input type="hidden" name="remove-rbcoupon" id="remove-rbcoupon" value="0" />
+                <div class="field col-xs-12 col-sm-7 col-md-6 col-md-push-2 mbn pn">
+                    <label for="coupon_code" class="label"><span><?php /* @escapeNotVerified */ echo __('Apply Discount Code') ?></span></label>
+                    <div class="control">
+                        <input type="text" class="input-text" id="coupon_code_mask" name="coupon_code_mask" value="" placeholder="<?= $block->escapeHtml(__('Enter discount code')) ?>" />
+                        <input type="hidden" id="coupon_code" name="coupon_code" value="<?= $block->escapeHtml($block->getCouponCode()) ?>"/>
+                    </div>
+                </div>
+                <div class="actions-toolbar col-xs-12 col-sm-5 col-md-3 col-md-push-2 pn">
+                    <div class="primary">
+                        <button class="action apply primary" type="button" value="<?php /* @escapeNotVerified */ echo __('Apply Discount') ?>">
+                            <span><?php /* @escapeNotVerified */ echo __('Apply Discount') ?></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div id="applied-coupons" class="applied-coupons" 
+             data-bind="scope:'rb-coupons-list'">
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        </div>
+        <script type="text/x-magento-init">
+            {
+                "*": {
+                    "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>
+                }
+            }
+        </script>
+    </div>
+</div>

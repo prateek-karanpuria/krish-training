@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Copyright © 2017 Rocket Bazaar. All rights reserved.
+ * See COPYING.txt for license details
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="RB_MultiCoupons::multicoupon" title="Multiple Coupons" module="RB_MultiCoupons" sortOrder="130" parent="RB_Common::addons" resource="RB_MultiCoupons::multicoupons"/>
+        <add id="RB_MultiCoupons::setting" title="Settings" module="RB_MultiCoupons" sortOrder="80" parent="RB_MultiCoupons::multicoupon" action="adminhtml/system_config/edit/section/rb_multicoupons" resource="RB_MultiCoupons::multicoupon"/>
+    </menu>
+</config>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Copyright © 2017 Rocket Bazaar. All rights reserved.
+ * See COPYING.txt for license details
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="rb_multicoupons" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Multiple Coupons</label>
+            <tab>rbsettings</tab>
+            <resource>RB_MultiCoupons::config</resource>
+            <group id="license" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Licence Detail</label>
+                <field id="serial_key" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Serial Key</label>
+                </field>
+                <field id="activation_key" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Activation Key</label>
+                </field>
+            </group>
+            <group id="general" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

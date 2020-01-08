@@ -1,0 +1,49 @@
+/*
+ * Copyright © 2017 Rocket Bazaar. All rights reserved.
+ * See COPYING.txt for license details
+ */
+.rb-component-wrapper {
+    padding: 10px 0;
+}
+.rb-component-wrapper .action-toolbar .action-delete{
+    float: left;
+    width: 15px;
+    text-decoration: none;
+}
+.rb-component-wrapper .action-toolbar .action-delete::before {
+    content: '\e644';
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 12px;
+    color: #757575;
+    font-family: 'rbtheme-icon';
+}
+.rb-component-wrapper .action-toolbar .action-delete span{
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+.coupon-list .coupon{
+    line-height: 25px;
+    list-style: none;
+    float: left;
+    width: 100%;
+    margin: 5px 0 0 0;
+}
+.coupon-list .coupon span{
+    float: left;
+    padding-right: 15px;
+    
+}
+div#applied-coupons {
+    display: table;
+    clear: both;
+    margin: 0 auto;
+}
+.payment-option div#applied-coupons {
+    display: block;
+}

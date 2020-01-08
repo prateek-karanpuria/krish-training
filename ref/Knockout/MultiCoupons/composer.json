@@ -1,0 +1,28 @@
+{
+    "name": "RB\/MultiCoupons",
+    "description": "",
+    "require": {
+        "php": "~5.6.0|~7.0.0"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "Proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "RB\\MultiCoupons\\": ""
+        }
+    },
+    "extra": {
+        "map": [
+            [
+                "*",
+                "RB\/MultiCoupons"
+            ]
+        ]
+    }
+}

@@ -1,0 +1,57 @@
+<!--
+/*
+ * Copyright © 2017 Rocket Bazaar. All rights reserved.
+ * See COPYING.txt for license details
+ */
+ -->
+<div class="payment-option _collapsible opc-payment-additional discount-code"
+     data-bind="mageInit: {'collapsible':{'openedState': '_active'}}">
+    <div class="payment-option-title field choice" data-role="title">
+        <span class="action action-toggle" id="block-discount-heading" role="heading" aria-level="2">
+            <!-- ko i18n: 'Apply Discount Code'--><!-- /ko -->
+        </span>
+    </div>
+    <div class="payment-option-content" data-role="content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <form class="form form-discount" id="discount-form">
+            <div class="payment-option-inner">
+                <div class="field">
+                    <label class="label" for="discount-code">
+                        <span data-bind="i18n: 'Enter discount code'"></span>
+                    </label>
+                    <div class="control">
+                        <input type="text" class="input-text" id="discount-code-mask" name="discount_code_mask" value="" data-bind="attr:{placeholder: $t('Enter discount code')}" data-validate="{'required-entry':true}"/>
+                        
+                        <input class="input-text"
+                               type="hidden"
+                               id="discount-code"
+                               name="discount_code" 
+                               data-bind="value: couponCode"/>
+                    </div>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button class="action action-apply" type="submit" data-bind="'value': $t('Apply Discount'), click: apply">
+                        <span><!-- ko i18n: 'Apply Discount'--><!-- /ko --></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div id="applied-coupons" class="applied-coupons">
+            <div class="rb-component-wrapper" data-bind="visible: (appliedCoupons().length > 0)">
+                <span class="applied-coupons-header" data-bind="text:$t(appliedCouponSectionHeader)"></span>
+                <ul data-bind="foreach: appliedCoupons()" class="coupon-list">
+                    <li class="coupon">
+                        <span data-bind="text: $data"></span>
+                        <div class="action-toolbar">
+                            <a class="action action-delete" href="javascript:void(0)" data-bind="click: $parents[0].removeCouponCode, attr: {value: $data, title: $t('Remove')}"><span><!-- ko i18n: 'Remove'--><!-- /ko --></span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

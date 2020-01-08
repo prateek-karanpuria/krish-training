@@ -1,0 +1,35 @@
+<?php
+/*
+ * Copyright © 2017 Rocket Bazaar. All rights reserved.
+ * See COPYING.txt for license details
+ */
+?>
+
+<div class="admin__field field-apply-coupon-code">
+    <label class="admin__field-label"><span><?php /* @escapeNotVerified */ echo __('Apply Coupon Code') ?></span></label>
+    <div class="admin__field-control" data-mage-init='{"rb-multicoupons": {}}'>
+        <input type="text" class="admin__control-text" id="coupons:code" value="" name="coupon_code" />
+        <?php echo $block->getButtonHtml(__('Apply'), 'rbMultiCoupons.applyMultiCoupons()') ?>
+        <input type="hidden" class="admin__control-text" id="applied_coupons" name="applied_coupons" value="<?php echo $block->getCouponCode(); ?>" />
+        <?php if ($block->getCouponCode()):  ?>
+            <?php $couponCodes = explode(",",$block->getCouponCode());
+            foreach($couponCodes as $coupon){
+                $currentCoupon = array($coupon);
+            ?>
+                <p class="added-coupon-code">
+                    <span><?php echo $block->escapeHtml($coupon) ?></span>
+                    <a href="#" onclick="order.applyCoupon('<?php echo implode(",",array_diff($couponCodes,$currentCoupon)) ?>'); return false;" title="<?php /* @escapeNotVerified */ echo __('Remove Coupon Code') ?>"
+                       class="action-remove"><span><?php /* @escapeNotVerified */ echo __('Remove') ?></span></a>
+                </p>
+            <?php } ?>
+        <?php endif; ?>
+        <script>
+            require(["Magento_Sales/order/create/form"], function(){
+
+                order.overlay('shipping-method-overlay', <?php if ($block->getQuote()->isVirtual()): ?>false<?php else: ?>true<?php endif; ?>);
+                order.overlay('address-shipping-overlay', <?php if ($block->getQuote()->isVirtual()): ?>false<?php else: ?>true<?php endif; ?>);
+
+            });
+        </script>
+    </div>
+</div>

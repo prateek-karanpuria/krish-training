@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Copyright © 2017 Rocket Bazaar. All rights reserved.
+ * See COPYING.txt for license details
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\SalesRule\Model\Quote\Discount" type="RB\MultiCoupons\Model\Rewrite\Quote\Discount" />
+    <preference for="\Magento\SalesRule\Model\RulesApplier" type="RB\MultiCoupons\Model\Rewrite\RulesApplier" />
+    <preference for="\Magento\Quote\Model\CouponManagement" type="RB\MultiCoupons\Model\Rewrite\CouponManagement" />
+</config>

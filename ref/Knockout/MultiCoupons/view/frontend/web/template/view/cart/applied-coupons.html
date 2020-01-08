@@ -1,0 +1,17 @@
+<!--
+/*
+ * Copyright © 2017 Rocket Bazaar. All rights reserved.
+ * See COPYING.txt for license details
+ */
+ -->
+<div class="rb-component-wrapper" data-bind="visible: (appliedCoupons().length > 0)">
+    <span class="applied-coupons-header" data-bind="text:$t(appliedCouponSectionHeader)"></span>
+    <ul data-bind="foreach: appliedCoupons()" class="coupon-list">
+        <li class="coupon">
+            <span data-bind="text: $data"></span>
+            <div class="action-toolbar">
+                <a class="action action-delete" href="javascript:void(0)" data-bind="click: $parents[0].removeCouponCode, attr: {value: $data, title: $t('Remove')}"><span><!-- ko i18n: 'Remove'--><!-- /ko --></span></a>
+            </div>
+        </li>
+    </ul>
+</div>
