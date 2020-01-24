@@ -1,0 +1,31 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.email_review
+(
+m231_studentkare.email_review.id,
+m231_studentkare.email_review.review_id,
+m231_studentkare.email_review.customer_id,
+m231_studentkare.email_review.store_id,
+m231_studentkare.email_review.review_imported,
+m231_studentkare.email_review.created_at,
+m231_studentkare.email_review.updated_at
+)
+SELECT
+m231_studentkare_live_22112019.email_review.id,
+m231_studentkare_live_22112019.email_review.review_id,
+m231_studentkare_live_22112019.email_review.customer_id,
+m231_studentkare_live_22112019.email_review.store_id,
+m231_studentkare_live_22112019.email_review.review_imported,
+m231_studentkare_live_22112019.email_review.created_at,
+m231_studentkare_live_22112019.email_review.updated_at
+FROM m231_studentkare_live_22112019.email_review
+ON DUPLICATE KEY UPDATE
+m231_studentkare.email_review.id = m231_studentkare_live_22112019.email_review.id,
+m231_studentkare.email_review.review_id = m231_studentkare_live_22112019.email_review.review_id,
+m231_studentkare.email_review.customer_id = m231_studentkare_live_22112019.email_review.customer_id,
+m231_studentkare.email_review.store_id = m231_studentkare_live_22112019.email_review.store_id,
+m231_studentkare.email_review.review_imported = m231_studentkare_live_22112019.email_review.review_imported,
+m231_studentkare.email_review.created_at = m231_studentkare_live_22112019.email_review.created_at,
+m231_studentkare.email_review.updated_at = m231_studentkare_live_22112019.email_review.updated_at;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

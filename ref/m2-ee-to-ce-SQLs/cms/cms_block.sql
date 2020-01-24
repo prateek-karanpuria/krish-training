@@ -1,0 +1,31 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.cms_block
+(
+m231_studentkare.cms_block.block_id,
+m231_studentkare.cms_block.title,
+m231_studentkare.cms_block.identifier,
+m231_studentkare.cms_block.content,
+m231_studentkare.cms_block.creation_time,
+m231_studentkare.cms_block.update_time,
+m231_studentkare.cms_block.is_active
+)
+SELECT
+m231_studentkare_live_22112019.cms_block.row_id,
+m231_studentkare_live_22112019.cms_block.title,
+m231_studentkare_live_22112019.cms_block.identifier,
+m231_studentkare_live_22112019.cms_block.content,
+m231_studentkare_live_22112019.cms_block.creation_time,
+m231_studentkare_live_22112019.cms_block.update_time,
+m231_studentkare_live_22112019.cms_block.is_active
+FROM m231_studentkare_live_22112019.cms_block
+ON DUPLICATE KEY UPDATE
+m231_studentkare.cms_block.block_id = m231_studentkare_live_22112019.cms_block.row_id,
+m231_studentkare.cms_block.title = m231_studentkare_live_22112019.cms_block.title,
+m231_studentkare.cms_block.identifier = m231_studentkare_live_22112019.cms_block.identifier,
+m231_studentkare.cms_block.content = m231_studentkare_live_22112019.cms_block.content,
+m231_studentkare.cms_block.creation_time = m231_studentkare_live_22112019.cms_block.creation_time,
+m231_studentkare.cms_block.update_time = m231_studentkare_live_22112019.cms_block.update_time,
+m231_studentkare.cms_block.is_active = m231_studentkare_live_22112019.cms_block.is_active;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

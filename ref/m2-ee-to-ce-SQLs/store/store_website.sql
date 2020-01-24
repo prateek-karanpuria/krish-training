@@ -1,0 +1,28 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.store_website
+(
+m231_studentkare.store_website.website_id,
+m231_studentkare.store_website.code,
+m231_studentkare.store_website.name,
+m231_studentkare.store_website.sort_order,
+m231_studentkare.store_website.default_group_id,
+m231_studentkare.store_website.is_default
+)
+SELECT
+m231_studentkare_live_22112019.store_website.website_id,
+m231_studentkare_live_22112019.store_website.code,
+m231_studentkare_live_22112019.store_website.name,
+m231_studentkare_live_22112019.store_website.sort_order,
+m231_studentkare_live_22112019.store_website.default_group_id,
+m231_studentkare_live_22112019.store_website.is_default
+FROM m231_studentkare_live_22112019.store_website
+ON DUPLICATE KEY UPDATE
+m231_studentkare.store_website.website_id = m231_studentkare_live_22112019.store_website.website_id,
+m231_studentkare.store_website.code = m231_studentkare_live_22112019.store_website.code,
+m231_studentkare.store_website.name = m231_studentkare_live_22112019.store_website.name,
+m231_studentkare.store_website.sort_order = m231_studentkare_live_22112019.store_website.sort_order,
+m231_studentkare.store_website.default_group_id = m231_studentkare_live_22112019.store_website.default_group_id,
+m231_studentkare.store_website.is_default = m231_studentkare_live_22112019.store_website.is_default;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

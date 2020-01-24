@@ -1,0 +1,22 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.sales_order_status_state
+(
+m231_studentkare.sales_order_status_state.status,
+m231_studentkare.sales_order_status_state.state,
+m231_studentkare.sales_order_status_state.is_default,
+m231_studentkare.sales_order_status_state.visible_on_front
+)
+SELECT
+m231_studentkare_live_22112019.sales_order_status_state.status,
+m231_studentkare_live_22112019.sales_order_status_state.state,
+m231_studentkare_live_22112019.sales_order_status_state.is_default,
+m231_studentkare_live_22112019.sales_order_status_state.visible_on_front
+FROM m231_studentkare_live_22112019.sales_order_status_state
+ON DUPLICATE KEY UPDATE
+m231_studentkare.sales_order_status_state.status = m231_studentkare_live_22112019.sales_order_status_state.status,
+m231_studentkare.sales_order_status_state.state = m231_studentkare_live_22112019.sales_order_status_state.state,
+m231_studentkare.sales_order_status_state.is_default = m231_studentkare_live_22112019.sales_order_status_state.is_default,
+m231_studentkare.sales_order_status_state.visible_on_front = m231_studentkare_live_22112019.sales_order_status_state.visible_on_front;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

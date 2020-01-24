@@ -1,0 +1,101 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_CREATED_AT (created_at) USING BTREE;
+ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_DOB (dob) USING BTREE;
+ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_DEFAULT_BILLING (default_billing) USING BTREE;
+ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_DEFAULT_SHIPPING (default_shipping) USING BTREE;
+ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_GENDER (gender) USING BTREE;
+ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_GROUP_ID (group_id) USING BTREE;
+
+INSERT INTO m231_studentkare.customer_entity
+(
+m231_studentkare.customer_entity.entity_id,
+m231_studentkare.customer_entity.website_id,
+m231_studentkare.customer_entity.email,
+m231_studentkare.customer_entity.group_id,
+m231_studentkare.customer_entity.increment_id,
+m231_studentkare.customer_entity.store_id,
+m231_studentkare.customer_entity.created_at,
+m231_studentkare.customer_entity.updated_at,
+m231_studentkare.customer_entity.is_active,
+m231_studentkare.customer_entity.disable_auto_group_change,
+m231_studentkare.customer_entity.created_in,
+m231_studentkare.customer_entity.prefix,
+m231_studentkare.customer_entity.firstname,
+m231_studentkare.customer_entity.middlename,
+m231_studentkare.customer_entity.lastname,
+m231_studentkare.customer_entity.suffix,
+m231_studentkare.customer_entity.dob,
+m231_studentkare.customer_entity.password_hash,
+m231_studentkare.customer_entity.rp_token,
+m231_studentkare.customer_entity.rp_token_created_at,
+m231_studentkare.customer_entity.default_billing,
+m231_studentkare.customer_entity.default_shipping,
+m231_studentkare.customer_entity.taxvat,
+m231_studentkare.customer_entity.confirmation,
+m231_studentkare.customer_entity.gender,
+m231_studentkare.customer_entity.failures_num,
+m231_studentkare.customer_entity.first_failure,
+m231_studentkare.customer_entity.lock_expires
+)
+SELECT
+m231_studentkare_live_22112019.customer_entity.entity_id,
+m231_studentkare_live_22112019.customer_entity.website_id,
+m231_studentkare_live_22112019.customer_entity.email,
+m231_studentkare_live_22112019.customer_entity.group_id,
+m231_studentkare_live_22112019.customer_entity.increment_id,
+m231_studentkare_live_22112019.customer_entity.store_id,
+m231_studentkare_live_22112019.customer_entity.created_at,
+m231_studentkare_live_22112019.customer_entity.updated_at,
+m231_studentkare_live_22112019.customer_entity.is_active,
+m231_studentkare_live_22112019.customer_entity.disable_auto_group_change,
+m231_studentkare_live_22112019.customer_entity.created_in,
+m231_studentkare_live_22112019.customer_entity.prefix,
+m231_studentkare_live_22112019.customer_entity.firstname,
+m231_studentkare_live_22112019.customer_entity.middlename,
+m231_studentkare_live_22112019.customer_entity.lastname,
+m231_studentkare_live_22112019.customer_entity.suffix,
+m231_studentkare_live_22112019.customer_entity.dob,
+m231_studentkare_live_22112019.customer_entity.password_hash,
+m231_studentkare_live_22112019.customer_entity.rp_token,
+m231_studentkare_live_22112019.customer_entity.rp_token_created_at,
+m231_studentkare_live_22112019.customer_entity.default_billing,
+m231_studentkare_live_22112019.customer_entity.default_shipping,
+m231_studentkare_live_22112019.customer_entity.taxvat,
+m231_studentkare_live_22112019.customer_entity.confirmation,
+m231_studentkare_live_22112019.customer_entity.gender,
+m231_studentkare_live_22112019.customer_entity.failures_num,
+m231_studentkare_live_22112019.customer_entity.first_failure,
+m231_studentkare_live_22112019.customer_entity.lock_expires
+FROM m231_studentkare_live_22112019.customer_entity
+ON DUPLICATE KEY UPDATE
+m231_studentkare.customer_entity.entity_id = m231_studentkare_live_22112019.customer_entity.entity_id,
+m231_studentkare.customer_entity.website_id = m231_studentkare_live_22112019.customer_entity.website_id,
+m231_studentkare.customer_entity.email = m231_studentkare_live_22112019.customer_entity.email,
+m231_studentkare.customer_entity.group_id = m231_studentkare_live_22112019.customer_entity.group_id,
+m231_studentkare.customer_entity.increment_id = m231_studentkare_live_22112019.customer_entity.increment_id,
+m231_studentkare.customer_entity.store_id = m231_studentkare_live_22112019.customer_entity.store_id,
+m231_studentkare.customer_entity.created_at = m231_studentkare_live_22112019.customer_entity.created_at,
+m231_studentkare.customer_entity.updated_at = m231_studentkare_live_22112019.customer_entity.updated_at,
+m231_studentkare.customer_entity.is_active = m231_studentkare_live_22112019.customer_entity.is_active,
+m231_studentkare.customer_entity.disable_auto_group_change = m231_studentkare_live_22112019.customer_entity.disable_auto_group_change,
+m231_studentkare.customer_entity.created_in = m231_studentkare_live_22112019.customer_entity.created_in,
+m231_studentkare.customer_entity.prefix = m231_studentkare_live_22112019.customer_entity.prefix,
+m231_studentkare.customer_entity.firstname = m231_studentkare_live_22112019.customer_entity.firstname,
+m231_studentkare.customer_entity.middlename = m231_studentkare_live_22112019.customer_entity.middlename,
+m231_studentkare.customer_entity.lastname = m231_studentkare_live_22112019.customer_entity.lastname,
+m231_studentkare.customer_entity.suffix = m231_studentkare_live_22112019.customer_entity.suffix,
+m231_studentkare.customer_entity.dob = m231_studentkare_live_22112019.customer_entity.dob,
+m231_studentkare.customer_entity.password_hash = m231_studentkare_live_22112019.customer_entity.password_hash,
+m231_studentkare.customer_entity.rp_token = m231_studentkare_live_22112019.customer_entity.rp_token,
+m231_studentkare.customer_entity.rp_token_created_at = m231_studentkare_live_22112019.customer_entity.rp_token_created_at,
+m231_studentkare.customer_entity.default_billing = m231_studentkare_live_22112019.customer_entity.default_billing,
+m231_studentkare.customer_entity.default_shipping = m231_studentkare_live_22112019.customer_entity.default_shipping,
+m231_studentkare.customer_entity.taxvat = m231_studentkare_live_22112019.customer_entity.taxvat,
+m231_studentkare.customer_entity.confirmation = m231_studentkare_live_22112019.customer_entity.confirmation,
+m231_studentkare.customer_entity.gender = m231_studentkare_live_22112019.customer_entity.gender,
+m231_studentkare.customer_entity.failures_num = m231_studentkare_live_22112019.customer_entity.failures_num,
+m231_studentkare.customer_entity.first_failure = m231_studentkare_live_22112019.customer_entity.first_failure,
+m231_studentkare.customer_entity.lock_expires = m231_studentkare_live_22112019.customer_entity.lock_expires;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

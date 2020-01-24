@@ -1,0 +1,22 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.sales_sequence_meta
+(
+m231_studentkare.sales_sequence_meta.meta_id,
+m231_studentkare.sales_sequence_meta.entity_type,
+m231_studentkare.sales_sequence_meta.store_id,
+m231_studentkare.sales_sequence_meta.sequence_table
+)
+SELECT
+m231_studentkare_live_22112019.sales_sequence_meta.meta_id,
+m231_studentkare_live_22112019.sales_sequence_meta.entity_type,
+m231_studentkare_live_22112019.sales_sequence_meta.store_id,
+m231_studentkare_live_22112019.sales_sequence_meta.sequence_table
+FROM m231_studentkare_live_22112019.sales_sequence_meta
+ON DUPLICATE KEY UPDATE
+m231_studentkare.sales_sequence_meta.meta_id = m231_studentkare_live_22112019.sales_sequence_meta.meta_id,
+m231_studentkare.sales_sequence_meta.entity_type = m231_studentkare_live_22112019.sales_sequence_meta.entity_type,
+m231_studentkare.sales_sequence_meta.store_id = m231_studentkare_live_22112019.sales_sequence_meta.store_id,
+m231_studentkare.sales_sequence_meta.sequence_table = m231_studentkare_live_22112019.sales_sequence_meta.sequence_table;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

@@ -1,0 +1,22 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.search_synonyms
+(
+m231_studentkare.search_synonyms.group_id,
+m231_studentkare.search_synonyms.synonyms,
+m231_studentkare.search_synonyms.store_id,
+m231_studentkare.search_synonyms.website_id
+)
+SELECT
+m231_studentkare_live_22112019.search_synonyms.group_id,
+m231_studentkare_live_22112019.search_synonyms.synonyms,
+m231_studentkare_live_22112019.search_synonyms.store_id,
+m231_studentkare_live_22112019.search_synonyms.website_id
+FROM m231_studentkare_live_22112019.search_synonyms
+ON DUPLICATE KEY UPDATE
+m231_studentkare.search_synonyms.group_id = m231_studentkare_live_22112019.search_synonyms.group_id,
+m231_studentkare.search_synonyms.synonyms = m231_studentkare_live_22112019.search_synonyms.synonyms,
+m231_studentkare.search_synonyms.store_id = m231_studentkare_live_22112019.search_synonyms.store_id,
+m231_studentkare.search_synonyms.website_id = m231_studentkare_live_22112019.search_synonyms.website_id;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

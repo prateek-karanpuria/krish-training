@@ -1,0 +1,27 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+TRUNCATE TABLE core_config_data;
+
+INSERT INTO m231_studentkare.core_config_data
+(
+m231_studentkare.core_config_data.config_id,
+m231_studentkare.core_config_data.scope,
+m231_studentkare.core_config_data.scope_id,
+m231_studentkare.core_config_data.path,
+m231_studentkare.core_config_data.value
+)
+SELECT
+m231_studentkare_live_22112019.core_config_data.config_id,
+m231_studentkare_live_22112019.core_config_data.scope,
+m231_studentkare_live_22112019.core_config_data.scope_id,
+m231_studentkare_live_22112019.core_config_data.path,
+m231_studentkare_live_22112019.core_config_data.value
+FROM m231_studentkare_live_22112019.core_config_data
+ON DUPLICATE KEY UPDATE
+m231_studentkare.core_config_data.config_id = m231_studentkare_live_22112019.core_config_data.config_id,
+m231_studentkare.core_config_data.scope = m231_studentkare_live_22112019.core_config_data.scope,
+m231_studentkare.core_config_data.scope_id = m231_studentkare_live_22112019.core_config_data.scope_id,
+m231_studentkare.core_config_data.path = m231_studentkare_live_22112019.core_config_data.path,
+m231_studentkare.core_config_data.value = m231_studentkare_live_22112019.core_config_data.value;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

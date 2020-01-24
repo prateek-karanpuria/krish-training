@@ -1,0 +1,16 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.salesrule_website
+(
+m231_studentkare.salesrule_website.rule_id,
+m231_studentkare.salesrule_website.website_id
+)
+SELECT
+m231_studentkare_live_22112019.salesrule_website.row_id,
+m231_studentkare_live_22112019.salesrule_website.website_id
+FROM m231_studentkare_live_22112019.salesrule_website
+ON DUPLICATE KEY UPDATE
+m231_studentkare.salesrule_website.rule_id = m231_studentkare_live_22112019.salesrule_website.row_id,
+m231_studentkare.salesrule_website.website_id = m231_studentkare_live_22112019.salesrule_website.website_id;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

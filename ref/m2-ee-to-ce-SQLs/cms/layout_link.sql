@@ -1,0 +1,25 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.layout_link
+(
+m231_studentkare.layout_link.layout_link_id,
+m231_studentkare.layout_link.store_id,
+m231_studentkare.layout_link.theme_id,
+m231_studentkare.layout_link.layout_update_id,
+m231_studentkare.layout_link.is_temporary
+)
+SELECT
+m231_studentkare_live_22112019.layout_link.layout_link_id,
+m231_studentkare_live_22112019.layout_link.store_id,
+m231_studentkare_live_22112019.layout_link.theme_id,
+m231_studentkare_live_22112019.layout_link.layout_update_id,
+m231_studentkare_live_22112019.layout_link.is_temporary
+FROM m231_studentkare_live_22112019.layout_link
+ON DUPLICATE KEY UPDATE
+m231_studentkare.layout_link.layout_link_id = m231_studentkare_live_22112019.layout_link.layout_link_id,
+m231_studentkare.layout_link.store_id = m231_studentkare_live_22112019.layout_link.store_id,
+m231_studentkare.layout_link.theme_id = m231_studentkare_live_22112019.layout_link.theme_id,
+m231_studentkare.layout_link.layout_update_id = m231_studentkare_live_22112019.layout_link.layout_update_id,
+m231_studentkare.layout_link.is_temporary = m231_studentkare_live_22112019.layout_link.is_temporary;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

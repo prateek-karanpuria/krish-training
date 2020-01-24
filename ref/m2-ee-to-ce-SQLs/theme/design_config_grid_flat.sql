@@ -1,0 +1,27 @@
+-- This files ensures added theme association via theme_theme_id
+
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.design_config_grid_flat
+(
+m231_studentkare.design_config_grid_flat.entity_id,
+m231_studentkare.design_config_grid_flat.store_website_id,
+m231_studentkare.design_config_grid_flat.store_group_id,
+m231_studentkare.design_config_grid_flat.store_id,
+m231_studentkare.design_config_grid_flat.theme_theme_id
+)
+SELECT
+m231_studentkare_live_22112019.design_config_grid_flat.entity_id,
+m231_studentkare_live_22112019.design_config_grid_flat.store_website_id,
+m231_studentkare_live_22112019.design_config_grid_flat.store_group_id,
+m231_studentkare_live_22112019.design_config_grid_flat.store_id,
+m231_studentkare_live_22112019.design_config_grid_flat.theme_theme_id
+FROM m231_studentkare_live_22112019.design_config_grid_flat
+ON DUPLICATE KEY UPDATE
+m231_studentkare.design_config_grid_flat.entity_id = m231_studentkare_live_22112019.design_config_grid_flat.entity_id,
+m231_studentkare.design_config_grid_flat.store_website_id = m231_studentkare_live_22112019.design_config_grid_flat.store_website_id,
+m231_studentkare.design_config_grid_flat.store_group_id = m231_studentkare_live_22112019.design_config_grid_flat.store_group_id,
+m231_studentkare.design_config_grid_flat.store_id = m231_studentkare_live_22112019.design_config_grid_flat.store_id,
+m231_studentkare.design_config_grid_flat.theme_theme_id = m231_studentkare_live_22112019.design_config_grid_flat.theme_theme_id;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

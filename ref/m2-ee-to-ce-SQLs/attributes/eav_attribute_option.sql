@@ -1,0 +1,19 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.eav_attribute_option
+(
+m231_studentkare.eav_attribute_option.option_id,
+m231_studentkare.eav_attribute_option.attribute_id,
+m231_studentkare.eav_attribute_option.sort_order
+)
+SELECT
+m231_studentkare_live_22112019.eav_attribute_option.option_id,
+m231_studentkare_live_22112019.eav_attribute_option.attribute_id,
+m231_studentkare_live_22112019.eav_attribute_option.sort_order
+FROM m231_studentkare_live_22112019.eav_attribute_option
+ON DUPLICATE KEY UPDATE
+m231_studentkare.eav_attribute_option.option_id = m231_studentkare_live_22112019.eav_attribute_option.option_id,
+m231_studentkare.eav_attribute_option.attribute_id = m231_studentkare_live_22112019.eav_attribute_option.attribute_id,
+m231_studentkare.eav_attribute_option.sort_order = m231_studentkare_live_22112019.eav_attribute_option.sort_order;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

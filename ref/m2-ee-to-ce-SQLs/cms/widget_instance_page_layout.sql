@@ -1,0 +1,18 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+TRUNCATE TABLE widget_instance_page_layout;
+
+INSERT INTO m231_studentkare.widget_instance_page_layout
+(
+m231_studentkare.widget_instance_page_layout.page_id,
+m231_studentkare.widget_instance_page_layout.layout_update_id
+)
+SELECT
+m231_studentkare_live_22112019.widget_instance_page_layout.page_id,
+m231_studentkare_live_22112019.widget_instance_page_layout.layout_update_id
+FROM m231_studentkare_live_22112019.widget_instance_page_layout
+ON DUPLICATE KEY UPDATE
+m231_studentkare.widget_instance_page_layout.page_id = m231_studentkare_live_22112019.widget_instance_page_layout.page_id,
+m231_studentkare.widget_instance_page_layout.layout_update_id = m231_studentkare_live_22112019.widget_instance_page_layout.layout_update_id;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

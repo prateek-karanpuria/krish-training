@@ -1,0 +1,37 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+-- Take backup of eav_attribute_group table ('eav_attribute_group_bkp') &
+-- then truncate the table
+TRUNCATE TABLE eav_attribute_group;
+
+INSERT INTO m231_studentkare.eav_attribute_group
+(
+m231_studentkare.eav_attribute_group.attribute_group_id,
+m231_studentkare.eav_attribute_group.attribute_set_id,
+m231_studentkare.eav_attribute_group.attribute_group_name,
+m231_studentkare.eav_attribute_group.sort_order,
+m231_studentkare.eav_attribute_group.default_id,
+m231_studentkare.eav_attribute_group.attribute_group_code,
+m231_studentkare.eav_attribute_group.tab_group_code
+)
+SELECT
+m231_studentkare_live_22112019.eav_attribute_group.attribute_group_id,
+m231_studentkare_live_22112019.eav_attribute_group.attribute_set_id,
+m231_studentkare_live_22112019.eav_attribute_group.attribute_group_name,
+m231_studentkare_live_22112019.eav_attribute_group.sort_order,
+m231_studentkare_live_22112019.eav_attribute_group.default_id,
+m231_studentkare_live_22112019.eav_attribute_group.attribute_group_code,
+m231_studentkare_live_22112019.eav_attribute_group.tab_group_code
+FROM m231_studentkare_live_22112019.eav_attribute_group
+ON DUPLICATE KEY UPDATE
+m231_studentkare.eav_attribute_group.attribute_group_id = m231_studentkare_live_22112019.eav_attribute_group.attribute_group_id,
+m231_studentkare.eav_attribute_group.attribute_set_id = m231_studentkare_live_22112019.eav_attribute_group.attribute_set_id,
+m231_studentkare.eav_attribute_group.attribute_group_name = m231_studentkare_live_22112019.eav_attribute_group.attribute_group_name,
+m231_studentkare.eav_attribute_group.sort_order = m231_studentkare_live_22112019.eav_attribute_group.sort_order,
+m231_studentkare.eav_attribute_group.default_id = m231_studentkare_live_22112019.eav_attribute_group.default_id,
+m231_studentkare.eav_attribute_group.attribute_group_code = m231_studentkare_live_22112019.eav_attribute_group.attribute_group_code,
+m231_studentkare.eav_attribute_group.tab_group_code = m231_studentkare_live_22112019.eav_attribute_group.tab_group_code;
+
+-- Drop backup table: DROP TABLE eav_attribute_group_bkp
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

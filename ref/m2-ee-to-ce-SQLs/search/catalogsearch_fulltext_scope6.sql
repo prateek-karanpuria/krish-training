@@ -1,0 +1,19 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.catalogsearch_fulltext_scope6
+(
+m231_studentkare.catalogsearch_fulltext_scope6.entity_id,
+m231_studentkare.catalogsearch_fulltext_scope6.attribute_id,
+m231_studentkare.catalogsearch_fulltext_scope6.data_index
+)
+SELECT
+m231_studentkare_live_22112019.catalogsearch_fulltext_scope6.entity_id,
+m231_studentkare_live_22112019.catalogsearch_fulltext_scope6.attribute_id,
+m231_studentkare_live_22112019.catalogsearch_fulltext_scope6.data_index
+FROM m231_studentkare_live_22112019.catalogsearch_fulltext_scope6
+ON DUPLICATE KEY UPDATE
+m231_studentkare.catalogsearch_fulltext_scope6.entity_id = m231_studentkare_live_22112019.catalogsearch_fulltext_scope6.entity_id,
+m231_studentkare.catalogsearch_fulltext_scope6.attribute_id = m231_studentkare_live_22112019.catalogsearch_fulltext_scope6.attribute_id,
+m231_studentkare.catalogsearch_fulltext_scope6.data_index = m231_studentkare_live_22112019.catalogsearch_fulltext_scope6.data_index;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

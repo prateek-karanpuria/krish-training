@@ -1,0 +1,22 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.customer_entity_varchar
+(
+m231_studentkare.customer_entity_varchar.value_id,
+m231_studentkare.customer_entity_varchar.attribute_id,
+m231_studentkare.customer_entity_varchar.entity_id,
+m231_studentkare.customer_entity_varchar.value
+)
+SELECT
+m231_studentkare_live_22112019.customer_entity_varchar.value_id,
+m231_studentkare_live_22112019.customer_entity_varchar.attribute_id,
+m231_studentkare_live_22112019.customer_entity_varchar.entity_id,
+m231_studentkare_live_22112019.customer_entity_varchar.value
+FROM m231_studentkare_live_22112019.customer_entity_varchar
+ON DUPLICATE KEY UPDATE
+m231_studentkare.customer_entity_varchar.value_id = m231_studentkare_live_22112019.customer_entity_varchar.value_id,
+m231_studentkare.customer_entity_varchar.attribute_id = m231_studentkare_live_22112019.customer_entity_varchar.attribute_id,
+m231_studentkare.customer_entity_varchar.entity_id = m231_studentkare_live_22112019.customer_entity_varchar.entity_id,
+m231_studentkare.customer_entity_varchar.value = m231_studentkare_live_22112019.customer_entity_varchar.value;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

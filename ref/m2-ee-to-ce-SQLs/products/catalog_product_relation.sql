@@ -1,0 +1,16 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.catalog_product_relation
+(
+m231_studentkare.catalog_product_relation.parent_id,
+m231_studentkare.catalog_product_relation.child_id
+)
+SELECT
+m231_studentkare_live_22112019.catalog_product_relation.parent_id,
+m231_studentkare_live_22112019.catalog_product_relation.child_id
+FROM m231_studentkare_live_22112019.catalog_product_relation
+ON DUPLICATE KEY UPDATE
+m231_studentkare.catalog_product_relation.parent_id = m231_studentkare_live_22112019.catalog_product_relation.parent_id,
+m231_studentkare.catalog_product_relation.child_id = m231_studentkare_live_22112019.catalog_product_relation.child_id;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

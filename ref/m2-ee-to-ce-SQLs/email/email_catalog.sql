@@ -1,0 +1,28 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.email_catalog
+(
+m231_studentkare.email_catalog.id,
+m231_studentkare.email_catalog.product_id,
+m231_studentkare.email_catalog.imported,
+m231_studentkare.email_catalog.modified,
+m231_studentkare.email_catalog.created_at,
+m231_studentkare.email_catalog.updated_at
+)
+SELECT
+m231_studentkare_live_22112019.email_catalog.id,
+m231_studentkare_live_22112019.email_catalog.product_id,
+m231_studentkare_live_22112019.email_catalog.imported,
+m231_studentkare_live_22112019.email_catalog.modified,
+m231_studentkare_live_22112019.email_catalog.created_at,
+m231_studentkare_live_22112019.email_catalog.updated_at
+FROM m231_studentkare_live_22112019.email_catalog
+ON DUPLICATE KEY UPDATE
+m231_studentkare.email_catalog.id = m231_studentkare_live_22112019.email_catalog.id,
+m231_studentkare.email_catalog.product_id = m231_studentkare_live_22112019.email_catalog.product_id,
+m231_studentkare.email_catalog.imported = m231_studentkare_live_22112019.email_catalog.imported,
+m231_studentkare.email_catalog.modified = m231_studentkare_live_22112019.email_catalog.modified,
+m231_studentkare.email_catalog.created_at = m231_studentkare_live_22112019.email_catalog.created_at,
+m231_studentkare.email_catalog.updated_at = m231_studentkare_live_22112019.email_catalog.updated_at;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

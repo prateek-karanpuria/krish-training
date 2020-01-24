@@ -1,0 +1,21 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+TRUNCATE TABLE amasty_amshopby_cms_page;
+
+INSERT INTO m231_studentkare.amasty_amshopby_cms_page
+(
+m231_studentkare.amasty_amshopby_cms_page.entity_id,
+m231_studentkare.amasty_amshopby_cms_page.page_id,
+m231_studentkare.amasty_amshopby_cms_page.enabled
+)
+SELECT
+m231_studentkare_live_22112019.amasty_amshopby_cms_page.entity_id,
+m231_studentkare_live_22112019.amasty_amshopby_cms_page.page_id,
+m231_studentkare_live_22112019.amasty_amshopby_cms_page.enabled
+FROM m231_studentkare_live_22112019.amasty_amshopby_cms_page
+ON DUPLICATE KEY UPDATE
+m231_studentkare.amasty_amshopby_cms_page.entity_id = m231_studentkare_live_22112019.amasty_amshopby_cms_page.entity_id,
+m231_studentkare.amasty_amshopby_cms_page.page_id = m231_studentkare_live_22112019.amasty_amshopby_cms_page.page_id,
+m231_studentkare.amasty_amshopby_cms_page.enabled = m231_studentkare_live_22112019.amasty_amshopby_cms_page.enabled;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

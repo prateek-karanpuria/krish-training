@@ -1,0 +1,19 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.salesrule_coupon_usage
+(
+m231_studentkare.salesrule_coupon_usage.coupon_id,
+m231_studentkare.salesrule_coupon_usage.customer_id,
+m231_studentkare.salesrule_coupon_usage.times_used
+)
+SELECT
+m231_studentkare_live_22112019.salesrule_coupon_usage.coupon_id,
+m231_studentkare_live_22112019.salesrule_coupon_usage.customer_id,
+m231_studentkare_live_22112019.salesrule_coupon_usage.times_used
+FROM m231_studentkare_live_22112019.salesrule_coupon_usage
+ON DUPLICATE KEY UPDATE
+m231_studentkare.salesrule_coupon_usage.coupon_id = m231_studentkare_live_22112019.salesrule_coupon_usage.coupon_id,
+m231_studentkare.salesrule_coupon_usage.customer_id = m231_studentkare_live_22112019.salesrule_coupon_usage.customer_id,
+m231_studentkare.salesrule_coupon_usage.times_used = m231_studentkare_live_22112019.salesrule_coupon_usage.times_used;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

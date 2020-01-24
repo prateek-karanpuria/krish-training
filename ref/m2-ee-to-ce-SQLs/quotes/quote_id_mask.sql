@@ -1,0 +1,19 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.quote_id_mask
+(
+m231_studentkare.quote_id_mask.entity_id,
+m231_studentkare.quote_id_mask.quote_id,
+m231_studentkare.quote_id_mask.masked_id
+)
+SELECT
+m231_studentkare_live_22112019.quote_id_mask.entity_id,
+m231_studentkare_live_22112019.quote_id_mask.quote_id,
+m231_studentkare_live_22112019.quote_id_mask.masked_id
+FROM m231_studentkare_live_22112019.quote_id_mask
+ON DUPLICATE KEY UPDATE
+m231_studentkare.quote_id_mask.entity_id = m231_studentkare_live_22112019.quote_id_mask.entity_id,
+m231_studentkare.quote_id_mask.quote_id = m231_studentkare_live_22112019.quote_id_mask.quote_id,
+m231_studentkare.quote_id_mask.masked_id = m231_studentkare_live_22112019.quote_id_mask.masked_id;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

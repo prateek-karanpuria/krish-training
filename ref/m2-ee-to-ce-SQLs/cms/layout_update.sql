@@ -1,0 +1,25 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.layout_update
+(
+m231_studentkare.layout_update.layout_update_id,
+m231_studentkare.layout_update.handle,
+m231_studentkare.layout_update.xml,
+m231_studentkare.layout_update.sort_order,
+m231_studentkare.layout_update.updated_at
+)
+SELECT
+m231_studentkare_live_22112019.layout_update.layout_update_id,
+m231_studentkare_live_22112019.layout_update.handle,
+m231_studentkare_live_22112019.layout_update.xml,
+m231_studentkare_live_22112019.layout_update.sort_order,
+m231_studentkare_live_22112019.layout_update.updated_at
+FROM m231_studentkare_live_22112019.layout_update
+ON DUPLICATE KEY UPDATE
+m231_studentkare.layout_update.layout_update_id = m231_studentkare_live_22112019.layout_update.layout_update_id,
+m231_studentkare.layout_update.handle = m231_studentkare_live_22112019.layout_update.handle,
+m231_studentkare.layout_update.xml = m231_studentkare_live_22112019.layout_update.xml,
+m231_studentkare.layout_update.sort_order = m231_studentkare_live_22112019.layout_update.sort_order,
+m231_studentkare.layout_update.updated_at = m231_studentkare_live_22112019.layout_update.updated_at;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

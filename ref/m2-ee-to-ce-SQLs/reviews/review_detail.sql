@@ -1,0 +1,31 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.review_detail
+(
+m231_studentkare.review_detail.detail_id,
+m231_studentkare.review_detail.review_id,
+m231_studentkare.review_detail.store_id,
+m231_studentkare.review_detail.title,
+m231_studentkare.review_detail.detail,
+m231_studentkare.review_detail.nickname,
+m231_studentkare.review_detail.customer_id
+)
+SELECT
+m231_studentkare_live_22112019.review_detail.detail_id,
+m231_studentkare_live_22112019.review_detail.review_id,
+m231_studentkare_live_22112019.review_detail.store_id,
+m231_studentkare_live_22112019.review_detail.title,
+m231_studentkare_live_22112019.review_detail.detail,
+m231_studentkare_live_22112019.review_detail.nickname,
+m231_studentkare_live_22112019.review_detail.customer_id
+FROM m231_studentkare_live_22112019.review_detail
+ON DUPLICATE KEY UPDATE
+m231_studentkare.review_detail.detail_id = m231_studentkare_live_22112019.review_detail.detail_id,
+m231_studentkare.review_detail.review_id = m231_studentkare_live_22112019.review_detail.review_id,
+m231_studentkare.review_detail.store_id = m231_studentkare_live_22112019.review_detail.store_id,
+m231_studentkare.review_detail.title = m231_studentkare_live_22112019.review_detail.title,
+m231_studentkare.review_detail.detail = m231_studentkare_live_22112019.review_detail.detail,
+m231_studentkare.review_detail.nickname = m231_studentkare_live_22112019.review_detail.nickname,
+m231_studentkare.review_detail.customer_id = m231_studentkare_live_22112019.review_detail.customer_id;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

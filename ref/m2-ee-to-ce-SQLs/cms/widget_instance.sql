@@ -1,0 +1,31 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.widget_instance
+(
+m231_studentkare.widget_instance.instance_id,
+m231_studentkare.widget_instance.instance_type,
+m231_studentkare.widget_instance.theme_id,
+m231_studentkare.widget_instance.title,
+m231_studentkare.widget_instance.store_ids,
+m231_studentkare.widget_instance.widget_parameters,
+m231_studentkare.widget_instance.sort_order
+)
+SELECT
+m231_studentkare_live_22112019.widget_instance.instance_id,
+m231_studentkare_live_22112019.widget_instance.instance_type,
+m231_studentkare_live_22112019.widget_instance.theme_id,
+m231_studentkare_live_22112019.widget_instance.title,
+m231_studentkare_live_22112019.widget_instance.store_ids,
+m231_studentkare_live_22112019.widget_instance.widget_parameters,
+m231_studentkare_live_22112019.widget_instance.sort_order
+FROM m231_studentkare_live_22112019.widget_instance
+ON DUPLICATE KEY UPDATE
+m231_studentkare.widget_instance.instance_id = m231_studentkare_live_22112019.widget_instance.instance_id,
+m231_studentkare.widget_instance.instance_type = m231_studentkare_live_22112019.widget_instance.instance_type,
+m231_studentkare.widget_instance.theme_id = m231_studentkare_live_22112019.widget_instance.theme_id,
+m231_studentkare.widget_instance.title = m231_studentkare_live_22112019.widget_instance.title,
+m231_studentkare.widget_instance.store_ids = m231_studentkare_live_22112019.widget_instance.store_ids,
+m231_studentkare.widget_instance.widget_parameters = m231_studentkare_live_22112019.widget_instance.widget_parameters,
+m231_studentkare.widget_instance.sort_order = m231_studentkare_live_22112019.widget_instance.sort_order;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

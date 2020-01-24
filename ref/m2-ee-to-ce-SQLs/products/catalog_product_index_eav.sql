@@ -1,0 +1,25 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.catalog_product_index_eav
+(
+m231_studentkare.catalog_product_index_eav.entity_id,
+m231_studentkare.catalog_product_index_eav.attribute_id,
+m231_studentkare.catalog_product_index_eav.store_id,
+m231_studentkare.catalog_product_index_eav.value,
+m231_studentkare.catalog_product_index_eav.source_id
+)
+SELECT
+m231_studentkare_live_22112019.catalog_product_index_eav.entity_id,
+m231_studentkare_live_22112019.catalog_product_index_eav.attribute_id,
+m231_studentkare_live_22112019.catalog_product_index_eav.store_id,
+m231_studentkare_live_22112019.catalog_product_index_eav.value,
+m231_studentkare_live_22112019.catalog_product_index_eav.source_id
+FROM m231_studentkare_live_22112019.catalog_product_index_eav
+ON DUPLICATE KEY UPDATE
+m231_studentkare.catalog_product_index_eav.entity_id = m231_studentkare_live_22112019.catalog_product_index_eav.entity_id,
+m231_studentkare.catalog_product_index_eav.attribute_id = m231_studentkare_live_22112019.catalog_product_index_eav.attribute_id,
+m231_studentkare.catalog_product_index_eav.store_id = m231_studentkare_live_22112019.catalog_product_index_eav.store_id,
+m231_studentkare.catalog_product_index_eav.value = m231_studentkare_live_22112019.catalog_product_index_eav.value,
+m231_studentkare.catalog_product_index_eav.source_id = m231_studentkare_live_22112019.catalog_product_index_eav.source_id;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

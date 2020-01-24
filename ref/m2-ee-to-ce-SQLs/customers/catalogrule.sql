@@ -1,0 +1,46 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.catalogrule
+(
+m231_studentkare.catalogrule.rule_id,
+m231_studentkare.catalogrule.name,
+m231_studentkare.catalogrule.description,
+m231_studentkare.catalogrule.from_date,
+m231_studentkare.catalogrule.to_date,
+m231_studentkare.catalogrule.is_active,
+m231_studentkare.catalogrule.conditions_serialized,
+m231_studentkare.catalogrule.actions_serialized,
+m231_studentkare.catalogrule.stop_rules_processing,
+m231_studentkare.catalogrule.sort_order,
+m231_studentkare.catalogrule.simple_action,
+m231_studentkare.catalogrule.discount_amount
+)
+SELECT
+m231_studentkare_live_22112019.catalogrule.row_id,
+m231_studentkare_live_22112019.catalogrule.name,
+m231_studentkare_live_22112019.catalogrule.description,
+m231_studentkare_live_22112019.catalogrule.from_date,
+m231_studentkare_live_22112019.catalogrule.to_date,
+m231_studentkare_live_22112019.catalogrule.is_active,
+m231_studentkare_live_22112019.catalogrule.conditions_serialized,
+m231_studentkare_live_22112019.catalogrule.actions_serialized,
+m231_studentkare_live_22112019.catalogrule.stop_rules_processing,
+m231_studentkare_live_22112019.catalogrule.sort_order,
+m231_studentkare_live_22112019.catalogrule.simple_action,
+m231_studentkare_live_22112019.catalogrule.discount_amount
+FROM m231_studentkare_live_22112019.catalogrule
+ON DUPLICATE KEY UPDATE
+m231_studentkare.catalogrule.rule_id = m231_studentkare_live_22112019.catalogrule.row_id,
+m231_studentkare.catalogrule.name = m231_studentkare_live_22112019.catalogrule.name,
+m231_studentkare.catalogrule.description = m231_studentkare_live_22112019.catalogrule.description,
+m231_studentkare.catalogrule.from_date = m231_studentkare_live_22112019.catalogrule.from_date,
+m231_studentkare.catalogrule.to_date = m231_studentkare_live_22112019.catalogrule.to_date,
+m231_studentkare.catalogrule.is_active = m231_studentkare_live_22112019.catalogrule.is_active,
+m231_studentkare.catalogrule.conditions_serialized = m231_studentkare_live_22112019.catalogrule.conditions_serialized,
+m231_studentkare.catalogrule.actions_serialized = m231_studentkare_live_22112019.catalogrule.actions_serialized,
+m231_studentkare.catalogrule.stop_rules_processing = m231_studentkare_live_22112019.catalogrule.stop_rules_processing,
+m231_studentkare.catalogrule.sort_order = m231_studentkare_live_22112019.catalogrule.sort_order,
+m231_studentkare.catalogrule.simple_action = m231_studentkare_live_22112019.catalogrule.simple_action,
+m231_studentkare.catalogrule.discount_amount = m231_studentkare_live_22112019.catalogrule.discount_amount;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

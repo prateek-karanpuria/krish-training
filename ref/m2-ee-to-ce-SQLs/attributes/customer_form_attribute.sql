@@ -1,0 +1,16 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.customer_form_attribute
+(
+m231_studentkare.customer_form_attribute.form_code,
+m231_studentkare.customer_form_attribute.attribute_id
+)
+SELECT
+m231_studentkare_live_22112019.customer_form_attribute.form_code,
+m231_studentkare_live_22112019.customer_form_attribute.attribute_id
+FROM m231_studentkare_live_22112019.customer_form_attribute
+ON DUPLICATE KEY UPDATE
+m231_studentkare.customer_form_attribute.form_code = m231_studentkare_live_22112019.customer_form_attribute.form_code,
+m231_studentkare.customer_form_attribute.attribute_id = m231_studentkare_live_22112019.customer_form_attribute.attribute_id;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

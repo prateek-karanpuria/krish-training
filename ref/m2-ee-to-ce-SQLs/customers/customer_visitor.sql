@@ -1,0 +1,22 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.customer_visitor
+(
+m231_studentkare.customer_visitor.visitor_id,
+m231_studentkare.customer_visitor.customer_id,
+m231_studentkare.customer_visitor.session_id,
+m231_studentkare.customer_visitor.last_visit_at
+)
+SELECT
+m231_studentkare_live_22112019.customer_visitor.visitor_id,
+m231_studentkare_live_22112019.customer_visitor.customer_id,
+m231_studentkare_live_22112019.customer_visitor.session_id,
+m231_studentkare_live_22112019.customer_visitor.last_visit_at
+FROM m231_studentkare_live_22112019.customer_visitor
+ON DUPLICATE KEY UPDATE
+m231_studentkare.customer_visitor.visitor_id = m231_studentkare_live_22112019.customer_visitor.visitor_id,
+m231_studentkare.customer_visitor.customer_id = m231_studentkare_live_22112019.customer_visitor.customer_id,
+m231_studentkare.customer_visitor.session_id = m231_studentkare_live_22112019.customer_visitor.session_id,
+m231_studentkare.customer_visitor.last_visit_at = m231_studentkare_live_22112019.customer_visitor.last_visit_at;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

@@ -1,0 +1,40 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.search_query
+(
+m231_studentkare.search_query.query_id,
+m231_studentkare.search_query.query_text,
+m231_studentkare.search_query.num_results,
+m231_studentkare.search_query.popularity,
+m231_studentkare.search_query.redirect,
+m231_studentkare.search_query.store_id,
+m231_studentkare.search_query.display_in_terms,
+m231_studentkare.search_query.is_active,
+m231_studentkare.search_query.is_processed,
+m231_studentkare.search_query.updated_at
+)
+SELECT
+m231_studentkare_live_22112019.search_query.query_id,
+m231_studentkare_live_22112019.search_query.query_text,
+m231_studentkare_live_22112019.search_query.num_results,
+m231_studentkare_live_22112019.search_query.popularity,
+m231_studentkare_live_22112019.search_query.redirect,
+m231_studentkare_live_22112019.search_query.store_id,
+m231_studentkare_live_22112019.search_query.display_in_terms,
+m231_studentkare_live_22112019.search_query.is_active,
+m231_studentkare_live_22112019.search_query.is_processed,
+m231_studentkare_live_22112019.search_query.updated_at
+FROM m231_studentkare_live_22112019.search_query
+ON DUPLICATE KEY UPDATE
+m231_studentkare.search_query.query_id = m231_studentkare_live_22112019.search_query.query_id,
+m231_studentkare.search_query.query_text = m231_studentkare_live_22112019.search_query.query_text,
+m231_studentkare.search_query.num_results = m231_studentkare_live_22112019.search_query.num_results,
+m231_studentkare.search_query.popularity = m231_studentkare_live_22112019.search_query.popularity,
+m231_studentkare.search_query.redirect = m231_studentkare_live_22112019.search_query.redirect,
+m231_studentkare.search_query.store_id = m231_studentkare_live_22112019.search_query.store_id,
+m231_studentkare.search_query.display_in_terms = m231_studentkare_live_22112019.search_query.display_in_terms,
+m231_studentkare.search_query.is_active = m231_studentkare_live_22112019.search_query.is_active,
+m231_studentkare.search_query.is_processed = m231_studentkare_live_22112019.search_query.is_processed,
+m231_studentkare.search_query.updated_at = m231_studentkare_live_22112019.search_query.updated_at;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

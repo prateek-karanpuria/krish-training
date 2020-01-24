@@ -1,0 +1,16 @@
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+INSERT INTO m231_studentkare.catalogrule_customer_group
+(
+m231_studentkare.catalogrule_customer_group.rule_id,
+m231_studentkare.catalogrule_customer_group.customer_group_id
+)
+SELECT
+m231_studentkare_live_22112019.catalogrule_customer_group.row_id,
+m231_studentkare_live_22112019.catalogrule_customer_group.customer_group_id
+FROM m231_studentkare_live_22112019.catalogrule_customer_group
+ON DUPLICATE KEY UPDATE
+m231_studentkare.catalogrule_customer_group.rule_id = m231_studentkare_live_22112019.catalogrule_customer_group.row_id,
+m231_studentkare.catalogrule_customer_group.customer_group_id = m231_studentkare_live_22112019.catalogrule_customer_group.customer_group_id;
+
+SET GLOBAL FOREIGN_KEY_CHECKS=1;
