@@ -1,5 +1,8 @@
 SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
+ALTER TABLE cms_page ADD website_root SMALLINT(5) NOT NULL DEFAULT '1' COMMENT 'Website Root' AFTER meta_title;
+ALTER TABLE cms_page ADD page_banner TEXT NULL DEFAULT NULL COMMENT 'Page Banner' AFTER website_root;
+
 INSERT INTO m231_studentkare.cms_page
 (
 m231_studentkare.cms_page.page_id,

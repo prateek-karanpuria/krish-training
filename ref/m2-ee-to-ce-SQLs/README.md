@@ -1,6 +1,6 @@
 // Remove MSI modules initially before performing data migration.
 Initially:
-SET GLOBAL FOREIGN_KEY_CHECKS=0
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
 bin/magento module:disable -f Magento_Inventory Magento_InventoryAdminUi Magento_InventoryApi Magento_InventoryBundleProduct Magento_InventoryBundleProductAdminUi Magento_InventoryCatalog Magento_InventorySales Magento_InventoryCatalogAdminUi Magento_InventoryCatalogApi Magento_InventoryCatalogSearch Magento_InventoryConfigurableProduct Magento_InventoryConfigurableProductAdminUi Magento_InventoryConfigurableProductIndexer Magento_InventoryConfiguration Magento_InventoryConfigurationApi Magento_InventoryGroupedProduct Magento_InventoryGroupedProductAdminUi Magento_InventoryGroupedProductIndexer Magento_InventoryImportExport Magento_InventoryIndexer Magento_InventoryLowQuantityNotification Magento_InventoryLowQuantityNotificationAdminUi Magento_InventoryLowQuantityNotificationApi Magento_InventoryMultiDimensionalIndexerApi Magento_InventoryProductAlert Magento_InventoryReservations Magento_InventoryReservationsApi Magento_InventoryCache Magento_InventorySalesAdminUi Magento_InventorySalesApi Magento_InventorySalesFrontendUi Magento_InventoryShipping Magento_InventorySourceDeductionApi Magento_InventorySourceSelection Magento_InventorySourceSelectionApi Magento_InventoryShippingAdminUi Magento_InventoryDistanceBasedSourceSelectionAdminUi Magento_InventoryDistanceBasedSourceSelectionApi Magento_InventoryElasticsearch Magento_CatalogInventoryGraphQl Magento_InventorySetupFixtureGenerator
 
@@ -36,5 +36,26 @@ php bin/magento setup:upgrade
 
 Go to Stores -> Inventory -> Stocks (admin/inventory/stock/edit/stock_id/1/) and enable it for all websites, then hit save.
 
-(See also https://community.magento.com/t5/Magento-2-x-Version-Upgrades/Magento-update-to-2-3-compilation-errors/td-p/114524) -->
+(See also https://community.magento.com/t5/Magento-2-x-Version-Upgrades/Magento-update-to-2-3-compilation-errors/td-p/114524)
 
+
+
+attributes/catalog_eav_attribute.sql
+attributes/catalog_product_link_attribute_int.sql
+attributes/catalog_product_super_attribute.sql
+attributes/catalog_product_super_attribute_label.sql
+attributes/customer_eav_attribute_website.sql
+cms/cms_page.sql
+customers/customer_entity.sql
+customers/customer_grid_flat.sql
+email/email_template.sql
+products/catalog_product_bundle_option_value.sql
+products/catalog_product_bundle_selection.sql
+products/catalog_product_bundle_selection_price.sql
+products/catalog_product_entity.sql
+quotes/quote.sql
+sales/sales_order.sql
+sales/sales_order_item.sql
+sales/sales_order_status_history.sql
+search/catalogsearch_fulltext_scope1.sql
+-->
