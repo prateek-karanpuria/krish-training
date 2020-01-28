@@ -20,8 +20,7 @@ m231_studentkare.cms_page.custom_root_template,
 m231_studentkare.cms_page.custom_layout_update_xml,
 m231_studentkare.cms_page.custom_theme_from,
 m231_studentkare.cms_page.custom_theme_to,
-m231_studentkare.cms_page.meta_title,
-m231_studentkare.cms_page.page_banner
+m231_studentkare.cms_page.meta_title
 )
 SELECT
 m231_studentkare_live_22112019.cms_page.row_id,
@@ -42,8 +41,7 @@ m231_studentkare_live_22112019.cms_page.custom_root_template,
 m231_studentkare_live_22112019.cms_page.custom_layout_update_xml,
 m231_studentkare_live_22112019.cms_page.custom_theme_from,
 m231_studentkare_live_22112019.cms_page.custom_theme_to,
-m231_studentkare_live_22112019.cms_page.meta_title,
-m231_studentkare_live_22112019.cms_page.page_banner
+m231_studentkare_live_22112019.cms_page.meta_title
 FROM m231_studentkare_live_22112019.cms_page
 ON DUPLICATE KEY UPDATE
 m231_studentkare.cms_page.page_id = m231_studentkare_live_22112019.cms_page.row_id,
@@ -64,7 +62,6 @@ m231_studentkare.cms_page.custom_root_template = m231_studentkare_live_22112019.
 m231_studentkare.cms_page.custom_layout_update_xml = m231_studentkare_live_22112019.cms_page.custom_layout_update_xml,
 m231_studentkare.cms_page.custom_theme_from = m231_studentkare_live_22112019.cms_page.custom_theme_from,
 m231_studentkare.cms_page.custom_theme_to = m231_studentkare_live_22112019.cms_page.custom_theme_to,
-m231_studentkare.cms_page.meta_title = m231_studentkare_live_22112019.cms_page.meta_title,
-m231_studentkare.cms_page.page_banner = m231_studentkare_live_22112019.cms_page.page_banner
+m231_studentkare.cms_page.meta_title = m231_studentkare_live_22112019.cms_page.meta_title;
 
 SET GLOBAL FOREIGN_KEY_CHECKS=1;

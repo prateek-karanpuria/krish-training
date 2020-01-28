@@ -1,5 +1,7 @@
 SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
+ALTER TABLE catalog_product_entity ADD search_weight INT(11) NOT NULL DEFAULT '0' COMMENT 'Search Weight' AFTER updated_at;
+
 INSERT INTO m231_studentkare.catalog_product_entity
 (
 m231_studentkare.catalog_product_entity.entity_id,
@@ -10,7 +12,7 @@ m231_studentkare.catalog_product_entity.has_options,
 m231_studentkare.catalog_product_entity.required_options,
 m231_studentkare.catalog_product_entity.created_at,
 m231_studentkare.catalog_product_entity.updated_at,
-m231_studentkare.catalog_product_entity.mst_search_weight
+m231_studentkare.catalog_product_entity.search_weight
 )
 SELECT
 m231_studentkare_live_22112019.catalog_product_entity.row_id,
@@ -32,6 +34,6 @@ m231_studentkare.catalog_product_entity.has_options = m231_studentkare_live_2211
 m231_studentkare.catalog_product_entity.required_options = m231_studentkare_live_22112019.catalog_product_entity.required_options,
 m231_studentkare.catalog_product_entity.created_at = m231_studentkare_live_22112019.catalog_product_entity.created_at,
 m231_studentkare.catalog_product_entity.updated_at = m231_studentkare_live_22112019.catalog_product_entity.updated_at,
-m231_studentkare.catalog_product_entity.mst_search_weight = m231_studentkare_live_22112019.catalog_product_entity.search_weight;
+m231_studentkare.catalog_product_entity.search_weight = m231_studentkare_live_22112019.catalog_product_entity.search_weight;
 
 SET GLOBAL FOREIGN_KEY_CHECKS=1;

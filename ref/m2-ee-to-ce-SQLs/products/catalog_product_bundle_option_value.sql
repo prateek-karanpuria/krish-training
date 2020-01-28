@@ -1,1 +1,1 @@
-ALTER TABLE m231_studentkare.catalog_product_bundle_option_value ADD INDEX CAT_PRD_BNDL_OPT_VAL_PARENT_PRD_ID_CAT_PRD_ENTT_ROW_ID (parent_product_id);
+-- ALTER TABLE m231_studentkare.catalog_product_bundle_option_value ADD INDEX CAT_PRD_BNDL_OPT_VAL_PARENT_PRD_ID_CAT_PRD_ENTT_ROW_ID (parent_product_id);

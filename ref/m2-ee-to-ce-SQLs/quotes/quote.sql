@@ -1,5 +1,9 @@
 SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
+ALTER TABLE quote ADD ship_to_school SMALLINT(6) NULL DEFAULT '0' COMMENT 'Ship To School' AFTER is_persistent;
+ALTER TABLE quote ADD checkout_is_tax_credit TINYINT(1) NULL DEFAULT '0' COMMENT 'Checkout Is Tax Credit' AFTER ship_to_school;
+ALTER TABLE quote ADD checkout_gst_number TEXT NULL DEFAULT NULL COMMENT 'Checkout Gst Number' AFTER checkout_is_tax_credit;
+
 INSERT INTO m231_studentkare.quote
 (
 m231_studentkare.quote.entity_id,

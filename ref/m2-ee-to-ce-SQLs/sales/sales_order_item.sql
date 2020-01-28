@@ -1,5 +1,7 @@
 SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
+ALTER TABLE sales_order_item ADD qty_processing DECIMAL(12) NULL DEFAULT '0.0000' COMMENT 'Qty Processing' AFTER qty_shipped;
+
 INSERT INTO m231_studentkare.sales_order_item
 (
 m231_studentkare.sales_order_item.item_id,

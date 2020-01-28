@@ -1,5 +1,7 @@
 SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
+ALTER TABLE sales_order_status_history ADD checkmo_number VARCHAR(30) NULL DEFAULT NULL COMMENT ' Check Money Payment number' AFTER entity_name;
+
 INSERT INTO m231_studentkare.sales_order_status_history
 (
 m231_studentkare.sales_order_status_history.entity_id,

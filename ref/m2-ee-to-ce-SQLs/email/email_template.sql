@@ -1,5 +1,7 @@
 SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
+ALTER TABLE email_template ADD attach_sms SMALLINT(6) NULL DEFAULT '0' COMMENT 'Attached SMS?' AFTER orig_template_variables;
+ALTER TABLE email_template ADD sms_content MEDIUMTEXT NULL DEFAULT NULL COMMENT 'SMS Content' AFTER attach_sms;
 ALTER TABLE email_template ADD sms_attached INT(11) NULL DEFAULT NULL COMMENT 'SMS attachment' AFTER sms_content;
 
 INSERT INTO m231_studentkare.email_template

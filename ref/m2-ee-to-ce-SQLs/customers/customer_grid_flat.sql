@@ -1,5 +1,8 @@
 SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
+ALTER TABLE customer_grid_flat ADD mobile VARCHAR(255) NULL DEFAULT NULL COMMENT 'Mobile' AFTER lock_expires;
+ALTER TABLE customer_grid_flat ADD school_id INT(11) NULL DEFAULT NULL COMMENT 'School_id' AFTER mobile;
+
 INSERT INTO m231_studentkare.customer_grid_flat
 (
 m231_studentkare.customer_grid_flat.entity_id,

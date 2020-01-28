@@ -1,5 +1,10 @@
 SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
+ALTER TABLE sales_order ADD ship_to_school SMALLINT(6) NULL DEFAULT '0' COMMENT 'Ship To School' AFTER gift_message_id;
+ALTER TABLE sales_order ADD checkout_is_tax_credit TINYINT(1) NULL DEFAULT '0' COMMENT 'Checkout Is Tax Credit' AFTER ship_to_school;
+ALTER TABLE sales_order ADD checkout_gst_number TEXT NULL DEFAULT NULL COMMENT 'Checkout Gst Number' AFTER ship_to_school;
+ALTER TABLE sales_order ADD sap_invoice TEXT NULL DEFAULT NULL COMMENT 'Sap Invoice' AFTER checkout_gst_number;
+
 INSERT INTO m231_studentkare.sales_order
 (
 m231_studentkare.sales_order.entity_id,

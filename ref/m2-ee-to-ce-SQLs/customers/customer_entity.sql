@@ -1,11 +1,11 @@
 SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
-ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_CREATED_AT (created_at) USING BTREE;
-ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_DOB (dob) USING BTREE;
-ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_DEFAULT_BILLING (default_billing) USING BTREE;
-ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_DEFAULT_SHIPPING (default_shipping) USING BTREE;
-ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_GENDER (gender) USING BTREE;
-ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_GROUP_ID (group_id) USING BTREE;
+-- ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_CREATED_AT (created_at) USING BTREE;
+-- ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_DOB (dob) USING BTREE;
+-- ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_DEFAULT_BILLING (default_billing) USING BTREE;
+-- ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_DEFAULT_SHIPPING (default_shipping) USING BTREE;
+-- ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_GENDER (gender) USING BTREE;
+-- ALTER TABLE m231_studentkare.customer_entity ADD INDEX CUSTOMER_ENTITY_GROUP_ID (group_id) USING BTREE;
 
 INSERT INTO m231_studentkare.customer_entity
 (

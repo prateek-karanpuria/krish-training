@@ -1,6 +1,6 @@
 SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
-TRUNCATE TABLE catalogsearch_fulltext_scope1
+-- TRUNCATE TABLE catalogsearch_fulltext_scope1;
 
 INSERT INTO m231_studentkare.catalogsearch_fulltext_scope1
 (
